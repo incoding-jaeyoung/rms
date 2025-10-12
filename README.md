@@ -164,8 +164,24 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api
 
 ### 코드 스타일
 
-- ESLint 설정을 따릅니다
-- Prettier는 프로젝트에 포함되어 있지 않습니다
+- **ESLint**: 코드 품질 검사
+- **Prettier**: 코드 포맷팅 (저장 시 자동 포맷팅)
+- 포맷팅 규칙:
+  - 세미콜론 사용
+  - 싱글 쿼트 사용
+  - 탭 크기: 2칸
+  - 최대 줄 길이: 100자
+  - Trailing comma: ES5
+
+### 포맷팅 명령어
+
+```bash
+# 전체 파일 포맷팅
+npm run format
+
+# 포맷팅 체크 (수정하지 않음)
+npm run format:check
+```
 
 ### 커밋 컨벤션
 
