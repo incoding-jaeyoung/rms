@@ -21,6 +21,11 @@ html {
   font-family: 'Pretendard', 'Inter', sans-serif;
   min-width: 1920px;
 }
+@media (max-width: 768px) {
+  html {
+    min-width: 100%;
+  }
+}
 body {
   background: var(--color-background);
   color: var(--color-foreground);
