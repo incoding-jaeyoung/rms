@@ -1,10 +1,8 @@
 'use client';
 
 import { Modal } from '@/components/ui';
-import { Form, Input, Select, DatePicker, Radio, Checkbox } from 'antd';
-import { CheckOutlined, CloseCircleFilled, InfoCircleFilled } from '@ant-design/icons';
-
-const { TextArea } = Input;
+import { Form, Input } from 'antd';
+import { CloseCircleFilled } from '@ant-design/icons';
 
 interface ChangePasswordProps {
   open: boolean;

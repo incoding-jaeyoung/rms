@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { ReactNode } from 'react';
 
 // 아이콘 컴포넌트의 props 타입 정의
 interface IconProps {

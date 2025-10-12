@@ -1,5 +1,5 @@
-import { Modal as AntModal, ModalProps as AntModalProps, Button, Space } from 'antd';
-import { ReactNode, useState } from 'react';
+import { Modal as AntModal, ModalProps as AntModalProps, Button } from 'antd';
+import { ReactNode } from 'react';
 
 // 커스텀 모달의 추가 props 타입 정의
 interface CustomModalProps extends Omit<AntModalProps, 'footer'> {
@@ -33,7 +33,6 @@ export const Modal: React.FC<CustomModalProps> = ({
   footer,
   size = 'default',
   variant = 'default',
-  draggable = false,
   className = '',
   confirmIcon,
   cancelIcon,

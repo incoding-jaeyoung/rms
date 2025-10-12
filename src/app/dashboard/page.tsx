@@ -150,7 +150,6 @@ export default function DashboardPage() {
             placeholder=""
             className="w-50"
             defaultValue="All"
-            label="Group"
             options={[
               { label: 'All', value: 'All' },
               { label: 'select one', value: 'select one' },
