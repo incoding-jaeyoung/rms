@@ -42,7 +42,7 @@ const Header: React.FC = () => {
       <Link href="/">
         <img src="/images/logo.svg" alt="ATEC" className="h-5" />
       </Link>
-      
+
       <Dropdown
         menu={{ items: userMenuItems }}
         overlayClassName="rms-dropdown"
@@ -56,7 +56,11 @@ const Header: React.FC = () => {
             <span className="font-semibold text-gray-900 leading-tight">John Doe</span>
             <span className="text-xs text-gray-500 leading-none">Super Admin</span>
           </div>
-          <img src="/icons/ico-user-dropdown.svg" alt="arrow"  className={`ml-auto text-gray-500 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
+          <img
+            src="/icons/ico-user-dropdown.svg"
+            alt="arrow"
+            className={`ml-auto text-gray-500 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`}
+          />
         </div>
       </Dropdown>
     </AntHeader>

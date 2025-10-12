@@ -24,13 +24,13 @@ const TabContext = createContext<TabContextType | undefined>(undefined);
 export function TabProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
   const [tabs, setTabs] = useState<Tab[]>([
-    { id: 'home', label: 'Page List', path: '/', closable: true }
+    { id: 'home', label: 'Page List', path: '/', closable: true },
   ]);
   const [activeTabId, setActiveTabId] = useState('home');
 
   const addTab = (newTab: Tab) => {
     // 이미 열린 탭이 있으면 활성화만
-    const existingTab = tabs.find(tab => tab.id === newTab.id);
+    const existingTab = tabs.find((tab) => tab.id === newTab.id);
     if (existingTab) {
       setActiveTabId(newTab.id);
       router.push(newTab.path);
@@ -38,14 +38,14 @@ export function TabProvider({ children }: { children: ReactNode }) {
     }
 
     // 새 탭을 맨 앞에 추가
-    setTabs(prev => [newTab, ...prev]);
+    setTabs((prev) => [newTab, ...prev]);
     setActiveTabId(newTab.id);
     router.push(newTab.path);
   };
 
   const removeTab = (id: string) => {
-    const tabIndex = tabs.findIndex(tab => tab.id === id);
-    const newTabs = tabs.filter(tab => tab.id !== id);
+    const tabIndex = tabs.findIndex((tab) => tab.id === id);
+    const newTabs = tabs.filter((tab) => tab.id !== id);
     setTabs(newTabs);
 
     // 닫은 탭이 활성 탭이었다면
@@ -65,7 +65,7 @@ export function TabProvider({ children }: { children: ReactNode }) {
 
   const setActiveTab = (id: string) => {
     setActiveTabId(id);
-    const tab = tabs.find(t => t.id === id);
+    const tab = tabs.find((t) => t.id === id);
     if (tab) {
       router.push(tab.path);
     }
@@ -76,7 +76,9 @@ export function TabProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <TabContext.Provider value={{ tabs, activeTabId, addTab, removeTab, setActiveTab, reorderTabs }}>
+    <TabContext.Provider
+      value={{ tabs, activeTabId, addTab, removeTab, setActiveTab, reorderTabs }}
+    >
       {children}
     </TabContext.Provider>
   );
@@ -89,5 +91,3 @@ export function useTabs() {
   }
   return context;
 }
-
-

@@ -53,101 +53,101 @@ export default function DashboardPage() {
 
   const atmData = generateATMData();
 
-      // 테이블 컬럼 정의
-      const columns: TabulatorColumn[] = [
-        {
-          title: 'NO',
-          field: 'no',
-          minWidth: 60,
-          hozAlign: 'center',
-        },
-        {
-          title: 'Date & Time',
-          field: 'dateTime',
-          minWidth: 150,
-        },
-        {
-          title: 'Group',
-          field: 'group',
-          minWidth: 100,
-        },
-        {
-          title: 'Branch',
-          field: 'branch',
-          minWidth: 120,
-        },
-        {
-          title: 'Model',
-          field: 'model',
-          minWidth: 120,
-        },
-        {
-          title: 'Terminal ID',
-          field: 'terminalId',
-          minWidth: 100,
-        },
-        {
-          title: 'IP',
-          field: 'ip',
-          minWidth: 130,
-        },
-        {
-          title: 'Module',
-          field: 'module',
-          minWidth: 120,
-        },
-        {
-          title: 'Error Code',
-          field: 'errorCode',
-          minWidth: 100,
-          hozAlign: 'center',
-        },
-        {
-          title: 'Cassette-A',
-          field: 'cassetteA',
-          minWidth: 100,
-          hozAlign: 'right',
-        },
-        {
-          title: 'Cassette-B',
-          field: 'cassetteB',
-          minWidth: 100,
-          hozAlign: 'right',
-        },
-        {
-          title: 'Cassette-C',
-          field: 'cassetteC',
-          minWidth: 100,
-          hozAlign: 'right',
-        },
-        {
-          title: 'Cassette-D',
-          field: 'cassetteD',
-          minWidth: 100,
-          hozAlign: 'right',
-        },
-        {
-          title: 'Overflow',
-          field: 'overflow',
-          minWidth: 100,
-          hozAlign: 'right',
-        },
-        {
-          title: 'Cassette-RJT',
-          field: 'cassetteRjt',
-          minWidth: 100,
-          hozAlign: 'right',
-        },
-      ];
+  // 테이블 컬럼 정의
+  const columns: TabulatorColumn[] = [
+    {
+      title: 'NO',
+      field: 'no',
+      minWidth: 60,
+      hozAlign: 'center',
+    },
+    {
+      title: 'Date & Time',
+      field: 'dateTime',
+      minWidth: 150,
+    },
+    {
+      title: 'Group',
+      field: 'group',
+      minWidth: 100,
+    },
+    {
+      title: 'Branch',
+      field: 'branch',
+      minWidth: 120,
+    },
+    {
+      title: 'Model',
+      field: 'model',
+      minWidth: 120,
+    },
+    {
+      title: 'Terminal ID',
+      field: 'terminalId',
+      minWidth: 100,
+    },
+    {
+      title: 'IP',
+      field: 'ip',
+      minWidth: 130,
+    },
+    {
+      title: 'Module',
+      field: 'module',
+      minWidth: 120,
+    },
+    {
+      title: 'Error Code',
+      field: 'errorCode',
+      minWidth: 100,
+      hozAlign: 'center',
+    },
+    {
+      title: 'Cassette-A',
+      field: 'cassetteA',
+      minWidth: 100,
+      hozAlign: 'right',
+    },
+    {
+      title: 'Cassette-B',
+      field: 'cassetteB',
+      minWidth: 100,
+      hozAlign: 'right',
+    },
+    {
+      title: 'Cassette-C',
+      field: 'cassetteC',
+      minWidth: 100,
+      hozAlign: 'right',
+    },
+    {
+      title: 'Cassette-D',
+      field: 'cassetteD',
+      minWidth: 100,
+      hozAlign: 'right',
+    },
+    {
+      title: 'Overflow',
+      field: 'overflow',
+      minWidth: 100,
+      hozAlign: 'right',
+    },
+    {
+      title: 'Cassette-RJT',
+      field: 'cassetteRjt',
+      minWidth: 100,
+      hozAlign: 'right',
+    },
+  ];
 
   return (
     <div className="contents">
       <div className="contents-header">
         <h2>ATM Overview</h2>
-        <div className='flex items-center gap-2.5'>
-          <label className='text-sm font-semibold'>Group</label>
-          <Select 
-            placeholder="" 
+        <div className="flex items-center gap-2.5">
+          <label className="text-sm font-semibold">Group</label>
+          <Select
+            placeholder=""
             className="w-50"
             defaultValue="All"
             label="Group"
@@ -190,30 +190,22 @@ export default function DashboardPage() {
           <dd>7</dd>
         </dl>
       </div>
-      <div className='mt-7 flex justify-between items-center'>
+      <div className="mt-7 flex justify-between items-center">
         <Space>
-          <Button icon={<PlusOutlined />}>
-            Add new
-          </Button>
-          <Button icon={<EditOutlined />}>
-            Edit
-          </Button>
-          <Button icon={<DeleteOutlined />}>
-            Delete
-          </Button>
+          <Button icon={<PlusOutlined />}>Add new</Button>
+          <Button icon={<EditOutlined />}>Edit</Button>
+          <Button icon={<DeleteOutlined />}>Delete</Button>
         </Space>
-        <Button icon={<ExportOutlined />}>
-          Export
-        </Button>
+        <Button icon={<ExportOutlined />}>Export</Button>
       </div>
-        <TabulatorTable
-          data={atmData}
-          columns={columns}
-          config={{
-            showFooter: true,
-            layout: 'fitData',
-          }}
-        />
+      <TabulatorTable
+        data={atmData}
+        columns={columns}
+        config={{
+          showFooter: true,
+          layout: 'fitData',
+        }}
+      />
     </div>
   );
 }

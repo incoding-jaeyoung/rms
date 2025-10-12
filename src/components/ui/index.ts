@@ -10,4 +10,9 @@ export type { default as ButtonProps } from './Button';
 export type { default as IconProps } from './Icon';
 export type { default as TableProps } from './Table';
 export type { default as ModalProps } from './Modal';
-export type { TabulatorData, TabulatorColumn, TabulatorConfig, TabulatorTableProps } from './TabulatorTable';
+export type {
+  TabulatorData,
+  TabulatorColumn,
+  TabulatorConfig,
+  TabulatorTableProps,
+} from './TabulatorTable';

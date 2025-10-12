@@ -63,7 +63,13 @@ export interface TabulatorConfig {
   showFooter?: boolean;
   dataCount?: number;
   height?: string | number;
-  layout?: 'fitColumns' | 'fitData' | 'fitDataFill' | 'fitColumnsFill' | 'fitDataTable' | 'fitDataStretch';
+  layout?:
+    | 'fitColumns'
+    | 'fitData'
+    | 'fitDataFill'
+    | 'fitColumnsFill'
+    | 'fitDataTable'
+    | 'fitDataStretch';
   responsiveLayout?: 'hide' | 'collapse' | 'stack' | false;
   movableColumns?: boolean;
   movableRows?: boolean;
@@ -106,52 +112,54 @@ export interface TabulatorTableProps {
 const createCustomPaginationElement = () => {
   const paginationContainer = document.createElement('div');
   paginationContainer.className = 'custom-pagination';
-  
+
   // 왼쪽: 현재 페이지 범위와 전체 항목 수
   const leftInfo = document.createElement('div');
   leftInfo.className = 'pagination-left';
   leftInfo.innerHTML = '<p class="range-info">1-50 <em>of</em> 100 <em>items</em></p>';
-  
+
   // 중앙: 페이지 네비게이션
   const centerNav = document.createElement('div');
   centerNav.className = 'pagination-center';
-  
+
   // Prev 버튼
   const prevBtn = document.createElement('button');
   prevBtn.className = 'nav-btn prev-btn';
   prevBtn.type = 'button';
-  prevBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"></polyline></svg><span>Prev</span>';
-  
+  prevBtn.innerHTML =
+    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"></polyline></svg><span>Prev</span>';
+
   // 페이지 입력
   const pageInput = document.createElement('input');
   pageInput.className = 'page-input';
   pageInput.type = 'number';
   pageInput.min = '1';
   pageInput.value = '1';
-  
+
   // "of" 텍스트
   const ofText = document.createElement('span');
   ofText.className = 'of-text';
   ofText.textContent = 'of';
-  
+
   // 총 페이지 수
   const totalPages = document.createElement('span');
   totalPages.className = 'total-pages';
   totalPages.textContent = '100';
-  
+
   // Next 버튼
   const nextBtn = document.createElement('button');
   nextBtn.className = 'nav-btn next-btn';
   nextBtn.type = 'button';
-  nextBtn.innerHTML = '<span>Next</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"></polyline></svg>';
-  
+  nextBtn.innerHTML =
+    '<span>Next</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"></polyline></svg>';
+
   // 요소들을 centerNav에 추가
   centerNav.appendChild(prevBtn);
   centerNav.appendChild(pageInput);
   centerNav.appendChild(ofText);
   centerNav.appendChild(totalPages);
   centerNav.appendChild(nextBtn);
-  
+
   // 오른쪽: 페이지당 항목 수 선택 (50으로 고정)
   const rightSelector = document.createElement('div');
   rightSelector.className = 'pagination-right';
@@ -163,11 +171,11 @@ const createCustomPaginationElement = () => {
       <option value="100">100 items</option>
     </select>
   `;
-  
+
   paginationContainer.appendChild(leftInfo);
   paginationContainer.appendChild(centerNav);
   paginationContainer.appendChild(rightSelector);
-  
+
   return paginationContainer;
 };
 
@@ -208,7 +216,9 @@ const updateCustomPagination = (table: TabulatorInstance) => {
     if (nextBtn) nextBtn.disabled = currentPage >= totalPages;
 
     // 오른쪽 선택자 업데이트
-    const pageSizeSelect = paginationElement.querySelector('.page-size-select') as HTMLSelectElement;
+    const pageSizeSelect = paginationElement.querySelector(
+      '.page-size-select'
+    ) as HTMLSelectElement;
     if (pageSizeSelect) pageSizeSelect.value = pageSize.toString();
   } catch (error) {
     console.error('페이징 업데이트 오류:', error);
@@ -221,11 +231,13 @@ const addCustomPaginationFooter = (table: TabulatorInstance | null, showFooter: 
 
   try {
     const tableContainer = table.element.parentElement;
-    
+
     // 모든 기본 푸터 요소 강제 제거
-    const existingFooters = table.element.querySelectorAll('.tabulator-footer, .tabulator-footer-contents');
-    existingFooters.forEach(footer => footer.remove());
-    
+    const existingFooters = table.element.querySelectorAll(
+      '.tabulator-footer, .tabulator-footer-contents'
+    );
+    existingFooters.forEach((footer) => footer.remove());
+
     // 푸터 표시가 false인 경우 기존 푸터만 제거
     if (!showFooter) {
       // 기존 커스텀 페이징 제거
@@ -235,7 +247,7 @@ const addCustomPaginationFooter = (table: TabulatorInstance | null, showFooter: 
       }
       return;
     }
-    
+
     // 이미 커스텀 페이징이 있는지 확인
     if (tableContainer?.querySelector('.custom-pagination')) {
       return;
@@ -243,14 +255,14 @@ const addCustomPaginationFooter = (table: TabulatorInstance | null, showFooter: 
 
     // 커스텀 페이징 컨테이너 생성
     const customPagination = createCustomPaginationElement();
-    
+
     // 테이블 컨테이너에 추가
     if (tableContainer) {
       tableContainer.appendChild(customPagination);
-      
+
       // 이벤트 바인딩
       bindPaginationEvents(table);
-      
+
       // 초기 페이징 정보 업데이트
       updateCustomPagination(table);
     }
@@ -301,11 +313,21 @@ const bindPaginationEvents = (table: TabulatorInstance) => {
 
       // 키보드 입력 시 숫자만 허용
       pageInput.addEventListener('keydown', (e: KeyboardEvent) => {
-        const allowedKeys = ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'Home', 'End'];
+        const allowedKeys = [
+          'Backspace',
+          'Delete',
+          'Tab',
+          'Escape',
+          'Enter',
+          'ArrowLeft',
+          'ArrowRight',
+          'Home',
+          'End',
+        ];
         const isNumber = e.key >= '0' && e.key <= '9';
         const isAllowedKey = allowedKeys.includes(e.key);
         const isCtrlCmd = e.ctrlKey || e.metaKey; // Ctrl+A, Ctrl+C 등 허용
-        
+
         if (!isNumber && !isAllowedKey && !isCtrlCmd) {
           e.preventDefault();
         }
@@ -317,7 +339,7 @@ const bindPaginationEvents = (table: TabulatorInstance) => {
           e.preventDefault();
           const targetPage = parseInt(pageInput.value);
           const maxPage = table.getPageMax();
-          
+
           if (targetPage >= 1 && targetPage <= maxPage) {
             table.setPage(targetPage);
           } else {
@@ -331,7 +353,7 @@ const bindPaginationEvents = (table: TabulatorInstance) => {
       pageInput.addEventListener('blur', () => {
         const targetPage = parseInt(pageInput.value);
         const maxPage = table.getPageMax();
-        
+
         if (targetPage >= 1 && targetPage <= maxPage) {
           table.setPage(targetPage);
         } else {
@@ -348,7 +370,7 @@ const bindPaginationEvents = (table: TabulatorInstance) => {
         const target = e.target as HTMLSelectElement;
         const newPageSize = parseInt(target.value);
         table.setPageSize(newPageSize);
-        
+
         // 페이지 크기 변경 후 페이징 정보 업데이트
         setTimeout(() => {
           updateCustomPagination(table);
@@ -361,23 +383,26 @@ const bindPaginationEvents = (table: TabulatorInstance) => {
 };
 
 // TabulatorTable 컴포넌트
-export default function TabulatorTable({ 
-  data, 
-  columns, 
-  config = {}, 
-  className = '' 
+export default function TabulatorTable({
+  data,
+  columns,
+  config = {},
+  className = '',
 }: TabulatorTableProps) {
   const tableRef = useRef<HTMLDivElement>(null);
   const tabulatorRef = useRef<TabulatorInstance | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
   // 기본 설정값 (useMemo로 메모이제이션)
-  const defaultConfig = useMemo((): TabulatorConfig => ({
-    showFooter: true,
-    height: '400px',
-    layout: 'fitColumns',
-    responsiveLayout: false,
-  }), []);
+  const defaultConfig = useMemo(
+    (): TabulatorConfig => ({
+      showFooter: true,
+      height: '400px',
+      layout: 'fitColumns',
+      responsiveLayout: false,
+    }),
+    []
+  );
 
   // 화면 크기 감지
   useEffect(() => {
@@ -396,30 +421,31 @@ export default function TabulatorTable({
   useEffect(() => {
     // 설정 병합 (useEffect 내부에서 수행)
     const tableConfig = { ...defaultConfig, ...config };
-    
+
     // 768px 이하일 때 자동으로 collapse로 변경
-    const responsiveLayoutValue = isMobile && tableConfig.responsiveLayout === false 
-      ? 'collapse' 
-      : tableConfig.responsiveLayout;
-    
+    const responsiveLayoutValue =
+      isMobile && tableConfig.responsiveLayout === false
+        ? 'collapse'
+        : tableConfig.responsiveLayout;
+
     const initTabulator = async () => {
       // 기존 테이블이 있으면 먼저 제거
       if (tabulatorRef.current) {
         tabulatorRef.current.destroy();
         tabulatorRef.current = null;
       }
-      
+
       if (tableRef.current) {
         try {
           // TabulatorFull 사용 (모든 모듈 포함)
           const { TabulatorFull } = await import('tabulator-tables');
-          
+
           // 컬럼에 기본 vertAlign 추가
-          const processedColumns = columns.map(col => ({
+          const processedColumns = columns.map((col) => ({
             vertAlign: 'middle' as const,
             ...col,
           }));
-          
+
           // Tabulator 옵션 설정
           const tabulatorOptions: Partial<TabulatorOptions> = {
             data: data,
@@ -436,24 +462,24 @@ export default function TabulatorTable({
             // 데이터가 없을 때 표시할 메시지 (config에서 설정 가능)
             placeholder: tableConfig.placeholder || 'No Data Available',
             // 페이징 이벤트 핸들러
-            pageLoaded: function(this: TabulatorInstance) {
+            pageLoaded: function (this: TabulatorInstance) {
               updateCustomPagination(this);
             },
-            dataLoaded: function(this: TabulatorInstance) {
+            dataLoaded: function (this: TabulatorInstance) {
               updateCustomPagination(this);
             },
-            tableBuilt: function(this: TabulatorInstance) {
+            tableBuilt: function (this: TabulatorInstance) {
               updateCustomPagination(this);
               bindPaginationEvents(this);
             },
-            renderComplete: function(this: TabulatorInstance) {
+            renderComplete: function (this: TabulatorInstance) {
               updateCustomPagination(this);
             },
           };
 
           // Tabulator 인스턴스 생성
           const tabulatorInstance = new (TabulatorFull as unknown as new (
-            element: HTMLElement, 
+            element: HTMLElement,
             options: Partial<TabulatorOptions>
           ) => TabulatorInstance)(tableRef.current, tabulatorOptions);
 
@@ -464,11 +490,11 @@ export default function TabulatorTable({
           setTimeout(() => {
             addCustomPaginationFooter(tabulatorRef.current, tableConfig.showFooter);
           }, 100);
-          
+
           setTimeout(() => {
             addCustomPaginationFooter(tabulatorRef.current, tableConfig.showFooter);
           }, 500);
-          
+
           setTimeout(() => {
             addCustomPaginationFooter(tabulatorRef.current, tableConfig.showFooter);
           }, 1000);
@@ -479,7 +505,7 @@ export default function TabulatorTable({
               updateCustomPagination(tabulatorRef.current);
             }
           });
-          
+
           if (tableRef.current) {
             observer.observe(tableRef.current, {
               childList: true,
@@ -503,7 +529,5 @@ export default function TabulatorTable({
     };
   }, [data, columns, config, defaultConfig, isMobile]);
 
-  return (
-    <div className={`tabulator-container ${className}`} ref={tableRef}></div>
-  );
+  return <div className={`tabulator-container ${className}`} ref={tableRef}></div>;
 }

@@ -22,7 +22,7 @@ export default function HomePage() {
   const { addTab } = useTabs();
 
   // PAGES 데이터를 Tabulator 형식으로 변환
-  const tableData: PageTableData[] = PAGES.map(page => ({
+  const tableData: PageTableData[] = PAGES.map((page) => ({
     no: page.no,
     title: page.title,
     description: page.description,
@@ -64,7 +64,7 @@ export default function HomePage() {
         const status = cell.getValue() as string;
         let color = '#d1d5db';
         let text = '';
-        
+
         switch (status) {
           case 'completed':
             color = '#10b981';
@@ -79,7 +79,7 @@ export default function HomePage() {
             text = 'Planned';
             break;
         }
-        
+
         return `<span style="display: inline-block; padding: 2px 8px; border-radius: 4px; background-color: ${color}20; color: ${color}; font-size: 0.875rem; font-weight: 500;">${text}</span>`;
       },
     },
@@ -117,13 +117,13 @@ export default function HomePage() {
     // 테이블 렌더링 후 버튼 이벤트 바인딩
     const timer = setTimeout(() => {
       const buttons = document.querySelectorAll('.page-action-btn');
-      buttons.forEach(button => {
+      buttons.forEach((button) => {
         button.addEventListener('click', (e) => {
           const target = e.target as HTMLElement;
           const key = target.getAttribute('data-key');
           const title = target.getAttribute('data-title');
           const path = target.getAttribute('data-path');
-          
+
           if (key && title && path) {
             addTab({
               id: key,
@@ -143,9 +143,7 @@ export default function HomePage() {
     <div className="contents">
       <div className="mb-6">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">Page List</h2>
-        <p className="text-gray-600">
-          개발된 페이지들을 확인하고 테스트할 수 있습니다.
-        </p>
+        <p className="text-gray-600">개발된 페이지들을 확인하고 테스트할 수 있습니다.</p>
       </div>
 
       {/* 통계 카드 */}
@@ -161,13 +159,13 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        
+
         <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Completed</p>
               <p className="text-2xl font-bold text-green-600">
-                {PAGES.filter(p => p.status === 'completed').length}
+                {PAGES.filter((p) => p.status === 'completed').length}
               </p>
             </div>
             <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
@@ -175,13 +173,13 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-        
+
         <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Planned</p>
               <p className="text-2xl font-bold text-gray-600">
-                {PAGES.filter(p => p.status === 'planned').length}
+                {PAGES.filter((p) => p.status === 'planned').length}
               </p>
             </div>
             <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">

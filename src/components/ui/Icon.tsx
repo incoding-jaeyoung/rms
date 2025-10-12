@@ -3,10 +3,10 @@ import { ReactNode } from 'react';
 
 // 아이콘 컴포넌트의 props 타입 정의
 interface IconProps {
-  src: string;        // 아이콘 파일 경로
-  alt: string;        // 접근성을 위한 대체 텍스트
-  width?: number;     // 아이콘 너비 (기본값: 24)
-  height?: number;    // 아이콘 높이 (기본값: 24)
+  src: string; // 아이콘 파일 경로
+  alt: string; // 접근성을 위한 대체 텍스트
+  width?: number; // 아이콘 너비 (기본값: 24)
+  height?: number; // 아이콘 높이 (기본값: 24)
   className?: string; // 추가 CSS 클래스
   onClick?: () => void; // 클릭 이벤트 핸들러
 }
@@ -41,40 +41,22 @@ export const Icons = {
   terminals: (props?: Partial<IconProps>) => (
     <Icon src="/icons/terminals.svg" alt="Terminals" {...props} />
   ),
-  cash: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/cash.svg" alt="Cash" {...props} />
-  ),
+  cash: (props?: Partial<IconProps>) => <Icon src="/icons/cash.svg" alt="Cash" {...props} />,
   journal: (props?: Partial<IconProps>) => (
     <Icon src="/icons/journal.svg" alt="Journal" {...props} />
   ),
-  setup: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/setup.svg" alt="Setup" {...props} />
-  ),
-  notice: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/notice.svg" alt="Notice" {...props} />
-  ),
+  setup: (props?: Partial<IconProps>) => <Icon src="/icons/setup.svg" alt="Setup" {...props} />,
+  notice: (props?: Partial<IconProps>) => <Icon src="/icons/notice.svg" alt="Notice" {...props} />,
 
   // 액션 아이콘들
-  add: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/add.svg" alt="Add" {...props} />
-  ),
-  edit: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/edit.svg" alt="Edit" {...props} />
-  ),
-  delete: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/delete.svg" alt="Delete" {...props} />
-  ),
-  export: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/export.svg" alt="Export" {...props} />
-  ),
-  search: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/search.svg" alt="Search" {...props} />
-  ),
+  add: (props?: Partial<IconProps>) => <Icon src="/icons/add.svg" alt="Add" {...props} />,
+  edit: (props?: Partial<IconProps>) => <Icon src="/icons/edit.svg" alt="Edit" {...props} />,
+  delete: (props?: Partial<IconProps>) => <Icon src="/icons/delete.svg" alt="Delete" {...props} />,
+  export: (props?: Partial<IconProps>) => <Icon src="/icons/export.svg" alt="Export" {...props} />,
+  search: (props?: Partial<IconProps>) => <Icon src="/icons/search.svg" alt="Search" {...props} />,
 
   // 상태 아이콘들
-  online: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/online.svg" alt="Online" {...props} />
-  ),
+  online: (props?: Partial<IconProps>) => <Icon src="/icons/online.svg" alt="Online" {...props} />,
   offline: (props?: Partial<IconProps>) => (
     <Icon src="/icons/offline.svg" alt="Offline" {...props} />
   ),
@@ -83,12 +65,8 @@ export const Icons = {
   ),
 
   // UI 아이콘들
-  close: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/close.svg" alt="Close" {...props} />
-  ),
-  menu: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/menu.svg" alt="Menu" {...props} />
-  ),
+  close: (props?: Partial<IconProps>) => <Icon src="/icons/close.svg" alt="Close" {...props} />,
+  menu: (props?: Partial<IconProps>) => <Icon src="/icons/menu.svg" alt="Menu" {...props} />,
   arrowRight: (props?: Partial<IconProps>) => (
     <Icon src="/icons/arrow-right.svg" alt="Arrow Right" {...props} />
   ),
@@ -97,9 +75,7 @@ export const Icons = {
   ),
 
   // 브랜드 아이콘들
-  logo: (props?: Partial<IconProps>) => (
-    <Icon src="/icons/logo.svg" alt="ATEC Logo" {...props} />
-  ),
+  logo: (props?: Partial<IconProps>) => <Icon src="/icons/logo.svg" alt="ATEC Logo" {...props} />,
 };
 
 export default Icon;

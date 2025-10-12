@@ -1,15 +1,16 @@
 /* 오버뷰 카드 */
-.overview-card{
+.overview-card {
   @apply flex items-center justify-between gap-5 mt-2.5;
-  .services,.cash{
+  .services,
+  .cash {
     @apply flex items-center justify-between bg-white p-5 rounded-xl;
-    border: 1px solid #C7CDD1;
+    border: 1px solid #c7cdd1;
   }
-  .services{
+  .services {
     @apply flex-1 grid grid-cols-4;
-    & > li{
+    & > li {
       @apply relative flex;
-      &::after{
+      &::after {
         content: '';
         display: block;
         top: 0;
@@ -17,38 +18,37 @@
         width: 1px;
         height: 100px;
         margin: 0 20px;
-        background-color: #C7CDD1;
+        background-color: #c7cdd1;
       }
-      &:last-child::after{
+      &:last-child::after {
         display: none;
       }
-      &:nth-of-type(2) dd{
-        color: #00BD24;
+      &:nth-of-type(2) dd {
+        color: #00bd24;
       }
-      &:nth-of-type(3) dd{
-        color: #FF1C1C;
+      &:nth-of-type(3) dd {
+        color: #ff1c1c;
       }
-      &:nth-of-type(4) dd{
-        color: #919BA3;
+      &:nth-of-type(4) dd {
+        color: #919ba3;
       }
     }
   }
-  .cash{
+  .cash {
     width: 316px;
-    dd{
-      color: #FACC15;
+    dd {
+      color: #facc15;
     }
   }
-  dl{
+  dl {
     @apply flex flex-col gap-7 w-full;
-    dt{
+    dt {
       @apply text-xl font-medium leading-6 text-left w-full;
-      color: #5A6670
+      color: #5a6670;
     }
-    dd{
+    dd {
       @apply font-semibold self-end leading-12;
       font-size: 40px;
     }
-    
   }
 }

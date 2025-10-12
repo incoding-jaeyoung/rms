@@ -12,10 +12,7 @@ export default function AntdWarningFilter() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     console.error = (...args: any[]) => {
       const message = args[0];
-      if (
-        typeof message === 'string' &&
-        message.includes('[antd: compatible]')
-      ) {
+      if (typeof message === 'string' && message.includes('[antd: compatible]')) {
         return;
       }
       originalError.apply(console, args);
@@ -24,10 +21,7 @@ export default function AntdWarningFilter() {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     console.warn = (...args: any[]) => {
       const message = args[0];
-      if (
-        typeof message === 'string' &&
-        message.includes('[antd: compatible]')
-      ) {
+      if (typeof message === 'string' && message.includes('[antd: compatible]')) {
         return;
       }
       originalWarn.apply(console, args);
@@ -42,4 +36,3 @@ export default function AntdWarningFilter() {
 
   return null;
 }
-

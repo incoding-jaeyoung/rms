@@ -45,7 +45,7 @@
 .ant-modal-root .ant-modal-title.ant-modal-title {
   font-size: 24px;
   font-weight: 700;
-  color: #353C40;
+  color: #353c40;
   line-height: 1.5;
 }
 
@@ -58,15 +58,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #5A6670;
+  color: #5a6670;
   transition: all 0.2s;
   display: none;
 }
 
 .ant-modal-root .ant-modal-close.ant-modal-close:hover {
-  background: #E1E4E7;
+  background: #e1e4e7;
   border-radius: 4px;
-  color: #171A1C;
+  color: #171a1c;
 }
 
 .ant-modal-root .ant-modal-close-x.ant-modal-close-x {
@@ -84,7 +84,7 @@
   padding: 40px;
   font-size: 14px;
   line-height: 1.6;
-  color: #353C40;
+  color: #353c40;
   max-height: calc(100vh - 300px);
   overflow-y: auto;
 }
@@ -95,9 +95,9 @@
   /* border-top: 1px solid #E1E4E7; */
   border-radius: 0 0 20px 20px;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   gap: 10px;
-  .modal-btn-line{
+  .modal-btn-line {
     @apply w-full flex justify-center gap-2.5;
   }
 }
@@ -105,8 +105,6 @@
 .ant-modal-root .ant-modal-footer.ant-modal-footer .ant-btn {
   margin: 0;
 }
-
-
 
 /* 모달 variants */
 .custom-modal.centered {
@@ -132,7 +130,7 @@
 .ant-modal-root .ant-modal-body .ant-form-item-label > label {
   font-size: 14px;
   font-weight: 500;
-  color: #171A1C;
+  color: #171a1c;
   height: auto;
 }
 
@@ -141,7 +139,7 @@
 .ant-modal-root .ant-modal-body .ant-picker.ant-picker,
 .ant-modal-root .ant-modal-body .ant-select-selector.ant-select-selector {
   border-radius: 4px;
-  border-color: #C7CDD1;
+  border-color: #c7cdd1;
   transition: border-color 0.2s;
 }
 
@@ -149,30 +147,30 @@
 .ant-modal-root .ant-modal-body .ant-input-number.ant-input-number:hover,
 .ant-modal-root .ant-modal-body .ant-picker.ant-picker:hover,
 .ant-modal-root .ant-modal-body .ant-select:hover .ant-select-selector.ant-select-selector {
-  border-color: #919BA3;
+  border-color: #919ba3;
 }
 
 .ant-modal-root .ant-modal-body .ant-input.ant-input:focus,
 .ant-modal-root .ant-modal-body .ant-input-number.ant-input-number:focus,
 .ant-modal-root .ant-modal-body .ant-picker.ant-picker:focus,
 .ant-modal-root .ant-modal-body .ant-select-focused .ant-select-selector.ant-select-selector {
-  border-color: #171A1C;
+  border-color: #171a1c;
   box-shadow: 0 0 0 2px rgba(23, 26, 28, 0.1);
 }
 
 /* 모달 내부 텍스트 영역 */
 .ant-modal-root .ant-modal-body .ant-input-textarea textarea.ant-input {
   border-radius: 4px;
-  border-color: #C7CDD1;
+  border-color: #c7cdd1;
   transition: border-color 0.2s;
 }
 
 .ant-modal-root .ant-modal-body .ant-input-textarea textarea.ant-input:hover {
-  border-color: #919BA3;
+  border-color: #919ba3;
 }
 
 .ant-modal-root .ant-modal-body .ant-input-textarea textarea.ant-input:focus {
-  border-color: #171A1C;
+  border-color: #171a1c;
   box-shadow: 0 0 0 2px rgba(23, 26, 28, 0.1);
 }
 
@@ -180,15 +178,14 @@
 .ant-modal-root .ant-modal-body .ant-radio-wrapper.ant-radio-wrapper,
 .ant-modal-root .ant-modal-body .ant-checkbox-wrapper.ant-checkbox-wrapper {
   font-size: 14px;
-  color: #353C40;
+  color: #353c40;
 }
 
 .ant-modal-root .ant-modal-body .ant-radio-checked .ant-radio-inner.ant-radio-inner,
 .ant-modal-root .ant-modal-body .ant-checkbox-checked .ant-checkbox-inner.ant-checkbox-inner {
-  background-color: #171A1C;
-  border-color: #171A1C;
+  background-color: #171a1c;
+  border-color: #171a1c;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -216,17 +213,17 @@
 }
 
 .ant-modal-body::-webkit-scrollbar-track {
-  background: #F4F5F6;
+  background: #f4f5f6;
   border-radius: 3px;
 }
 
 .ant-modal-body::-webkit-scrollbar-thumb {
-  background: #C7CDD1;
+  background: #c7cdd1;
   border-radius: 3px;
 }
 
 .ant-modal-body::-webkit-scrollbar-thumb:hover {
-  background: #919BA3;
+  background: #919ba3;
 }
 
 /* 모달 내부 Grid 레이아웃 */
@@ -272,4 +269,3 @@
     grid-template-columns: 1fr;
   }
 }
-

@@ -26,11 +26,7 @@ export default function Modal6({ open, onClose }: Modal6Props) {
       title="커스텀 폼 예시"
       size="default"
     >
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={handleSubmit}
-      >
+      <Form form={form} layout="vertical" onFinish={handleSubmit}>
         {/* 기본 입력 */}
         <Form.Item name="name" label="이름">
           <Input placeholder="이름을 입력하세요" />
@@ -41,8 +37,8 @@ export default function Modal6({ open, onClose }: Modal6Props) {
           <Input type="email" placeholder="email@example.com" />
         </Form.Item>
         <Form.Item name="newPassword" label="비밀번호">
-            <Input.Password placeholder="" />
-          </Form.Item>
+          <Input.Password placeholder="" />
+        </Form.Item>
         {/* 셀렉트 박스 */}
         <Form.Item name="role" label="역할">
           <Select placeholder="역할을 선택하세요">
@@ -106,4 +102,3 @@ export default function Modal6({ open, onClose }: Modal6Props) {
     </Modal>
   );
 }
-

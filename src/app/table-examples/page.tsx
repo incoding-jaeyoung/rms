@@ -98,8 +98,21 @@ export default function TableExamplesPage() {
   // 제품 데이터 생성
   const generateProductData = (): ProductData[] => {
     const categories = ['Electronics', 'Clothing', 'Books', 'Home', 'Sports'];
-    const names = ['Laptop', 'Smartphone', 'Tablet', 'Headphones', 'Camera', 'Watch', 'Shoes', 'Book'];
-    const statuses: ('available' | 'out_of_stock' | 'discontinued')[] = ['available', 'out_of_stock', 'discontinued'];
+    const names = [
+      'Laptop',
+      'Smartphone',
+      'Tablet',
+      'Headphones',
+      'Camera',
+      'Watch',
+      'Shoes',
+      'Book',
+    ];
+    const statuses: ('available' | 'out_of_stock' | 'discontinued')[] = [
+      'available',
+      'out_of_stock',
+      'discontinued',
+    ];
 
     return Array.from({ length: 150 }, (_, index) => ({
       id: `P${String(index + 1).padStart(3, '0')}`,
@@ -115,7 +128,12 @@ export default function TableExamplesPage() {
   const generateOrderData = (): OrderData[] => {
     const customers = ['John Doe', 'Jane Smith', 'Mike Johnson', 'Sarah Williams', 'Tom Brown'];
     const products = ['Laptop Pro', 'Smartphone X', 'Tablet Air', 'Headphones Pro', 'Camera DSLR'];
-    const statuses: ('pending' | 'shipped' | 'delivered' | 'cancelled')[] = ['pending', 'shipped', 'delivered', 'cancelled'];
+    const statuses: ('pending' | 'shipped' | 'delivered' | 'cancelled')[] = [
+      'pending',
+      'shipped',
+      'delivered',
+      'cancelled',
+    ];
 
     return Array.from({ length: 225 }, (_, index) => ({
       orderId: `ORD${String(index + 1).padStart(4, '0')}`,
@@ -136,13 +154,13 @@ export default function TableExamplesPage() {
       <div className="space-y-8">
         <div>
           <h2 className="text-xl font-semibold mb-4">테이블 기본 (fitColumns)</h2>
-        <TabulatorTable
-          data={productData}
-          columns={productColumns}
-          config={{
-            showFooter: true,
-          }}
-        />
+          <TabulatorTable
+            data={productData}
+            columns={productColumns}
+            config={{
+              showFooter: true,
+            }}
+          />
         </div>
 
         <div>
@@ -185,20 +203,46 @@ export default function TableExamplesPage() {
         <div className="bg-gray-50 p-6 rounded-lg">
           <h3 className="text-lg font-semibold mb-3">사용법</h3>
           <div className="space-y-2 text-sm">
-            
-            <p><strong>테이블의 높이설정:</strong> 테이블의 최소높이는 400px로 설정, 테이블이 1개일시 높이를 지정하지 않으면 페이지의 높이만큼 차지 하도록 설정</p>
-            <p><strong>테이블푸터:</strong> showFooter 속성을 통해 푸터 표시 여부 설정</p>
-            <p><strong>테이블 layout:</strong> fitData, fitColumns, fitDataFill, fitColumnsFill, fitDataTable, fitDataStretch 속성을 통해 테이블 레이아웃 설정</p>
-            <p className='pl-5'><strong>fitColumns(기본):</strong> 테이블 너비를 컬럼의 너비에 맞춤</p>
-            <p className='pl-5'><strong>fitData:</strong> 테이블 너비를 데이터의 너비에 맞춤</p>
-            <p className='pl-5'><strong>fitDataFill:</strong> 테이블 너비를 데이터의 너비에 맞춤, 컬럼의 너비를 초과하면 컬럼의 너비를 초과하는 부분은 스크롤바로 표시</p>
-            <p className='pl-5'><strong>fitColumnsFill:</strong> 테이블 너비를 컬럼의 너비에 맞춤, 데이터의 너비를 초과하면 데이터의 너비를 초과하는 부분은 스크롤바로 표시</p>
-            <p className='pl-5'><strong>fitDataTable:</strong> 테이블 너비를 컬럼의 너비에 맞춤, 데이터의 너비를 초과하면 데이터의 너비를 초과하는 부분은 스크롤바로 표시</p>
-            <p className='pl-5'><strong>fitDataStretch:</strong> 테이블 너비를 데이터의 너비에 맞춤, 컬럼의 너비를 초과하면 컬럼의 너비를 초과하는 부분은 스크롤바로 표시</p>
-            <p><strong>placeholder:</strong> placeholder 속성을 통해 데이터가 없을 때 표시되는 메시지 설정</p>
+            <p>
+              <strong>테이블의 높이설정:</strong> 테이블의 최소높이는 400px로 설정, 테이블이 1개일시
+              높이를 지정하지 않으면 페이지의 높이만큼 차지 하도록 설정
+            </p>
+            <p>
+              <strong>테이블푸터:</strong> showFooter 속성을 통해 푸터 표시 여부 설정
+            </p>
+            <p>
+              <strong>테이블 layout:</strong> fitData, fitColumns, fitDataFill, fitColumnsFill,
+              fitDataTable, fitDataStretch 속성을 통해 테이블 레이아웃 설정
+            </p>
+            <p className="pl-5">
+              <strong>fitColumns(기본):</strong> 테이블 너비를 컬럼의 너비에 맞춤
+            </p>
+            <p className="pl-5">
+              <strong>fitData:</strong> 테이블 너비를 데이터의 너비에 맞춤
+            </p>
+            <p className="pl-5">
+              <strong>fitDataFill:</strong> 테이블 너비를 데이터의 너비에 맞춤, 컬럼의 너비를
+              초과하면 컬럼의 너비를 초과하는 부분은 스크롤바로 표시
+            </p>
+            <p className="pl-5">
+              <strong>fitColumnsFill:</strong> 테이블 너비를 컬럼의 너비에 맞춤, 데이터의 너비를
+              초과하면 데이터의 너비를 초과하는 부분은 스크롤바로 표시
+            </p>
+            <p className="pl-5">
+              <strong>fitDataTable:</strong> 테이블 너비를 컬럼의 너비에 맞춤, 데이터의 너비를
+              초과하면 데이터의 너비를 초과하는 부분은 스크롤바로 표시
+            </p>
+            <p className="pl-5">
+              <strong>fitDataStretch:</strong> 테이블 너비를 데이터의 너비에 맞춤, 컬럼의 너비를
+              초과하면 컬럼의 너비를 초과하는 부분은 스크롤바로 표시
+            </p>
+            <p>
+              <strong>placeholder:</strong> placeholder 속성을 통해 데이터가 없을 때 표시되는 메시지
+              설정
+            </p>
             <div className="mt-4 p-3 bg-white rounded border">
               <code className="text-xs">
-{`<TabulatorTable
+                {`<TabulatorTable
   data={data}
   columns={columns}
   config={{

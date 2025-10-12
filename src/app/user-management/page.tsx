@@ -133,9 +133,13 @@ export default function UserManagementPage() {
       filteredValue: null,
       render: () => (
         <Space size="small">
-          <Button type="primary" size="small">Edit</Button>
+          <Button type="primary" size="small">
+            Edit
+          </Button>
           <Button size="small">View</Button>
-          <Button danger size="small">Delete</Button>
+          <Button danger size="small">
+            Delete
+          </Button>
         </Space>
       ),
     },

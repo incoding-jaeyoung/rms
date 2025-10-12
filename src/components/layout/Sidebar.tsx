@@ -13,7 +13,7 @@ interface SidebarProps {
 // 메뉴 키와 페이지 정보 매핑 (서브메뉴 포함)
 const menuPageMap: Record<string, { label: string; path: string }> = {
   // Dashboard
-  'dashboard': { label: 'Dashboard', path: '/dashboard' },
+  dashboard: { label: 'Dashboard', path: '/dashboard' },
 
   // Terminals
   'atm-info': { label: 'ATM Information', path: '/example' },
@@ -37,10 +37,10 @@ const menuPageMap: Record<string, { label: string; path: string }> = {
   'setup-user-management': { label: 'User Management', path: '/user-management' },
 
   // Notice
-  'notice': { label: 'Notice', path: '/layout' },
+  notice: { label: 'Notice', path: '/layout' },
 
   // Etc
-  'modals': { label: 'Modals', path: '/modal-basic' },
+  modals: { label: 'Modals', path: '/modal-basic' },
 };
 
 const Sidebar: React.FC<SidebarProps> = () => {
@@ -78,7 +78,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
   const menuItems = [
     {
       key: 'dashboard',
-      icon: <img src="/icons/ico-menu-01.svg" alt="dashboard"  />,
+      icon: <img src="/icons/ico-menu-01.svg" alt="dashboard" />,
       label: 'Dashboard',
     },
     {
@@ -105,9 +105,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
       key: 'journal',
       icon: <img src="/icons/ico-menu-04.svg" alt="journal" />,
       label: 'Journal',
-      children: [
-        { key: 'journal-ej', label: 'EJ Management' },
-      ],
+      children: [{ key: 'journal-ej', label: 'EJ Management' }],
     },
     {
       key: 'setup',
@@ -134,7 +132,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
   }
 
   return (
-    <Sider 
+    <Sider
       trigger={null}
       width={260}
       theme="light"
@@ -154,9 +152,7 @@ const Sidebar: React.FC<SidebarProps> = () => {
         className="sidebar-menu"
         inlineIndent={16}
       />
-      <div className="sidebar-footer ">
-          Open-source Licenses
-      </div>
+      <div className="sidebar-footer ">Open-source Licenses</div>
     </Sider>
   );
 };

@@ -3,12 +3,12 @@ import { ReactNode } from 'react';
 
 // 커스텀 버튼의 추가 props 타입 정의
 interface CustomButtonProps extends Omit<AntButtonProps, 'variant' | 'size' | 'iconPosition'> {
-  icon?: ReactNode;           // 아이콘 컴포넌트
+  icon?: ReactNode; // 아이콘 컴포넌트
   iconPosition?: 'left' | 'right'; // 아이콘 위치
   variant?: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'text' | 'link';
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-  fullWidth?: boolean;       // 전체 너비
-  loading?: boolean;         // 로딩 상태
+  fullWidth?: boolean; // 전체 너비
+  loading?: boolean; // 로딩 상태
 }
 
 // 커스텀 버튼 컴포넌트
@@ -47,9 +47,11 @@ export const Button: React.FC<CustomButtonProps> = ({
   // 아이콘 렌더링
   const renderIcon = () => {
     if (!icon) return null;
-    
+
     const iconElement = (
-      <span className={`inline-flex items-center ${size === 'xs' ? 'w-3 h-3' : size === 'sm' ? 'w-4 h-4' : 'w-5 h-5'}`}>
+      <span
+        className={`inline-flex items-center ${size === 'xs' ? 'w-3 h-3' : size === 'sm' ? 'w-4 h-4' : 'w-5 h-5'}`}
+      >
         {icon}
       </span>
     );
@@ -87,43 +89,43 @@ export const ButtonPresets = {
       Add New
     </Button>
   ),
-  
+
   Edit: (props?: Partial<CustomButtonProps>) => (
     <Button variant="secondary" icon={<span>✏️</span>} {...props}>
       Edit
     </Button>
   ),
-  
+
   Delete: (props?: Partial<CustomButtonProps>) => (
     <Button variant="danger" icon={<span>🗑️</span>} {...props}>
       Delete
     </Button>
   ),
-  
+
   Save: (props?: Partial<CustomButtonProps>) => (
     <Button variant="success" icon={<span>💾</span>} {...props}>
       Save
     </Button>
   ),
-  
+
   Cancel: (props?: Partial<CustomButtonProps>) => (
     <Button variant="ghost" icon={<span>❌</span>} {...props}>
       Cancel
     </Button>
   ),
-  
+
   Export: (props?: Partial<CustomButtonProps>) => (
     <Button variant="secondary" icon={<span>📤</span>} {...props}>
       Export
     </Button>
   ),
-  
+
   Search: (props?: Partial<CustomButtonProps>) => (
     <Button variant="primary" icon={<span>🔍</span>} {...props}>
       Search
     </Button>
   ),
-  
+
   Filter: (props?: Partial<CustomButtonProps>) => (
     <Button variant="ghost" icon={<span>🔽</span>} {...props}>
       Filter

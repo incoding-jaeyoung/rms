@@ -5,15 +5,16 @@
 ## 사용 예시
 
 ### React 컴포넌트
+
 ```tsx
 import { Icon, Icons } from '@/components/ui/Icon';
 
 // 기본 사용법
-<Icon 
-  src="/icons/dashboard.svg" 
-  alt="Dashboard" 
-  width={24} 
-  height={24} 
+<Icon
+  src="/icons/dashboard.svg"
+  alt="Dashboard"
+  width={24}
+  height={24}
 />
 
 // 프리셋 사용법
@@ -22,6 +23,7 @@ import { Icon, Icons } from '@/components/ui/Icon';
 ```
 
 ### CSS 배경
+
 ```css
 .icon-dashboard {
   background-image: url('/icons/dashboard.svg');
@@ -30,11 +32,13 @@ import { Icon, Icons } from '@/components/ui/Icon';
 ```
 
 ## 네이밍 규칙
+
 - 케밥 케이스 사용: `user-profile.svg`
 - 명확하게 작성: `arrow-right.svg` (단순히 `arrow.svg` 아님)
 - 여러 크기가 있는 경우 파일명에 크기 포함: `icon-16.svg`, `icon-24.svg`
 
 ## 필요한 아이콘들
+
 - dashboard.svg
 - terminals.svg
 - cash.svg
@@ -54,4 +58,3 @@ import { Icon, Icons } from '@/components/ui/Icon';
 - arrow-right.svg
 - arrow-left.svg
 - logo.svg
-

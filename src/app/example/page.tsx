@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 import { Table, Button, Input, Select, DatePicker, Space, Tag } from 'antd';
-import { SearchOutlined, PlusOutlined, EditOutlined, DeleteOutlined, ExportOutlined } from '@ant-design/icons';
+import {
+  SearchOutlined,
+  PlusOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  ExportOutlined,
+} from '@ant-design/icons';
 import dayjs from 'dayjs';
 
 const { RangePicker } = DatePicker;
@@ -33,10 +39,17 @@ export default function ExamplePage() {
     no: index + 1,
     dateTime: '07-29-2025 3:15:47 PM',
     group: index % 3 === 0 ? 'East Region' : index % 3 === 1 ? 'West Region' : 'North Region',
-    branch: index % 4 === 0 ? 'Downtown Branch' : index % 4 === 1 ? 'Uptown Branch' : index % 4 === 2 ? 'Central Branch' : 'Main Branch',
+    branch:
+      index % 4 === 0
+        ? 'Downtown Branch'
+        : index % 4 === 1
+          ? 'Uptown Branch'
+          : index % 4 === 2
+            ? 'Central Branch'
+            : 'Main Branch',
     terminalId: `ATEC-NY-ATM${String(index + 1).padStart(3, '0')}`,
     model: index % 2 === 0 ? 'ezATM6000' : 'ezATM5000',
-    status: index % 5 === 0 ? 'OFFLINE' : index % 7 === 0 ? 'MAINTENANCE' : 'IN-SERVICE' as const,
+    status: index % 5 === 0 ? 'OFFLINE' : index % 7 === 0 ? 'MAINTENANCE' : ('IN-SERVICE' as const),
     address: `${100 + index} Main St, Dallas, TX`,
     ip: `192.168.1.${10 + index}`,
     apVer: '01.00.07',
@@ -89,27 +102,32 @@ export default function ExamplePage() {
       render: (status: string) => {
         const getStatusColor = (status: string) => {
           switch (status) {
-            case 'IN-SERVICE': return 'green';
-            case 'OFFLINE': return 'red';
-            case 'MAINTENANCE': return 'orange';
-            default: return 'default';
+            case 'IN-SERVICE':
+              return 'green';
+            case 'OFFLINE':
+              return 'red';
+            case 'MAINTENANCE':
+              return 'orange';
+            default:
+              return 'default';
           }
         };
-        
+
         const getStatusDotClass = (status: string) => {
           switch (status) {
-            case 'IN-SERVICE': return 'status-dot status-in-service';
-            case 'OFFLINE': return 'status-dot status-offline';
-            case 'MAINTENANCE': return 'status-dot status-maintenance';
-            default: return 'status-dot';
+            case 'IN-SERVICE':
+              return 'status-dot status-in-service';
+            case 'OFFLINE':
+              return 'status-dot status-offline';
+            case 'MAINTENANCE':
+              return 'status-dot status-maintenance';
+            default:
+              return 'status-dot';
           }
         };
 
         return (
-          <Tag 
-            color={getStatusColor(status)}
-            icon={<span className={getStatusDotClass(status)} />}
-          >
+          <Tag color={getStatusColor(status)} icon={<span className={getStatusDotClass(status)} />}>
             {status}
           </Tag>
         );
@@ -190,7 +208,7 @@ export default function ExamplePage() {
           </div>
           <div>
             <label className="block text-sm font-medium mb-1">Date Range</label>
-            <RangePicker 
+            <RangePicker
               defaultValue={[dayjs('2025-09-08'), dayjs('2025-09-08')]}
               className="w-full"
             />
@@ -216,9 +234,7 @@ export default function ExamplePage() {
             Delete
           </Button>
         </Space>
-        <Button icon={<ExportOutlined />}>
-          Export
-        </Button>
+        <Button icon={<ExportOutlined />}>Export</Button>
       </div>
 
       {/* 테이블 */}
@@ -232,12 +248,11 @@ export default function ExamplePage() {
           total: 1228,
           showSizeChanger: true,
           showQuickJumper: true,
-          showTotal: (total, range) => 
-            `${range[0]}-${range[1]} of ${total} items`,
+          showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
         }}
-        scroll={{ 
-          x: 1200, 
-          y: 400 
+        scroll={{
+          x: 1200,
+          y: 400,
         }}
         className="table-static table-fixed sticky-header-table"
       />

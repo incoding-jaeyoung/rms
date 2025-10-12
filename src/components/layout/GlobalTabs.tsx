@@ -29,13 +29,7 @@ interface DraggableTabProps {
 }
 
 function DraggableTab({ tab, isActive, onSelect, onClose }: DraggableTabProps) {
-  const {
-    attributes,
-    listeners,
-    setNodeRef,
-    transform,
-    transition,
-  } = useSortable({ id: tab.id });
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id: tab.id });
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -49,22 +43,11 @@ function DraggableTab({ tab, isActive, onSelect, onClose }: DraggableTabProps) {
   };
 
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      className={`tab-btn ${isActive ? 'active' : ''}`}
-    >
-      <span 
-        {...attributes}
-        {...listeners}
-        className="drag-handle"
-      >
+    <div ref={setNodeRef} style={style} className={`tab-btn ${isActive ? 'active' : ''}`}>
+      <span {...attributes} {...listeners} className="drag-handle">
         ⋮
       </span>
-      <span 
-        onClick={() => onSelect(tab.id)}
-        className="tab-label"
-      >
+      <span onClick={() => onSelect(tab.id)} className="tab-label">
         {tab.label}
       </span>
       {tab.closable && (
@@ -110,15 +93,8 @@ export default function GlobalTabs() {
 
   return (
     <div className="global-tabs">
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-      >
-        <SortableContext
-          items={tabs.map(t => t.id)}
-          strategy={horizontalListSortingStrategy}
-        >
+      <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+        <SortableContext items={tabs.map((t) => t.id)} strategy={horizontalListSortingStrategy}>
           <div className="flex overflow-x-auto">
             {tabs.map((tab) => (
               <DraggableTab
@@ -135,4 +111,3 @@ export default function GlobalTabs() {
     </div>
   );
 }
-

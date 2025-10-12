@@ -9,9 +9,7 @@ export default function DashboardPage() {
       <p className="text-gray-600">
         This is a sample page template. Copy this file to create new pages.
       </p>
-      <p className="text-gray-600 mt-2">
-        Add your content here.
-      </p>
+      <p className="text-gray-600 mt-2">Add your content here.</p>
     </div>
   );
 }

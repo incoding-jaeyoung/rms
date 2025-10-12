@@ -5,15 +5,13 @@
 }
 
 /* 데이터 없을 때 표시되는 메시지 스타일 */
-.tabulator .tabulator-placeholder .tabulator-placeholder-contents{
+.tabulator .tabulator-placeholder .tabulator-placeholder-contents {
   display: flex;
   align-items: center;
   justify-content: center;
   color: #333 !important;
   font-weight: 500 !important;
 }
-
-
 
 /* 기본 Tabulator 푸터 완전 숨김 */
 .tabulator .tabulator-footer {
@@ -30,10 +28,10 @@
 }
 
 .tabulator .tabulator-header .tabulator-col {
-  background: #E1E4E7;
+  background: #e1e4e7;
   border-right: 1px solid #f0f0f0;
   font-weight: 600;
-  color: #5A6670;
+  color: #5a6670;
   text-align: center;
 }
 
@@ -66,7 +64,7 @@
   background: #f5f5f5;
 }
 
-.tabulator-row.tabulator-row-even{
+.tabulator-row.tabulator-row-even {
   background: #fafafa;
 }
 
@@ -81,7 +79,7 @@
 .tabulator .tabulator-cell {
   border-right: 1px solid #f0f0f0;
   padding: 10px;
-  color: #353C40;
+  color: #353c40;
 }
 
 .tabulator .tabulator-frozen {
@@ -134,12 +132,12 @@
 
 .tabulator .tabulator-responsive-collapse table td:first-child {
   font-weight: 600;
-  color: #5A6670;
+  color: #5a6670;
   width: 120px;
 }
 
 .tabulator .tabulator-responsive-collapse table td:last-child {
-  color: #353C40;
+  color: #353c40;
 }
 /* 커스텀 페이징 스타일 */
 .custom-pagination {
@@ -156,13 +154,13 @@
 }
 
 .pagination-left .range-info {
-  color: #353C40;
+  color: #353c40;
   font-weight: 500;
 }
 
 .pagination-left .range-info em {
   font-style: normal;
-  color: #919BA3;
+  color: #919ba3;
 }
 
 .pagination-center {
@@ -172,10 +170,9 @@
 }
 
 .pagination-center .nav-btn {
-  
-  border: 1px solid #C7CDD1;
+  border: 1px solid #c7cdd1;
   background: white;
-  color: #353C40;
+  color: #353c40;
   border-radius: 5px;
   cursor: pointer;
   font-size: 13px;
@@ -183,7 +180,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap:3px;
+  gap: 3px;
   min-width: 70px;
   height: 30px;
   svg {
@@ -200,7 +197,7 @@
 }
 
 .pagination-center .nav-btn:hover:not(:disabled) {
-  background: #F4F5F6;
+  background: #f4f5f6;
   border-color: #adb5bd;
 }
 
@@ -212,9 +209,9 @@
 .pagination-center .page-input {
   width: 40px;
   height: 30px;
-  border: 1px solid #C7CDD1;
+  border: 1px solid #c7cdd1;
   background: white;
-  color: #353C40;
+  color: #353c40;
   border-radius: 4px;
   text-align: center;
   font-size: 14px;
@@ -234,11 +231,11 @@
 }
 
 .pagination-center .of-text {
-  color: #5A6670;
+  color: #5a6670;
 }
 
 .pagination-center .total-pages {
-  color: #5A6670;
+  color: #5a6670;
 }
 
 .pagination-right {
@@ -251,7 +248,7 @@
   padding: 0px 30px 0px 10px;
   width: 115px;
   height: 30px;
-  border: 1px solid #C7CDD1;
+  border: 1px solid #c7cdd1;
   background: white;
   color: #000;
   font-weight: 500;

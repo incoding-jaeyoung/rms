@@ -62,5 +62,4 @@ export const PAGES: PageInfo[] = [
   //   lastModified: '2025-01-07',
   //   screenId: 'SCR-USER-001',
   // },
-  
 ];

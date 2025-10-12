@@ -13,7 +13,6 @@ interface AppLayoutProps {
 }
 
 export default function AppLayout({ children }: AppLayoutProps) {
-
   return (
     <Layout className="wrapper">
       {/* 상단 헤더 - 전체 너비 */}
@@ -24,12 +23,9 @@ export default function AppLayout({ children }: AppLayoutProps) {
         <Sidebar onMenuClick={() => {}} />
         <Layout>
           <GlobalTabs />
-          <Content>
-            {children}
-          </Content>
+          <Content>{children}</Content>
         </Layout>
       </Layout>
     </Layout>
   );
 }
-

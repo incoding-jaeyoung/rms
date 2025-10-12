@@ -34,35 +34,39 @@ const data: UserData[] = [
   config={{
     showFooter: true,
     pageSize: 10,
-    height: '400px'
+    height: '400px',
   }}
-/>
+/>;
 ```
 
 ## Props
 
 ### data: TabulatorData[]
+
 테이블에 표시할 데이터 배열
 
 ### columns: TabulatorColumn[]
+
 테이블 컬럼 정의 배열
 
 ### config?: TabulatorConfig
+
 테이블 설정 옵션
 
 ### className?: string
+
 추가 CSS 클래스명
 
 ## TabulatorColumn 속성
 
 ```tsx
 interface TabulatorColumn {
-  title: string;        // 컬럼 제목
-  field: string;        // 데이터 필드명
-  width?: number;       // 컬럼 너비
-  minWidth?: number;    // 최소 너비
-  responsive?: number;  // 반응형 설정 (0: 항상 표시, 1: 768px 이하에서 숨김)
-  [key: string]: any;   // 기타 Tabulator 컬럼 옵션
+  title: string; // 컬럼 제목
+  field: string; // 데이터 필드명
+  width?: number; // 컬럼 너비
+  minWidth?: number; // 최소 너비
+  responsive?: number; // 반응형 설정 (0: 항상 표시, 1: 768px 이하에서 숨김)
+  [key: string]: any; // 기타 Tabulator 컬럼 옵션
 }
 ```
 
@@ -70,8 +74,8 @@ interface TabulatorColumn {
 
 ```tsx
 interface TabulatorConfig {
-  showFooter?: boolean;     // 페이징 푸터 표시 여부 (기본: true)
-  pageSize?: number;        // 페이지당 항목 수 (기본: 50)
+  showFooter?: boolean; // 페이징 푸터 표시 여부 (기본: true)
+  pageSize?: number; // 페이지당 항목 수 (기본: 50)
   height?: string | number; // 테이블 높이 (기본: '400px')
   layout?: 'fitColumns' | 'fitData' | 'fitDataFill'; // 레이아웃 (기본: 'fitColumns')
   responsiveLayout?: 'hide' | 'collapse'; // 반응형 레이아웃 (기본: 'collapse')
@@ -81,23 +85,19 @@ interface TabulatorConfig {
 ## 사용 예시
 
 ### 1. 기본 테이블 (페이징 있음)
+
 ```tsx
-<TabulatorTable
-  data={userData}
-  columns={userColumns}
-/>
+<TabulatorTable data={userData} columns={userColumns} />
 ```
 
 ### 2. 페이징 없는 테이블
+
 ```tsx
-<TabulatorTable
-  data={summaryData}
-  columns={summaryColumns}
-  config={{ showFooter: false }}
-/>
+<TabulatorTable data={summaryData} columns={summaryColumns} config={{ showFooter: false }} />
 ```
 
 ### 3. 커스텀 설정
+
 ```tsx
 <TabulatorTable
   data={productData}
@@ -106,7 +106,7 @@ interface TabulatorConfig {
     showFooter: true,
     pageSize: 25,
     height: '600px',
-    layout: 'fitData'
+    layout: 'fitData',
   }}
 />
 ```

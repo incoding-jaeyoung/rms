@@ -18,17 +18,20 @@ ATM 원격 관리 시스템을 위한 Next.js 기반 웹 애플리케이션
 ## 📦 주요 기능
 
 ### ✨ UI/UX
+
 - 탭 기반 멀티 페이지 네비게이션 (드래그 앤 드롭 지원)
 - 반응형 레이아웃 (사이드바, 헤더, 컨텐츠)
 - 모달 시스템 (다양한 크기 및 스타일 지원)
 - 커스텀 Tabulator 테이블 컴포넌트
 
 ### 📊 대시보드
+
 - ATM 상태 실시간 모니터링
 - 그룹별 필터링
 - 현금 재고 및 오류 코드 추적
 
 ### 🔐 사용자 관리
+
 - 비밀번호 변경
 - 역할 기반 접근 제어
 
@@ -53,6 +56,7 @@ npm start
 ### Docker 환경
 
 #### 개발 환경
+
 ```bash
 # 개발 환경 컨테이너 실행
 docker-compose up dev
@@ -62,12 +66,14 @@ docker-compose up
 ```
 
 #### 프로덕션 환경
+
 ```bash
 # 프로덕션 빌드 및 실행
 docker-compose --profile production up prod
 ```
 
 #### Docker 명령어
+
 ```bash
 # 백그라운드 실행
 docker-compose up -d
@@ -127,16 +133,19 @@ dev-rms/
 ## 🎨 디자인 시스템
 
 ### 색상 팔레트
+
 - **Primary**: `#171A1C` (검은색)
 - **Secondary**: `#D70051` (핑크)
 - **Border**: `#C7CDD1` (회색)
 - **Background**: `#F4F5F6` (연한 회색)
 
 ### 폰트
+
 - **기본 폰트**: Pretendard (한글/영문)
 - **대체 폰트**: Inter, sans-serif
 
 ### 버튼 크기
+
 - **Small**: 24px
 - **Default**: 32px
 - **Large**: 58px
@@ -154,10 +163,12 @@ NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ## 📝 개발 가이드
 
 ### 코드 스타일
+
 - ESLint 설정을 따릅니다
 - Prettier는 프로젝트에 포함되어 있지 않습니다
 
 ### 커밋 컨벤션
+
 - `feat`: 새로운 기능
 - `fix`: 버그 수정
 - `style`: 스타일 변경
