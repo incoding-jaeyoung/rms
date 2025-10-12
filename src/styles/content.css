@@ -1,0 +1,54 @@
+/* 오버뷰 카드 */
+.overview-card{
+  @apply flex items-center justify-between gap-5 mt-2.5;
+  .services,.cash{
+    @apply flex items-center justify-between bg-white p-5 rounded-xl;
+    border: 1px solid #C7CDD1;
+  }
+  .services{
+    @apply flex-1 grid grid-cols-4;
+    & > li{
+      @apply relative flex;
+      &::after{
+        content: '';
+        display: block;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 100px;
+        margin: 0 20px;
+        background-color: #C7CDD1;
+      }
+      &:last-child::after{
+        display: none;
+      }
+      &:nth-of-type(2) dd{
+        color: #00BD24;
+      }
+      &:nth-of-type(3) dd{
+        color: #FF1C1C;
+      }
+      &:nth-of-type(4) dd{
+        color: #919BA3;
+      }
+    }
+  }
+  .cash{
+    width: 316px;
+    dd{
+      color: #FACC15;
+    }
+  }
+  dl{
+    @apply flex flex-col gap-7 w-full;
+    dt{
+      @apply text-xl font-medium leading-6 text-left w-full;
+      color: #5A6670
+    }
+    dd{
+      @apply font-semibold self-end leading-12;
+      font-size: 40px;
+    }
+    
+  }
+}

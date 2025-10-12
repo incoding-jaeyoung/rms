@@ -1,0 +1,272 @@
+/* Tabulator 커스텀 스타일 */
+.tabulator-container {
+  @apply rounded-sm overflow-hidden border-0 flex-grow min-h-[400px] bg-transparent mt-4;
+  /* height: calc(100vh - 200px); /* 동적 높이 */
+}
+
+/* 데이터 없을 때 표시되는 메시지 스타일 */
+.tabulator .tabulator-placeholder .tabulator-placeholder-contents{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333 !important;
+  font-weight: 500 !important;
+}
+
+
+
+/* 기본 Tabulator 푸터 완전 숨김 */
+.tabulator .tabulator-footer {
+  display: none !important;
+}
+
+.tabulator .tabulator-footer-contents {
+  display: none !important;
+}
+
+.tabulator .tabulator-header {
+  background: #fafafa;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tabulator .tabulator-header .tabulator-col {
+  background: #E1E4E7;
+  border-right: 1px solid #f0f0f0;
+  font-weight: 600;
+  color: #5A6670;
+  text-align: center;
+}
+
+.tabulator .tabulator-header .tabulator-col:hover {
+  background: #f5f5f5;
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover {
+  background: #f0f0f0;
+}
+
+.tabulator .tabulator-header .tabulator-col.tabulator-sorted {
+  background: #e6f7ff;
+  color: #1890ff;
+}
+
+.tabulator .tabulator-tableholder {
+  background: white;
+}
+
+.tabulator .tabulator-tableholder .tabulator-table {
+  background: white;
+}
+
+.tabulator .tabulator-row {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.tabulator .tabulator-row:hover {
+  background: #f5f5f5;
+}
+
+.tabulator-row.tabulator-row-even{
+  background: #fafafa;
+}
+
+.tabulator .tabulator-row.tabulator-selected {
+  background: #e6f7ff;
+}
+
+.tabulator .tabulator-row.tabulator-selected:hover {
+  background: #bae7ff;
+}
+
+.tabulator .tabulator-cell {
+  border-right: 1px solid #f0f0f0;
+  padding: 10px;
+  color: #353C40;
+}
+
+.tabulator .tabulator-frozen {
+  background: white;
+}
+
+/* Tabulator 반응형 스타일 */
+.tabulator .tabulator-responsive-collapse-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: #1890ff;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tabulator .tabulator-responsive-collapse-toggle:hover {
+  background: #40a9ff;
+}
+
+.tabulator .tabulator-responsive-collapse-toggle.open {
+  background: #096dd9;
+}
+
+.tabulator .tabulator-responsive-collapse {
+  padding: 8px 12px;
+  background: #f5f5f5;
+  border-top: 1px solid #e8e8e8;
+}
+
+.tabulator .tabulator-responsive-collapse table {
+  width: 100%;
+}
+
+.tabulator .tabulator-responsive-collapse table tr {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.tabulator .tabulator-responsive-collapse table tr:last-child {
+  border-bottom: none;
+}
+
+.tabulator .tabulator-responsive-collapse table td {
+  padding: 6px 8px;
+}
+
+.tabulator .tabulator-responsive-collapse table td:first-child {
+  font-weight: 600;
+  color: #5A6670;
+  width: 120px;
+}
+
+.tabulator .tabulator-responsive-collapse table td:last-child {
+  color: #353C40;
+}
+/* 커스텀 페이징 스타일 */
+.custom-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0px;
+  background: transparent;
+  color: #495057;
+}
+
+.pagination-left {
+  flex: 1;
+}
+
+.pagination-left .range-info {
+  color: #353C40;
+  font-weight: 500;
+}
+
+.pagination-left .range-info em {
+  font-style: normal;
+  color: #919BA3;
+}
+
+.pagination-center {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pagination-center .nav-btn {
+  
+  border: 1px solid #C7CDD1;
+  background: white;
+  color: #353C40;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap:3px;
+  min-width: 70px;
+  height: 30px;
+  svg {
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+  }
+}
+.pagination-center .nav-btn:first-child {
+  padding-right: 10px;
+}
+.pagination-center .nav-btn:last-child {
+  padding-left: 10px;
+}
+
+.pagination-center .nav-btn:hover:not(:disabled) {
+  background: #F4F5F6;
+  border-color: #adb5bd;
+}
+
+.pagination-center .nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-center .page-input {
+  width: 40px;
+  height: 30px;
+  border: 1px solid #C7CDD1;
+  background: white;
+  color: #353C40;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 8px;
+  -moz-appearance: textfield; /* Firefox에서 화살표 제거 */
+}
+
+.pagination-center .page-input::-webkit-outer-spin-button,
+.pagination-center .page-input::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Chrome, Safari, Edge에서 화살표 제거 */
+  margin: 0;
+}
+
+.pagination-center .page-input:focus {
+  outline: none;
+}
+
+.pagination-center .of-text {
+  color: #5A6670;
+}
+
+.pagination-center .total-pages {
+  color: #5A6670;
+}
+
+.pagination-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.pagination-right .page-size-select {
+  padding: 0px 30px 0px 10px;
+  width: 115px;
+  height: 30px;
+  border: 1px solid #C7CDD1;
+  background: white;
+  color: #000;
+  font-weight: 500;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+}
+
+.pagination-right .page-size-select:focus {
+  outline: none;
+}

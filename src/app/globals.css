@@ -1,26 +1,385 @@
+/* 프리텐다드 폰트 CDN 로드 (영문 버전) */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+
+/* Tailwind와 외부 라이브러리 먼저 로드 */
 @import "tailwindcss";
+@import "tabulator-tables/dist/css/tabulator.min.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* 커스텀 스타일은 나중에 로드 (우선순위 높음) */
+@import "../styles/tabulator.css";
+@import "../styles/modal.css";
+@import "../styles/content.css";
+
+
+/* Tailwind 커스텀 테마 */
+@theme {
+  --color-primary: #171A1C;
+  --color-secondary: #D70051;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* 프리텐다드 폰트 설정 */
+html {
+  font-family: 'Pretendard', 'Inter', sans-serif;
+  min-width: 1920px;
+}
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Pretendard', 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Ant Design 컴포넌트에 프리텐다드 폰트 적용 */
+.ant-layout,
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-select,
+.ant-table,
+.ant-menu,
+.ant-tabs,
+.ant-dropdown,
+.ant-modal,
+.ant-drawer,
+.ant-tooltip,
+.ant-popover {
+  font-family: 'Pretendard', 'Inter', sans-serif !important;
+}
+
+.wrapper {
+  @apply min-h-screen;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ant-layout-header {
+  @apply flex items-center justify-between px-6 bg-white z-10;
+  border-bottom: 1px solid #C7CDD1;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.10);
+  .user-menu {
+    @apply flex items-center cursor-pointer bg-gray-100 hover:bg-gray-200 px-2.5 rounded-md h-[42px] w-60;
+    /* border: 1px solid #C7CDD1; */
+    color: #5A6670;
+    &:hover{
+      outline: 1px solid #C7CDD1;
+    }
+    &.ant-dropdown-open {
+      @apply bg-gray-200;
+      outline: 1px solid #C7CDD1;
+    }
+  }
+}
+.rms-dropdown .ant-dropdown-menu {
+  @apply rounded-md p-0;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+  border: 1px solid #5A6670;
+  .ant-dropdown-menu-item{
+    @apply h-12 text-sm bg-white rounded-none;
+    border-bottom: 1px solid #D3D3D3;
+    &:last-child{
+      border-bottom: none;
+    }
+    .anticon {
+      font-size: 18px;
+    }
+    &:hover{
+      background:#D0E7F780;
+    }
+  }
+}
+/* 탭 스타일 */
+.global-tabs {
+  @apply bg-white box-border flex;
+  border-bottom: 1px solid #D70051;
+  min-height: 41px;
+  
+  /* 탭 버튼 */
+  .tab-btn {
+    @apply flex items-center p-2.5 h-10 min-w-50 flex-shrink-0 bg-white pl-1;
+    border-right: 1px solid #C7CDD1;
+    color: #4b5563;
+    &:hover {
+      background: #e5e7eb;
+    }
+    
+    &.active {
+      background: #D70051;
+      color: #fff;
+      .drag-handle {
+        color: #fff;
+      }
+      .tab-close {
+        color: #fff;
+        background: transparent
+      }
+    }
+    /* 탭 라벨 */
+    .tab-label {
+      @apply text-lg font-medium whitespace-nowrap inline-block mr-5;
+      cursor: pointer;
+      /* &:active {
+        cursor: grabbing;
+      } */
+    }
+    /* 탭 닫기 버튼 */
+    .tab-close {
+      @apply w-5 h-5 rounded-sm flex items-center justify-center ml-auto;
+      background-color: #F4F5F6;
+      color: #5A6670;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .drag-handle {
+      @apply w-5 h-5 rounded-sm flex items-center justify-center mr-2;
+      color: #5A6670;
+      cursor: grab;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* 사이드바 스타일 */
+.ant-layout-sider {
+ .sidebar-menu {
+  color: #171A1C;
+  padding: 10px 0;
+  & > li{
+    @apply w-full;
+  }
+  *{
+    border-radius: 0 !important;
+  }
+  .ant-menu-title-content{
+    @apply font-medium;
+    color: #171A1C;
+  }
+  & > .ant-menu-item{
+    @apply m-0 text-lg !px-5 h-14;
+  }
+  .ant-menu-item-selected{
+    background-color: #F4F5F6;
+  }
+  & > .ant-menu-submenu{
+    .ant-menu-submenu-title{
+      @apply m-0 text-lg !px-5 h-14 w-full;
+    }
+    .ant-menu-sub{
+      @apply bg-white;
+      .ant-menu-item{
+        @apply h-10 font-medium m-0 w-full !pl-[62px];
+        .ant-menu-title-content{
+          color: #5A6670;
+          font-size: 16px;
+        }
+        &.ant-menu-item-selected{
+          background: #F7F7F7;
+          color: #5A6670;
+        }
+      }
+    }
+  }
+ }
+ .ant-menu-submenu-selected > .ant-menu-submenu-title{
+  color: #171A1C;
+ }
+ .sidebar-footer{
+  @apply absolute bottom-4 left-0 right-0 text-sm flex items-center justify-center;
+  color: #5A6670;
+ }
 }
+/* 컨텐츠 영역 스타일 */
+.ant-layout-content{
+  @apply p-0 flex flex-col flex-grow;
+  background-color: #F4F5F6;
+  color: var(--primary);
+}
+.contents{
+  padding:20px 40px 40px 40px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  overflow: auto;
+  min-height: 0;
+}
+.contents-header{
+  @apply flex items-center justify-between h-[50px] pl-2.5;
+  h2{
+    @apply text-2xl font-bold;
+  }
+}
+
+/* form 스타일 */
+
+.ant-input, .ant-input-password, .ant-picker, .ant-select-selector{
+  padding: 5px 14px;
+  border-color: #C7CDD1 !important;
+  &:hover{
+    border-color: #919BA3 !important;
+  }
+  &:focus{
+    border-color: #171A1C !important;
+    box-shadow: none !important;
+    outline: none !important;
+  }
+}
+
+/* Input Password 내부 input 요소 포커스 제거 */
+.ant-input-password-focused,
+.ant-input-affix-wrapper-focused,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper:focus-within {
+  border-color: #171A1C !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* DatePicker 포커스 제거 */
+.ant-picker-focused {
+  border-color: #171A1C !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ant-picker-input{
+  & > input:focus{
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+.ant-select{
+  height: 34px;
+  &:hover{
+    .ant-select-selector{
+      border-color:#919BA3 !important;
+    }
+    .ant-select-arrow{
+      color: #353C40;
+    }
+  }
+  .ant-select-selector{
+    padding: 5px 14px !important;
+    transition: none !important;
+    border: 1px solid #C7CDD1 !important;
+  }
+  &.ant-select-focused{
+    .ant-select-selector{
+      border-color:#171A1C !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+    .ant-select-arrow{
+      color: #353C40;
+    }
+  }
+  .ant-select-selection-item{
+    @apply text-sm;
+  }
+}
+
+/* Button 스타일 */
+.ant-btn {
+  @apply rounded-md font-medium;
+  transition: all 0.2s;
+  
+  /* Button 크기 */
+  &.ant-btn-sm {
+    height: 24px;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 22px;
+  }
+  
+  &.ant-btn-default{
+    height: 32px;
+    padding: 4px 16px;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  
+  &.ant-btn-lg {
+    height: 58px;
+    padding: 6px 20px;
+    font-size: 16px;
+    line-height: 28px;
+  }
+  &.btn-modal {
+    height: 48px;
+    border-radius: 10px;
+    padding: 6px 20px;
+    font-size: 16px;
+    line-height: 28px;
+    flex-grow: 1;
+    max-width: 200px;
+  }
+  
+  /* Default 버튼 (type 없음) */
+  &.ant-btn-default {
+    border: 1px solid #919BA3;
+    background: #ffffff;
+    color: #171A1C;
+    &:hover {
+      border-color: #919BA3 !important;
+      background: #F4F5F6 !important;
+      color: #171A1C !important;
+    }
+    &:active {
+      border-color: #171A1C;
+      background: #E5E7EB;
+    }
+  }
+  
+  /* Primary 버튼 */
+  &.ant-btn-primary {
+    background: #353C40;
+    border-color: #353C40;
+    
+    &:hover {
+      background: #171A1C !important;
+    }
+  }
+  
+  /* Danger 버튼 */
+  &.ant-btn-dangerous {
+    &.ant-btn-default {
+      border-color: #ff4d4f;
+      color: #ff4d4f;
+      
+      &:hover {
+        border-color: #ff7875;
+        color: #ff7875;
+        background: #fff1f0;
+      }
+    }
+  }
+}
+
+/* Select 드롭다운 옵션 스타일 */
+.ant-select-dropdown {
+  @apply rounded-md shadow-lg p-0;
+  border: 1px solid #171A1C;
+  
+  .ant-select-item {
+    @apply p-0 text-sm h-9 flex items-center px-2.5 rounded-none;
+    color: #171A1C;
+    &:hover {
+      background: rgba(208, 231, 247, 0.50) !important;
+    }
+    
+    &.ant-select-item-option-selected {
+      @apply bg-white font-medium;
+    }
+    
+    &.ant-select-item-option-active {
+      @apply bg-gray-50;
+    }
+  }
+}
+
+
+
+
+
+
+
