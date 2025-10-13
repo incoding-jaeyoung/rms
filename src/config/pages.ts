@@ -52,6 +52,16 @@ export const PAGES: PageInfo[] = [
     lastModified: '2025-10-13',
     screenId: 'RMS1200',
   },
+  {
+    key: '5',
+    no: 5,
+    title: 'Log In',
+    description: '로그인 페이지',
+    path: '/log-in',
+    status: 'completed',
+    lastModified: '2025-10-13',
+    screenId: 'RMS1000',
+  },
   // {
   //   key: '5',
   //   no: 5,
