@@ -2,22 +2,16 @@
 
 import { Layout, Dropdown } from 'antd';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const { Header: AntHeader } = Layout;
 
 const Header: React.FC = () => {
-  const [mounted, setMounted] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const userMenuItems = [
     {
       key: 'change-password',
-      icon: <img src="/icons/ico-password.svg" alt="password" className="w-5 h-5" />,
       label: 'Change Password',
     },
     {
@@ -26,16 +20,6 @@ const Header: React.FC = () => {
       label: 'Log out',
     },
   ];
-
-  if (!mounted) {
-    return (
-      <AntHeader className="flex items-center justify-between px-6 bg-white border-b border-gray-200">
-        <Link href="/">
-          <img src="/images/logo.svg" alt="ATEC" className="h-5" />
-        </Link>
-      </AntHeader>
-    );
-  }
 
   return (
     <AntHeader className="flex items-center justify-between px-6 bg-white border-b border-gray-200">

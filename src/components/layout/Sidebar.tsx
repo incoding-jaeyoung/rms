@@ -1,7 +1,7 @@
 'use client';
 
 import { Layout, Menu } from 'antd';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTabs } from '@/contexts/TabContext';
 
 const { Sider } = Layout;
@@ -44,14 +44,8 @@ const menuPageMap: Record<string, { label: string; path: string }> = {
 };
 
 const Sidebar: React.FC<SidebarProps> = () => {
-  const [mounted, setMounted] = useState(false);
-  // const [openKeys, setOpenKeys] = useState<string[]>(['terminals']);
   const [openKeys, setOpenKeys] = useState<string[]>([]);
   const rootSubmenuKeys = ['terminals', 'cash', 'journal', 'setup'];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const handleOpenChange = (keys: string[]) => {
     const latest = keys.find((key) => !openKeys.includes(key));
@@ -126,10 +120,6 @@ const Sidebar: React.FC<SidebarProps> = () => {
       label: 'Notice',
     },
   ];
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <Sider

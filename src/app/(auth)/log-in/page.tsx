@@ -9,12 +9,19 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-800">
-      <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md">
+    <div className="login-page">
+      <h1>
+        <img src="/images/img-logo-login.png" alt="ATEC" />
+      </h1>
+      <dl>
+        <dt>Start managing your terminals</dt>
+        <dd>Securely manage your terminals anytime, anywhere</dd>
+      </dl>
+      <div className="login-form">
         <Form form={form} layout="vertical" onFinish={handleSubmit} className="">
           {/* Username Field */}
           <Form.Item name="username" label="Username">
-            <Input placeholder="atecrms@atec.co.kr" size="large" className="rounded-2xl h-[54px]" />
+            <Input placeholder="Enter your Email" size="large" className="rounded-2xl h-[54px]" />
           </Form.Item>
 
           {/* Password Field */}
@@ -25,10 +32,10 @@ export default function LoginPage() {
           {/* Remember Me Checkbox */}
           <Form.Item name="remember" valuePropName="checked">
             <Checkbox>
-              <span className="text-[#5A6670]">Remember me</span>
+              <span className="text-[#5A6670] text-sm">Remember me</span>
             </Checkbox>
           </Form.Item>
-          <p className="caution-msgflex items-center gap-1 flex text-red-500 font-medium">
+          <p className="caution-msg">
             <img src="/icons/ico-caution.svg" alt="warning" />
             <span>Invalid username or password</span>
           </p>
@@ -39,6 +46,10 @@ export default function LoginPage() {
             </Button>
           </Form.Item>
         </Form>
+      </div>
+      <div className="login-footer">
+        <p className="copyright">© ATEC. All right reserved.</p>
+        <p>Built for smarter, sater terminal management</p>
       </div>
     </div>
   );

@@ -4,7 +4,9 @@ import { Layout } from 'antd';
 import { ReactNode } from 'react';
 import Sidebar from './Sidebar';
 import Header from './Header';
-import GlobalTabs from './GlobalTabs';
+import dynamic from 'next/dynamic';
+
+const GlobalTabs = dynamic(() => import('./GlobalTabs'), { ssr: false });
 
 const { Content } = Layout;
 

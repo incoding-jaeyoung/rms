@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { useTabs } from '@/contexts/TabContext';
 import {
   DndContext,
@@ -63,11 +62,6 @@ function DraggableTab({ tab, isActive, onSelect, onClose }: DraggableTabProps) {
 
 export default function GlobalTabs() {
   const { tabs, activeTabId, setActiveTab, removeTab, reorderTabs } = useTabs();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -86,10 +80,6 @@ export default function GlobalTabs() {
       reorderTabs(newTabs);
     }
   };
-
-  if (!mounted) {
-    return null; // 클라이언트 마운트 전까지 렌더링하지 않음
-  }
 
   return (
     <div className="global-tabs">
