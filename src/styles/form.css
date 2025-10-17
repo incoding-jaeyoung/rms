@@ -1,3 +1,7 @@
+.filter-block {
+  @apply bg-white rounded-lg p-4 mt-3.5;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+}
 /* form 스타일 */
 .ant-form-item {
   margin-bottom: 0px;
@@ -78,10 +82,10 @@
 
 .ant-form-item-label > label {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   color: #171a1c;
   height: auto;
-  padding-left: 10px;
+  padding-left: 6px;
 }
 
 .ant-input.ant-input,
@@ -156,4 +160,22 @@
       @apply bg-gray-50;
     }
   }
+}
+
+.ant-form-item .ant-form-item-control-input {
+  min-height: 0;
+}
+.ant-checkbox-label {
+  color: #353c40 !important;
+  font-weight: 500;
+}
+.ant-checkbox-wrapper {
+}
+
+.ant-checkbox .ant-checkbox-inner {
+  border-color: #5a6670 !important;
+}
+.ant-checkbox-wrapper:hover input[type='checkbox'] + .ant-checkbox-inner {
+  background-color: #353c40 !important;
+  border-color: #353c40 !important;
 }

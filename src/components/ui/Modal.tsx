@@ -18,6 +18,7 @@ interface CustomModalProps extends Omit<AntModalProps, 'footer'> {
   className?: string; // 추가 CSS 클래스
   confirmIcon?: ReactNode; // 확인 버튼 아이콘
   cancelIcon?: ReactNode; // 취소 버튼 아이콘
+  titleIcon?: ReactNode; // 제목 아이콘
 }
 
 // 커스텀 모달 컴포넌트
@@ -36,6 +37,7 @@ export const Modal: React.FC<CustomModalProps> = ({
   className = '',
   confirmIcon,
   cancelIcon,
+  titleIcon,
   ...props
 }) => {
   // 모달 크기 설정
@@ -101,7 +103,18 @@ export const Modal: React.FC<CustomModalProps> = ({
   return (
     <AntModal
       {...props}
-      title={title}
+      title={
+        title ? (
+          <div className="flex items-center gap-2.5">
+            {titleIcon && <span>{titleIcon}</span>}
+            {title.includes('<br>') ? (
+              <div dangerouslySetInnerHTML={{ __html: title }} />
+            ) : (
+              <span>{title}</span>
+            )}
+          </div>
+        ) : undefined
+      }
       open={props.open}
       onCancel={onCancel}
       footer={renderFooter()}

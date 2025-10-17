@@ -30,12 +30,10 @@ export default function LoginPage() {
           </Form.Item>
 
           {/* Remember Me Checkbox */}
-          <Form.Item name="remember" valuePropName="checked">
-            <Checkbox>
-              <span className="text-[#5A6670] text-sm">Remember me</span>
-            </Checkbox>
+          <Form.Item name="remember" valuePropName="checked" className="!mt-2">
+            <Checkbox className="!text-sm">Remember me</Checkbox>
           </Form.Item>
-          <p className="caution-msg">
+          <p className="caution-msg mt-2">
             <img src="/icons/ico-caution.svg" alt="warning" />
             <span>Invalid username or password</span>
           </p>

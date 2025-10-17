@@ -153,7 +153,7 @@ export default function TableExamplesPage() {
     <div className="contents">
       <div className="space-y-8">
         <div>
-          <h2 className="text-xl font-semibold mb-4">테이블 기본 (fitColumns)</h2>
+          <h2 className="text-xl font-semibold mb-4">테이블 기본 (fitDataFill)</h2>
           <TabulatorTable
             data={productData}
             columns={productColumns}

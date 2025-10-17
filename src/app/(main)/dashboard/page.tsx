@@ -189,20 +189,14 @@ export default function DashboardPage() {
           <dd>7</dd>
         </dl>
       </div>
-      <div className="mt-7 flex justify-between items-center">
-        <Space>
-          <Button icon={<PlusOutlined />}>Add new</Button>
-          <Button icon={<EditOutlined />}>Edit</Button>
-          <Button icon={<DeleteOutlined />}>Delete</Button>
-        </Space>
-        <Button icon={<ExportOutlined />}>Export</Button>
+      <div className="mt-4 pl-2.5 mb-2">
+        <h3 className="sub-title">ATM Error List</h3>
       </div>
       <TabulatorTable
         data={atmData}
         columns={columns}
         config={{
           showFooter: true,
-          layout: 'fitData',
         }}
       />
     </div>

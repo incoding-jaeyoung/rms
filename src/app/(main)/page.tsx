@@ -12,9 +12,9 @@ interface PageTableData extends TabulatorData {
   description: string;
   status: string;
   screenId: string;
-  lastModified: string;
   key: string;
   path: string;
+  message: string;
 }
 
 // 파일 리스트 페이지 컴포넌트
@@ -28,9 +28,9 @@ export default function HomePage() {
     description: page.description,
     status: page.status,
     screenId: page.screenId,
-    lastModified: page.lastModified,
     key: page.key,
     path: page.path,
+    message: page.message,
   }));
 
   // 테이블 컬럼 정의
@@ -44,7 +44,8 @@ export default function HomePage() {
     {
       title: 'Page Title',
       field: 'title',
-      minWidth: 250,
+      hozAlign: 'left',
+      width: 250,
       formatter: (cell) => {
         const data = cell.getData() as PageTableData;
         return `
@@ -90,13 +91,6 @@ export default function HomePage() {
       hozAlign: 'center',
     },
     {
-      title: 'Last Modified',
-      field: 'lastModified',
-      width: 130,
-      hozAlign: 'center',
-      headerSort: true,
-    },
-    {
       title: 'Action',
       field: 'key',
       width: 150,
@@ -109,6 +103,12 @@ export default function HomePage() {
           return `<button disabled style="padding: 0.25rem 0.75rem; background-color: #e5e7eb; color: #9ca3af; border-radius: 0.375rem; border: none; cursor: not-allowed; font-size: 0.875rem;">작업 예정</button>`;
         }
       },
+    },
+    {
+      title: 'Message',
+      field: 'message',
+      hozAlign: 'left',
+      widthGrow: 1,
     },
   ];
 
@@ -190,14 +190,7 @@ export default function HomePage() {
       </div>
 
       {/* 페이지 테이블 */}
-      <TabulatorTable
-        data={tableData}
-        columns={columns}
-        config={{
-          showFooter: false,
-          height: '600px',
-        }}
-      />
+      <TabulatorTable data={tableData} columns={columns} />
     </div>
   );
 }

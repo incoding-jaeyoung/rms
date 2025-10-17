@@ -77,6 +77,13 @@ body {
     }
   }
 }
+.sub-title {
+  @apply font-bold;
+}
+.space-line {
+  @apply text-xl mx-0.5;
+  color: #919ba3;
+}
 .rms-dropdown .ant-dropdown-menu {
   @apply rounded-md p-0;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
@@ -209,9 +216,13 @@ body {
   min-height: 0;
 }
 .contents-header {
-  @apply flex items-center justify-between h-[50px] pl-2.5;
+  @apply flex items-center justify-between min-h-[50px] px-2.5;
   h2 {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-bold flex items-center;
+    &.center-title {
+      @apply h-20 justify-center w-full;
+      font-size: 34px;
+    }
   }
 }
 
@@ -252,6 +263,8 @@ body {
     padding: 6px 20px;
     font-size: 16px;
     line-height: 28px;
+    border-radius: 10px;
+    min-width: 140px;
   }
   &.btn-modal {
     height: 48px;
@@ -261,10 +274,13 @@ body {
     line-height: 28px;
     flex-grow: 1;
     max-width: 200px;
+    gap: 12px;
   }
 
   /* Default 버튼 (type 없음) */
   &.ant-btn-default {
+    padding: 0 10px;
+    min-width: 100px;
   }
 
   /* Primary 버튼 */

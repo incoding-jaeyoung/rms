@@ -36,10 +36,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80px;
+  text-align: center;
+  min-height: 80px;
   /* border-bottom: 1px solid #E1E4E7; */
   border-radius: 20px 20px 0 0;
   margin-bottom: 0;
+  > div {
+    line-height: normal;
+  }
 }
 
 .ant-modal-root .ant-modal-title.ant-modal-title {
@@ -91,9 +95,10 @@
 
 /* 모달 푸터 */
 .ant-modal-root .ant-modal-footer.ant-modal-footer {
-  padding: 30px 40px;
+  padding: 0 30px 30px 30px;
   /* border-top: 1px solid #E1E4E7; */
   border-radius: 0 0 20px 20px;
+  margin: 0;
   display: flex;
   justify-content: center;
   gap: 10px;
@@ -178,4 +183,21 @@
   .ant-modal-body .grid-cols-2 {
     grid-template-columns: 1fr;
   }
+}
+
+.ant-modal-root .confirm-modal {
+  .ant-modal-header {
+    padding: 40px;
+    padding-bottom: 0;
+  }
+  .ant-modal-body {
+    padding-top: 30px;
+  }
+}
+.confirm-modal-content {
+  padding: 15px;
+  background-color: #f4f5f6;
+  text-align: center;
+  margin: auto;
+  max-width: 280px;
 }

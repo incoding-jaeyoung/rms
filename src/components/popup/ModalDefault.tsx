@@ -5,12 +5,12 @@ import { Form, Input, Select, DatePicker, Radio, Checkbox } from 'antd';
 
 const { TextArea } = Input;
 
-interface Modal6Props {
+interface ModalDefaultProps {
   open: boolean;
   onClose: () => void;
 }
 
-export default function Modal6({ open, onClose }: Modal6Props) {
+export default function ModalDefault({ open, onClose }: ModalDefaultProps) {
   const [form] = Form.useForm();
 
   const handleSubmit = (values: unknown) => {

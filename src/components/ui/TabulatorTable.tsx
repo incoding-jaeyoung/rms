@@ -8,7 +8,7 @@ export interface TabulatorData {
 }
 
 // Tabulator 셀 타입
-interface TabulatorCell {
+export interface TabulatorCell {
   getValue(): unknown;
   getRow(): TabulatorRow;
   getElement(): HTMLElement;
@@ -41,6 +41,7 @@ export interface TabulatorColumn extends TabulatorColumnOptions {
   field: string;
   width?: number;
   minWidth?: number;
+  widthGrow?: number;
   responsive?: number;
   hozAlign?: 'left' | 'center' | 'right';
   vertAlign?: 'top' | 'middle' | 'bottom';
@@ -398,7 +399,7 @@ export default function TabulatorTable({
     (): TabulatorConfig => ({
       showFooter: true,
       height: '400px',
-      layout: 'fitColumns',
+      layout: 'fitDataFill',
       responsiveLayout: false,
     }),
     []
@@ -440,11 +441,32 @@ export default function TabulatorTable({
           // TabulatorFull 사용 (모든 모듈 포함)
           const { TabulatorFull } = await import('tabulator-tables');
 
-          // 컬럼에 기본 vertAlign 추가
-          const processedColumns = columns.map((col) => ({
-            vertAlign: 'middle' as const,
-            ...col,
-          }));
+          // 컬럼에 기본 정렬 추가 및 sort 비활성화
+          const processedColumns = columns.map((col) => {
+            // checkbox 필드인 경우 자동으로 체크박스 설정
+            if (col.field === 'checkbox') {
+              return {
+                ...col, // 사용자 설정 먼저
+                vertAlign: 'middle' as const,
+                hozAlign: 'center' as const,
+                headerSort: false,
+                title:
+                  '<input type="checkbox" id="select-all-checkbox" style="cursor: pointer; width: 16px; height: 16px;" />',
+                formatter: (cell: TabulatorCell) => {
+                  const value = cell.getValue() as boolean;
+                  return `<input type="checkbox" class="row-checkbox" ${value ? 'checked' : ''} style="cursor: pointer; width: 16px; height: 16px;" />`;
+                },
+              };
+            }
+
+            return {
+              vertAlign: 'middle' as const,
+              hozAlign: 'center' as const,
+              headerSort: false, // 기본적으로 sort 비활성화
+              ...col,
+              // 특정 컬럼에서 headerSort: true로 오버라이드 가능
+            };
+          });
 
           // Tabulator 옵션 설정
           const tabulatorOptions: Partial<TabulatorOptions> = {
@@ -474,6 +496,48 @@ export default function TabulatorTable({
             },
             renderComplete: function (this: TabulatorInstance) {
               updateCustomPagination(this);
+              // checkbox 필드가 있는 경우 전체선택 이벤트 바인딩
+              const hasCheckboxColumn = columns.some((col) => col.field === 'checkbox');
+              if (hasCheckboxColumn) {
+                setTimeout(() => {
+                  // 헤더 체크박스 셀 찾기 (이벤트 위임 방식)
+                  const headerCheckboxCell = document.querySelector(
+                    '.tabulator-header .tabulator-col[tabulator-field="checkbox"]'
+                  );
+
+                  if (
+                    headerCheckboxCell &&
+                    !headerCheckboxCell.hasAttribute('data-listener-attached')
+                  ) {
+                    headerCheckboxCell.setAttribute('data-listener-attached', 'true');
+
+                    // 헤더 셀 전체에 클릭 이벤트
+                    headerCheckboxCell.addEventListener('click', (e) => {
+                      e.stopPropagation();
+
+                      const checkbox = headerCheckboxCell.querySelector(
+                        '#select-all-checkbox'
+                      ) as HTMLInputElement;
+                      const target = e.target as HTMLElement;
+
+                      if (checkbox) {
+                        // 체크박스가 아닌 다른 영역 클릭 시 체크박스 토글
+                        if (target !== checkbox) {
+                          checkbox.checked = !checkbox.checked;
+                        }
+
+                        const allCheckboxes = document.querySelectorAll(
+                          '.row-checkbox'
+                        ) as NodeListOf<HTMLInputElement>;
+
+                        allCheckboxes.forEach((rowCheckbox) => {
+                          rowCheckbox.checked = checkbox.checked;
+                        });
+                      }
+                    });
+                  }
+                }, 300);
+              }
             },
           };
 
@@ -528,6 +592,56 @@ export default function TabulatorTable({
       }
     };
   }, [data, columns, config, defaultConfig, isMobile]);
+
+  // 체크박스 전체선택 이벤트 바인딩 (별도 useEffect)
+  useEffect(() => {
+    const hasCheckboxColumn = columns.some((col) => col.field === 'checkbox');
+
+    if (!hasCheckboxColumn) return;
+
+    const bindCheckboxEvent = () => {
+      const headerCheckboxCell = document.querySelector(
+        '.tabulator-header .tabulator-col[tabulator-field="checkbox"]'
+      );
+
+      if (headerCheckboxCell && !headerCheckboxCell.hasAttribute('data-listener-attached')) {
+        headerCheckboxCell.setAttribute('data-listener-attached', 'true');
+
+        const handleClick = (e: Event) => {
+          e.stopPropagation();
+
+          const checkbox = headerCheckboxCell.querySelector(
+            '#select-all-checkbox'
+          ) as HTMLInputElement;
+          const target = e.target as HTMLElement;
+
+          if (checkbox) {
+            if (target !== checkbox) {
+              checkbox.checked = !checkbox.checked;
+            }
+
+            const allCheckboxes = document.querySelectorAll(
+              '.row-checkbox'
+            ) as NodeListOf<HTMLInputElement>;
+
+            allCheckboxes.forEach((rowCheckbox) => {
+              rowCheckbox.checked = checkbox.checked;
+            });
+          }
+        };
+
+        headerCheckboxCell.addEventListener('click', handleClick);
+
+        return () => {
+          headerCheckboxCell.removeEventListener('click', handleClick);
+        };
+      }
+    };
+
+    // 테이블이 완전히 렌더링될 때까지 대기
+    const timer = setTimeout(bindCheckboxEvent, 500);
+    return () => clearTimeout(timer);
+  }, [columns, data]);
 
   return <div className={`tabulator-container ${className}`} ref={tableRef}></div>;
 }

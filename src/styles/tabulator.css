@@ -1,6 +1,6 @@
 /* Tabulator 커스텀 스타일 */
 .tabulator-container {
-  @apply rounded-sm overflow-hidden border-0 flex-grow min-h-[400px] bg-transparent mt-4;
+  @apply rounded-sm overflow-hidden border-0 flex-grow min-h-[400px] bg-transparent;
   /* height: calc(100vh - 200px); /* 동적 높이 */
 }
 
@@ -23,20 +23,45 @@
 }
 
 .tabulator .tabulator-header {
-  background: #fafafa;
+  background: #e1e4e7;
   border-bottom: 1px solid #f0f0f0;
 }
 
 .tabulator .tabulator-header .tabulator-col {
   background: #e1e4e7;
-  border-right: 1px solid #f0f0f0;
+  /* border-right: 1px solid #f0f0f0; */
+  border-right: 0;
+
   font-weight: 600;
   color: #5a6670;
   text-align: center;
+  vertical-align: middle;
 }
 
+.tabulator .tabulator-header .tabulator-col .tabulator-col-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.tabulator-col-title {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.tabulator-col-title-holder {
+  width: 100%;
+}
+.tabulator-col-sorter {
+}
 .tabulator .tabulator-header .tabulator-col:hover {
   background: #f5f5f5;
+}
+/* 체크박스 스타일링 */
+.tabulator-col-title input[type='checkbox'] {
+  margin-top: 6px;
+}
+.tabulator input[type='checkbox'] {
+  accent-color: #353c40;
 }
 
 .tabulator .tabulator-header .tabulator-col.tabulator-sortable:hover {
@@ -78,6 +103,7 @@
 
 .tabulator .tabulator-cell {
   border-right: 1px solid #f0f0f0;
+  border-right: 0;
   padding: 10px;
   color: #353c40;
 }
