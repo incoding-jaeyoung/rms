@@ -26,8 +26,6 @@ export default function ChangePassword({ open, onClose }: ChangePasswordProps) {
       size="small"
       confirmText="Change password"
       cancelText="Cancel"
-      // confirmIcon={<CheckOutlined />}
-      cancelIcon={<CloseCircleFilled />}
     >
       <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <div className="flex flex-col gap-5">

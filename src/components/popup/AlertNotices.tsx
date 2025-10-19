@@ -27,7 +27,6 @@ export default function AlertNotices({ open, onClose }: AlertNoticesProps) {
       size="default"
       confirmText="OK"
       cancelText="Cancel"
-      cancelIcon={<CloseCircleFilled />}
       confirmIcon={<CheckCircleFilled />}
       titleIcon={<NotificationFilled className="!w-5 !h-5" />}
     >

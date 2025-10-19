@@ -6,7 +6,12 @@ import { useState } from 'react';
 
 const { Header: AntHeader } = Layout;
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  mobileMenuOpen: boolean;
+  setMobileMenuOpen: (open: boolean) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ mobileMenuOpen, setMobileMenuOpen }) => {
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   const userMenuItems = [
@@ -22,11 +27,14 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <AntHeader className="flex items-center justify-between px-6 bg-white border-b border-gray-200">
-      <Link href="/">
-        <img src="/images/logo.svg" alt="ATEC" className="h-5" />
-      </Link>
+    <AntHeader>
+      <h1>
+        <Link href="/">
+          <img src="/images/logo.svg" alt="ATEC" className="h-5" />
+        </Link>
+      </h1>
 
+      {/* 데스크톱: 사용자 메뉴 */}
       <Dropdown
         menu={{ items: userMenuItems }}
         overlayClassName="rms-dropdown"
@@ -34,7 +42,7 @@ const Header: React.FC = () => {
         open={userMenuOpen}
         onOpenChange={setUserMenuOpen}
       >
-        <div className="user-menu ">
+        <div className="user-menu">
           <img src="/icons/ico-user.svg" alt="user" className="w-6 h-6 mr-3" />
           <div className="flex flex-col">
             <span className="font-semibold text-gray-900 leading-tight">John Doe</span>
@@ -47,6 +55,17 @@ const Header: React.FC = () => {
           />
         </div>
       </Dropdown>
+
+      {/* 모바일: 햄버거 메뉴 버튼 */}
+      <div className="mobile-menu">
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="btn-menu-open flex items-center justify-center w-10 h-10 rounded hover:bg-gray-100 transition-colors md:hidden"
+          aria-label="메뉴"
+        >
+          <img src="/icons/ico-menu.svg" alt="close menu" />
+        </button>
+      </div>
     </AntHeader>
   );
 };

@@ -1,13 +1,15 @@
 'use client';
 
 import { Layout, Menu } from 'antd';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTabs } from '@/contexts/TabContext';
 
 const { Sider } = Layout;
 
 interface SidebarProps {
   onMenuClick?: (menuKey: string) => void;
+  mobileMenuOpen?: boolean;
+  setMobileMenuOpen?: (open: boolean) => void;
 }
 
 // 메뉴 키와 페이지 정보 매핑 (서브메뉴 포함)
@@ -43,9 +45,21 @@ const menuPageMap: Record<string, { label: string; path: string }> = {
   modals: { label: 'Modals', path: '/modal-basic' },
 };
 
-const Sidebar: React.FC<SidebarProps> = () => {
+const Sidebar: React.FC<SidebarProps> = ({ mobileMenuOpen = false, setMobileMenuOpen }) => {
   const [openKeys, setOpenKeys] = useState<string[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
   const rootSubmenuKeys = ['terminals', 'cash', 'journal', 'setup'];
+
+  // 화면 크기 감지
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleOpenChange = (keys: string[]) => {
     const latest = keys.find((key) => !openKeys.includes(key));
@@ -124,13 +138,22 @@ const Sidebar: React.FC<SidebarProps> = () => {
   return (
     <Sider
       trigger={null}
-      width={260}
+      width={isMobile ? '100%' : 260}
       theme="light"
-      className="bg-white"
-      style={{
-        boxShadow: '0 1px 10px 0 rgba(0, 0, 0, 0.10)',
-      }}
+      className={`${isMobile ? 'mobile-sidebar' : ''} ${mobileMenuOpen ? 'mobile-sidebar-open' : ''}`}
     >
+      <div className="sidebar-header">
+        <div className="user-menu">
+          <img src="/icons/ico-user.svg" alt="user" className="w-6 h-6 mr-3" />
+          <div className="flex flex-col">
+            <span className="font-semibold text-[#171A1C] text-base leading-tight">John Doe</span>
+            <span className="text-xs text-gray-500 leading-none">Super Admin</span>
+          </div>
+        </div>
+        <button className="btn-menu-close" onClick={() => setMobileMenuOpen?.(false)}>
+          <img src="/icons/ico-menu-close.svg" alt="close menu" />
+        </button>
+      </div>
       <Menu
         theme="light"
         mode="inline"
@@ -142,6 +165,12 @@ const Sidebar: React.FC<SidebarProps> = () => {
         className="sidebar-menu"
         inlineIndent={16}
       />
+      <div className="logout-btn-wrap">
+        <button className="logout-btn">
+          <img src="/icons/ico-logout-m.svg" alt="logout" />
+          <span>Logout</span>
+        </button>
+      </div>
       <div className="sidebar-footer ">Open-source Licenses</div>
     </Sider>
   );

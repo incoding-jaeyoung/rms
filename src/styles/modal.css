@@ -46,7 +46,7 @@
   }
 }
 
-.ant-modal-root .ant-modal-title.ant-modal-title {
+.ant-modal-root .ant-modal-title {
   font-size: 24px;
   font-weight: 700;
   color: #353c40;
@@ -86,6 +86,7 @@
 /* 모달 바디 */
 .ant-modal-root .ant-modal-body.ant-modal-body {
   padding: 40px;
+  padding-bottom: 0;
   font-size: 14px;
   line-height: 1.6;
   color: #353c40;
@@ -95,7 +96,7 @@
 
 /* 모달 푸터 */
 .ant-modal-root .ant-modal-footer.ant-modal-footer {
-  padding: 0 30px 30px 30px;
+  padding: 40px 30px 30px 30px;
   /* border-top: 1px solid #E1E4E7; */
   border-radius: 0 0 20px 20px;
   margin: 0;
@@ -156,6 +157,10 @@
   justify-content: flex-end;
   gap: 8px;
   margin-top: 24px;
+}
+
+.modal-form-small {
+  @apply px-3 pt-5 min-h-[470px];
 }
 
 /* 반응형 - 모바일 */

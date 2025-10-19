@@ -26,20 +26,19 @@ export default function NewNotices({ open, onClose }: NewNoticesProps) {
       size="default"
       confirmText="Register"
       cancelText="Cancel"
-      cancelIcon={<CloseCircleFilled />}
       confirmIcon={<CheckCircleFilled />}
     >
       <Form form={form} layout="vertical" onFinish={handleSubmit}>
         <Space direction="vertical" size={20} className="w-full">
           <Space size={20}>
-            <Form.Item name="role" label="Group" className="w-[190px]">
+            <Form.Item name="group" label="Group" className="w-[190px]">
               <Select placeholder="">
                 <Select.Option value="">select</Select.Option>
               </Select>
             </Form.Item>
-            <Form.Item name="role" label="Branch" className="w-[190px]">
+            <Form.Item name="branch" label="Branch" className="w-[190px]">
               <Select placeholder="">
-                <Select.Option value="">select</Select.Option>
+                <Select.Option value="">select1</Select.Option>
               </Select>
             </Form.Item>
           </Space>

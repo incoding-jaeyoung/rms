@@ -3,6 +3,11 @@
   @apply rounded-sm overflow-hidden border-0 flex-grow min-h-[400px] bg-transparent;
   /* height: calc(100vh - 200px); /* 동적 높이 */
 }
+@media screen and (max-width: 768px) {
+  .tabulator-container {
+    border: 1px solid #b7b7b7;
+  }
+}
 
 /* 데이터 없을 때 표시되는 메시지 스타일 */
 .tabulator .tabulator-placeholder .tabulator-placeholder-contents {
@@ -209,11 +214,7 @@
   gap: 3px;
   min-width: 70px;
   height: 30px;
-  svg {
-    width: 14px;
-    height: 14px;
-    margin-top: 1px;
-  }
+  font-weight: 500;
 }
 .pagination-center .nav-btn:first-child {
   padding-right: 10px;
@@ -292,4 +293,72 @@
 
 .pagination-right .page-size-select:focus {
   outline: none;
+}
+
+/* 모바일 전용: 테이블 위 range-info 스타일 */
+.custom-range {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .custom-pagination {
+    @apply py-7.5;
+  }
+  .pagination-center {
+    @apply w-full flex justify-center;
+    .nav-btn.prev-btn {
+      @apply mr-auto h-10 text-base font-medium;
+    }
+    .nav-btn.next-btn {
+      @apply ml-auto h-10 text-base font-medium;
+    }
+    input.page-input {
+      @apply h-10;
+    }
+    .of-text {
+      @apply text-base;
+    }
+    .total-pages {
+      @apply text-base;
+    }
+  }
+  .custom-range {
+    display: block;
+    padding-bottom: 10px;
+  }
+
+  .custom-range .range-info {
+    color: #353c40;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: normal;
+  }
+
+  .custom-range .range-info em {
+    font-style: normal;
+    font-weight: 400;
+    color: #5a6670;
+  }
+
+  /* 페이징 푸터의 range-info는 숨김 */
+  .pagination-left {
+    display: none;
+  }
+  .pagination-right {
+    display: none;
+  }
+  .pagination-center .nav-btn {
+    width: 80px;
+  }
+  .pagination-center .nav-btn img {
+    @apply w-5 h-5;
+  }
+  .pagination-center .nav-btn:first-child {
+    padding-right: 10px;
+    padding-left: 5px;
+  }
+  .pagination-center .nav-btn:last-child {
+    padding-left: 10px;
+    padding-right: 5px;
+  }
 }

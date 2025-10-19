@@ -54,18 +54,21 @@ body {
 }
 
 .wrapper {
-  @apply min-h-screen;
-  height: 100vh;
+  @apply min-h-screen max-md:h-auto;
   display: flex;
   flex-direction: column;
 }
 
 .ant-layout-header {
-  @apply flex items-center justify-between px-6 bg-white z-10;
+  @apply flex items-center justify-between px-6 bg-white border-b border-gray-200 bg-white z-10 max-md:px-5 h-[70px] max-md:h-15 max-md:justify-center relative;
   border-bottom: 1px solid #c7cdd1;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  h1 {
+    @apply max-md:w-20;
+  }
+
   .user-menu {
-    @apply flex items-center cursor-pointer bg-gray-100 hover:bg-gray-200 px-2.5 rounded-md h-[42px] w-60;
+    @apply flex items-center cursor-pointer bg-gray-100 hover:bg-gray-200 px-2.5 rounded-md h-[42px] flex-none w-60 max-md:hidden;
     /* border: 1px solid #C7CDD1; */
     color: #5a6670;
     &:hover {
@@ -76,9 +79,24 @@ body {
       outline: 1px solid #c7cdd1;
     }
   }
+  .mobile-menu {
+    @apply md:hidden absolute right-5 top-1/2 -translate-y-1/2;
+    button {
+      @apply flex items-center justify-center w-10 h-10 rounded hover:bg-gray-100 transition-colors;
+      &.btn-menu-open {
+        @apply flex;
+      }
+      &.btn-menu-close {
+        @apply hidden;
+      }
+      img {
+        /* @apply w-7.5 h-7.5; */
+      }
+    }
+  }
 }
 .sub-title {
-  @apply font-bold;
+  @apply font-bold text-base;
 }
 .space-line {
   @apply text-xl mx-0.5;
@@ -104,7 +122,7 @@ body {
 }
 /* 탭 스타일 */
 .global-tabs {
-  @apply bg-white box-border flex;
+  @apply bg-white box-border flex max-md:hidden;
   border-bottom: 1px solid #d70051;
   min-height: 41px;
 
@@ -154,9 +172,27 @@ body {
 
 /* 사이드바 스타일 */
 .ant-layout-sider {
+  @apply bg-white overflow-y-auto;
+  box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  .sidebar-header {
+    @apply flex items-center justify-between px-[25px] border-b border-gray-200 h-15 flex-none sticky top-0 bg-white z-10 md:hidden;
+    .user-menu {
+      @apply flex items-center cursor-pointer flex-none;
+      color: #5a6670;
+    }
+  }
   .sidebar-menu {
     color: #171a1c;
     padding: 10px 0;
+    .ant-menu-submenu-arrow {
+      @apply w-5 h-5 flex items-center justify-center;
+      inset-inline-end: 26px;
+      background: url('/icons/ico-menu-arrow.svg') no-repeat center center;
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
     & > li {
       @apply w-full;
     }
@@ -191,11 +227,25 @@ body {
           }
         }
       }
+      &.ant-menu-submenu-open.ant-menu-submenu-inline {
+        .ant-menu-submenu-arrow {
+          transform: translateY(-50%) rotateX(180deg) !important;
+        }
+      }
     }
   }
   .ant-menu-submenu-selected > .ant-menu-submenu-title {
     color: #171a1c;
   }
+  .logout-btn-wrap {
+    @apply mt-auto h-[90px] flex items-center flex-none md:hidden;
+    padding: 30px 25px 0 25px;
+    .logout-btn {
+      @apply flex items-center gap-1.5  text-base font-medium;
+      color: #353c40;
+    }
+  }
+
   .sidebar-footer {
     @apply absolute bottom-4 left-0 right-0 text-sm flex items-center justify-center;
     color: #5a6670;
@@ -225,7 +275,24 @@ body {
     }
   }
 }
-
+@media (max-width: 768px) {
+  .ant-layout-content {
+    @apply bg-white;
+  }
+  .contents {
+    @apply bg-white px-4 py-5 pb-0;
+  }
+  .contents-header {
+    @apply flex items-center justify-between min-h-0 px-0;
+    h2 {
+      @apply text-2xl font-semibold flex items-center;
+      &.center-title {
+        @apply h-20 justify-center w-full;
+        font-size: 34px;
+      }
+    }
+  }
+}
 /* Button 스타일 */
 /* @layer components { */
 .ant-btn {
@@ -244,20 +311,18 @@ body {
     background: #e5e7eb;
   }
   /* Button 크기 */
-  &.ant-btn-sm {
-    height: 24px;
-    padding: 0 8px;
-    font-size: 12px;
-    line-height: 22px;
-  }
-
   &.ant-btn-default {
     height: 32px;
     padding: 4px 16px;
     font-size: 14px;
     line-height: 24px;
   }
-
+  &.ant-btn-sm {
+    height: 24px;
+    padding: 0 8px;
+    font-size: 12px;
+    line-height: 22px;
+  }
   &.ant-btn-lg {
     height: 58px;
     padding: 6px 20px;
@@ -308,6 +373,20 @@ body {
       background-color: #c7cdd1 !important;
       border-color: #c7cdd1 !important;
       color: #ffffff !important;
+    }
+  }
+
+  /* Text 버튼 스타일 (보더 없음) */
+  &.ant-btn-text {
+    font-size: 16px;
+    color: #353c40;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    padding: 4px 8px;
+    text-decoration: underline;
+    &:hover {
+      background: transparent !important;
     }
   }
 }
@@ -370,7 +449,7 @@ body {
         font-size: 22px;
       }
       dd {
-        @apply mt-2;
+        @apply mt-2 font-medium;
         font-size: 14px;
       }
     }
@@ -379,7 +458,7 @@ body {
     }
     .login-form {
       @apply static self-center right-auto top-auto translate-y-0 mt-15;
-      padding: 40px 50px 50px;
+      padding: 50px 35px;
       label {
         @apply text-lg font-medium;
       }
@@ -389,4 +468,63 @@ body {
       }
     }
   }
+}
+
+/* 모바일 사이드바 스타일 */
+@media (max-width: 768px) {
+  .ant-layout-header {
+    @apply sticky top-0 z-10;
+  }
+  .mobile-sidebar {
+    @apply fixed top-0 left-0 bottom-0 w-full max-w-full z-50;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .mobile-sidebar-open {
+    transform: translateX(0) !important;
+  }
+
+  .mobile-sidebar .ant-layout-sider-children {
+    @apply flex flex-col;
+  }
+
+  .mobile-sidebar .sidebar-menu {
+    @apply p-0;
+    .ant-menu-item,
+    .ant-menu-submenu .ant-menu-submenu-title {
+      @apply !px-6;
+    }
+    .ant-menu-submenu-arrow {
+      @apply w-7 h-7;
+    }
+    .ant-menu-item-only-child {
+      height: 50px !important;
+    }
+  }
+
+  .mobile-sidebar .ant-menu .ant-menu-submenu .ant-menu-sub {
+    @apply bg-white px-[25px];
+  }
+
+  .mobile-sidebar .ant-menu .ant-menu-submenu .ant-menu-sub .ant-menu-item {
+    @apply h-10 font-medium m-0 w-full !px-10;
+    border-radius: 5px !important;
+  }
+
+  .mobile-sidebar .sidebar-footer {
+    @apply !mt-4 relative bottom-0 pb-6;
+  }
+}
+
+.ant-layout-footer {
+  @apply bg-transparent font-medium md:hidden;
+  color: #939393;
+  .mobile-footer {
+    @apply flex items-center justify-between flex-col;
+  }
+}
+
+.menu-line {
+  @apply mt-7.5 mb-4 flex justify-between items-center max-md:hidden;
 }

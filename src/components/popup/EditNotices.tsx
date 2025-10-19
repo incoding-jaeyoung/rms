@@ -26,7 +26,6 @@ export default function EditNotices({ open, onClose }: EditNoticesProps) {
       size="default"
       confirmText="Save Changes"
       cancelText="Cancel"
-      cancelIcon={<CloseCircleFilled />}
       confirmIcon={<CheckCircleFilled />}
     >
       <Form form={form} layout="vertical" onFinish={handleSubmit}>

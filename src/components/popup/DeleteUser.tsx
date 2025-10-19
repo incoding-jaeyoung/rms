@@ -3,25 +3,25 @@
 import { Modal } from '@/components/ui';
 import { DeleteFilled } from '@ant-design/icons';
 
-interface DeleteNoticesProps {
+interface DeleteRoleProps {
   open: boolean;
   onClose: () => void;
 }
 
-export default function DeleteNotices({ open, onClose }: DeleteNoticesProps) {
+export default function DeleteRole({ open, onClose }: DeleteRoleProps) {
   return (
     <Modal
       open={open}
       onCancel={onClose}
       onConfirm={onClose}
-      title="Are you sure <br> you want to delete this notice?"
+      title="Are you sure <br> you want to delete this user?"
       size="small"
       confirmText="Delete"
       cancelText="Cancel"
       confirmIcon={<DeleteFilled />}
       className="confirm-modal"
     >
-      <div className="confirm-modal-content">notice title...</div>
+      <div className="confirm-modal-content">name</div>
     </Modal>
   );
 }

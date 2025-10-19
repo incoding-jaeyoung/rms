@@ -46,7 +46,7 @@ export const Modal: React.FC<CustomModalProps> = ({
       case 'small':
         return { width: 500 };
       case 'large':
-        return { width: 1200 };
+        return { width: 1260 };
       case 'fullscreen':
         return { width: '100vw', height: '100vh', top: 0, margin: 0 };
       default:

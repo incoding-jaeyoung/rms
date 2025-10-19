@@ -7,8 +7,10 @@ import {
   DeleteOutlined,
   ExportOutlined,
   LockFilled,
+  CloseOutlined,
 } from '@ant-design/icons';
 import TabulatorTable, { TabulatorData, TabulatorColumn } from '@/components/ui/TabulatorTable';
+import { useFilter } from '@/hooks/useFilter';
 
 // 에러 코드 데이터 타입
 interface UserManagementData extends TabulatorData {
@@ -25,6 +27,7 @@ interface UserManagementData extends TabulatorData {
 
 export default function UserManagementPage() {
   const [form] = Form.useForm();
+  const { showFilter, setShowFilter } = useFilter();
 
   const handleSubmit = (values: unknown) => {
     console.log('Form values:', values);
@@ -103,31 +106,63 @@ export default function UserManagementPage() {
       <div className="contents-header">
         <h2>User Management</h2>
       </div>
-      <div className="filter-block">
-        <Form
-          form={form}
-          layout="vertical"
-          onFinish={handleSubmit}
-          className="justify-between flex"
-        >
-          <Space size={16}>
-            <Form.Item name="group" label="Group" className="w-[190px]">
-              <Select placeholder="Select Group">
-                <Select.Option value="">Select</Select.Option>
-              </Select>
-            </Form.Item>
-            <Form.Item name="status" label="Status" className="w-[190px]">
-              <Select placeholder="Select Status">
-                <Select.Option value="">Select</Select.Option>
-              </Select>
-            </Form.Item>
-          </Space>
-          <Button size="large" type="primary">
-            Apply filters
+      <div className="m-filter-container">
+        <div className="filter-btn">
+          <Button
+            type="primary"
+            onClick={() => setShowFilter(true)}
+            icon={<img src="/icons/ico-filter.svg" alt="filter" />}
+            iconPosition="end"
+          >
+            Filter
           </Button>
-        </Form>
+          <Button type="text">Clear all filters</Button>
+        </div>
+        <div className="filter-list">
+          <Button type="default" icon={<CloseOutlined />} iconPosition="end" className="">
+            Group: ATEC
+          </Button>
+          <Button type="default" icon={<CloseOutlined />} iconPosition="end" className="">
+            Status: Active
+          </Button>
+        </div>
       </div>
-      <div className="mt-7.5 mb-4 flex justify-between items-center">
+
+      {showFilter && (
+        <div className={`filter-wrap ${showFilter ? 'show' : ''}`}>
+          <div className="filter-block">
+            <div className="filter-header">
+              <h3>Filter</h3>
+              <button type="button" className="btn-close" onClick={() => setShowFilter(false)}>
+                <img src="/icons/ico-menu-close.svg" alt="close" />
+              </button>
+            </div>
+            <Form form={form} layout="vertical" onFinish={handleSubmit} className="filter-form ">
+              <Space size={16} className="filter-form-items">
+                <Form.Item name="group" label="Group" className="w-[190px] max-md:w-full">
+                  <Select placeholder="Select Group">
+                    <Select.Option value="">Select</Select.Option>
+                  </Select>
+                </Form.Item>
+                <Form.Item name="status" label="Status" className="w-[190px] max-md:w-full">
+                  <Select placeholder="Select Status">
+                    <Select.Option value="">Select</Select.Option>
+                  </Select>
+                </Form.Item>
+              </Space>
+              <div className="filter-submit">
+                <Button className="btn-reset">
+                  <img src="/icons/ico-reset.svg" alt="reset" />
+                </Button>
+                <Button size="large" type="primary" className="btn-apply">
+                  Apply filters
+                </Button>
+              </div>
+            </Form>
+          </div>
+        </div>
+      )}
+      <div className="menu-line">
         <Space>
           <Button icon={<PlusOutlined />}>Add new</Button>
           <Button icon={<EditOutlined />}>Edit</Button>

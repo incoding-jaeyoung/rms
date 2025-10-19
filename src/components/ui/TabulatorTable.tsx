@@ -26,7 +26,7 @@ interface TabulatorRow {
 interface TabulatorColumnOptions {
   headerSort?: boolean;
   sorter?: string | ((a: unknown, b: unknown) => number);
-  formatter?: (cell: TabulatorCell) => string | HTMLElement;
+  formatter?: string | ((cell: TabulatorCell) => string | HTMLElement);
   editor?: string | boolean;
   validator?: string | ((value: unknown) => boolean | string);
   cssClass?: string;
@@ -128,7 +128,7 @@ const createCustomPaginationElement = () => {
   prevBtn.className = 'nav-btn prev-btn';
   prevBtn.type = 'button';
   prevBtn.innerHTML =
-    '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"></polyline></svg><span>Prev</span>';
+    '<img src="/icons/ico-page-prev.svg" alt="prev" width="16" height="16" /><span>Prev</span>';
 
   // 페이지 입력
   const pageInput = document.createElement('input');
@@ -152,7 +152,7 @@ const createCustomPaginationElement = () => {
   nextBtn.className = 'nav-btn next-btn';
   nextBtn.type = 'button';
   nextBtn.innerHTML =
-    '<span>Next</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"></polyline></svg>';
+    '<span>Next</span><img src="/icons/ico-page-next.svg" alt="next" width="16" height="16" />';
 
   // 요소들을 centerNav에 추가
   centerNav.appendChild(prevBtn);
@@ -200,6 +200,12 @@ const updateCustomPagination = (table: TabulatorInstance) => {
     const leftInfo = paginationElement.querySelector('.range-info');
     if (leftInfo) {
       leftInfo.innerHTML = `${startRow}-${endRow} <em>of</em> ${totalRows.toLocaleString()} <em>items</em>`;
+    }
+
+    // 모바일: 테이블 위 range-info 업데이트
+    const topRangeInfo = tableContainer?.parentElement?.querySelector('.custom-range .range-info');
+    if (topRangeInfo) {
+      topRangeInfo.innerHTML = `${startRow}-${endRow} <em>of</em> ${totalRows.toLocaleString()} <em>items</em>`;
     }
 
     // 중앙 네비게이션 업데이트
@@ -643,5 +649,13 @@ export default function TabulatorTable({
     return () => clearTimeout(timer);
   }, [columns, data]);
 
-  return <div className={`tabulator-container ${className}`} ref={tableRef}></div>;
+  return (
+    <div className="flex-grow flex flex-col max-md:mt-7.5">
+      {/* 모바일 전용: 테이블 위 range-info */}
+      <div className="custom-range">
+        <div className="range-info"></div>
+      </div>
+      <div className={`tabulator-container ${className}`} ref={tableRef}></div>
+    </div>
+  );
 }

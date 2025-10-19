@@ -109,6 +109,7 @@ export default function HomePage() {
       field: 'message',
       hozAlign: 'left',
       widthGrow: 1,
+      formatter: 'html',
     },
   ];
 
@@ -190,7 +191,24 @@ export default function HomePage() {
       </div>
 
       {/* 페이지 테이블 */}
-      <TabulatorTable data={tableData} columns={columns} />
+      <div className="flex flex-grow gap-5">
+        <TabulatorTable data={tableData} columns={columns} />
+        <div className="flex flex-col gap-5 flex-grow overflow-y-auto">
+          <h3 className="text-lg font-bold text-gray-900">업데이트 사항</h3>
+          <dl className="text-gray-600 flex flex-col gap-1">
+            <dt className="text-sm font-bold text-gray-900">2025/10/19</dt>
+            <dd className="text-gray-700">
+              모바일 반응형 구현(페이지 레이아웃 및 모바일 전체 메뉴) <br />
+              Applayout.tsx, Header.tsx, Sidebar.tsx 수정 FooterMobile.tsx 컴포넌트 추가
+              <br /> 페이지 내 모바일 전용 필터 영역 추가 <br /> 모바일 모달 필터 영역 추가(필터
+              show / hide 추가) <br /> 필터 영역 모바일 구현을 위한 전반적 div 및 class 추가
+              <br /> 테이블 상단의 버튼 메뉴는 모바일 디자인이 아직 없어 히든 처리(추후 추가 예정)
+              <br />
+              자세한 코드 변경사항은 깃 커밋 히스토리 참고.
+            </dd>
+          </dl>
+        </div>
+      </div>
     </div>
   );
 }

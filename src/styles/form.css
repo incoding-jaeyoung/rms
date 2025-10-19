@@ -1,7 +1,21 @@
 .filter-block {
   @apply bg-white rounded-lg p-4 mt-3.5;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+  .filter-header {
+    @apply md:hidden flex items-center justify-between h-15 px-5 text-xl font-semibold;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  .filter-form {
+    @apply justify-between flex flex-col md:flex-row;
+  }
+  .filter-submit {
+    @apply flex items-center gap-2;
+    .btn-reset {
+      @apply w-11 h-11 px-0 min-w-0 md:hidden flex-none rounded-lg;
+    }
+  }
 }
+
 /* form 스타일 */
 .ant-form-item {
   margin-bottom: 0px;
@@ -48,12 +62,16 @@
 
 .ant-select {
   height: 34px;
+  .ant-select-arrow {
+    @apply flex items-center justify-center w-5 h-5 mt-0 -translate-y-1/2;
+    background: url('/icons/ico-select-arrow.svg') no-repeat center center;
+    span {
+      display: none;
+    }
+  }
   &:hover {
     .ant-select-selector {
       border-color: #919ba3 !important;
-    }
-    .ant-select-arrow {
-      color: #353c40;
     }
   }
   .ant-select-selector {
@@ -68,7 +86,6 @@
       outline: none !important;
     }
     .ant-select-arrow {
-      color: #353c40;
     }
   }
   .ant-select-selection-item {
@@ -83,7 +100,7 @@
 .ant-form-item-label > label {
   font-size: 14px;
   font-weight: 600;
-  color: #171a1c;
+  color: #171a1c !important;
   height: auto;
   padding-left: 6px;
 }
@@ -95,6 +112,11 @@
   /* border-radius: 4px; */
   border-color: #c7cdd1;
   transition: border-color 0.2s;
+  &:disabled {
+    border-color: #919ba3 !important;
+    background-color: #f4f5f6;
+    color: #171a1c;
+  }
 }
 
 .ant-input.ant-input:hover,
@@ -178,4 +200,161 @@
 .ant-checkbox-wrapper:hover input[type='checkbox'] + .ant-checkbox-inner {
   background-color: #353c40 !important;
   border-color: #353c40 !important;
+}
+.ant-radio-wrapper {
+  margin-inline-end: 20px;
+}
+
+/* 토글 스위치 커스터마이징 */
+.ant-switch {
+  background-color: #d9d9d9 !important;
+  border: none !important;
+}
+
+.ant-switch.ant-switch-checked {
+  background-color: #00bd24 !important; /* 초록색 */
+}
+
+/* 토글 스위치 호버 효과 */
+.ant-switch:hover:not(.ant-switch-disabled) {
+  background-color: #bfbfbf !important;
+}
+
+.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  background-color: #73d13d !important;
+}
+
+.form-block-container {
+  @apply grid grid-cols-4 gap-5 items-start pb-10;
+  min-height: 412px;
+}
+
+.form-block {
+  @apply rounded-lg overflow-hidden transition-all duration-300;
+  border: 1px solid #c7cdd1;
+}
+
+.form-block.active {
+  @apply h-full;
+  .form-block-title {
+    background-color: #e1e4e7;
+    border-bottom: 1px solid #c7cdd1;
+  }
+  .form-block-content {
+    @apply flex;
+  }
+}
+
+.form-block-title {
+  @apply flex items-center justify-between h-9 px-3 font-semibold rounded-b-lg;
+  color: #171a1c;
+  background-color: #f4f5f6;
+}
+
+.form-block-content {
+  @apply text-sm text-gray-600 p-3 flex flex-col gap-3 hidden;
+  .ant-form-item-row {
+    @apply flex items-center justify-between w-full;
+    .ant-form-item-control {
+      @apply !w-30 flex-none;
+    }
+    .ant-form-item-label {
+      @apply flex-shrink-0;
+      padding: 0;
+      label {
+        padding: 0;
+        font-weight: 500;
+        &:after {
+          display: none !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  /* 모바일에서 필터 기본 숨김 */
+  .filter-wrap {
+    display: none;
+  }
+
+  /* 모바일에서 필터 보기 버튼만 표시 */
+  .m-filter-container {
+    @apply flex flex-col gap-3;
+    .filter-btn {
+      @apply flex items-center justify-between mt-5;
+      button {
+        height: 40px;
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+    .filter-list {
+      @apply flex flex-wrap gap-2;
+      button {
+        height: 30px;
+      }
+    }
+  }
+
+  /* 필터가 열렸을 때만 표시 */
+  .filter-wrap.show {
+    @apply fixed top-0 left-0 w-full h-full bg-black/50 z-50 flex items-end justify-center;
+    display: flex !important;
+  }
+  .filter-block {
+    @apply flex-col flex rounded-b-none w-full p-0 rounded-t-2xl;
+    .filter-form {
+      padding: 10px 16px 0px 16px;
+    }
+    .filter-form-items {
+      @apply flex-col flex pb-9 !gap-7;
+      max-height: 70dvh;
+      overflow-y: auto;
+    }
+    .ant-space-item {
+      @apply w-full;
+    }
+    .filter-submit {
+      @apply py-4;
+      .btn-apply {
+        @apply h-11 flex-grow;
+      }
+    }
+    input[type='text'],
+    input[type='number'],
+    input[type='date'],
+    input[type='time'],
+    input[type='email'],
+    input[type='password'],
+    input[type='tel'],
+    input[type='url'],
+    input[type='search'] {
+      @apply !py-2.5;
+    }
+    .ant-select-selector {
+      @apply !h-11;
+    }
+
+    .ant-select-arrow {
+      transform: translateY(5px) !important;
+    }
+    .ant-form-item-label > label {
+      @apply text-lg pl-1;
+    }
+    .ant-select .ant-form-item-control-input {
+      @apply !h-11;
+    }
+  }
+  .ant-select-dropdown .ant-select-item {
+    @apply !h-11;
+  }
+}
+
+/* 데스크톱에서 필터 보기 버튼 숨김 */
+@media (min-width: 769px) {
+  .m-filter-container {
+    display: none;
+  }
 }
