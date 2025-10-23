@@ -247,7 +247,9 @@ body {
 
   .sidebar-footer {
     @apply absolute bottom-4 left-0 right-0 text-sm flex items-center justify-center;
-    color: #5a6670;
+    a {
+      color: #5a6670;
+    }
   }
 }
 /* 컨텐츠 영역 스타일 */

@@ -3,6 +3,7 @@
 import { Layout, Menu } from 'antd';
 import { useState, useEffect } from 'react';
 import { useTabs } from '@/contexts/TabContext';
+import Link from 'next/link';
 
 const { Sider } = Layout;
 
@@ -171,7 +172,11 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileMenuOpen = false, setMobileMenu
           <span>Logout</span>
         </button>
       </div>
-      <div className="sidebar-footer ">Open-source Licenses</div>
+      <div className="sidebar-footer ">
+        <Link href="#" target="_blank">
+          Open-source Licenses
+        </Link>
+      </div>
     </Sider>
   );
 };
