@@ -1,8 +1,13 @@
 'use client';
 
-import { Button, Space, Select } from 'antd';
-import { PlusOutlined, EditOutlined, DeleteOutlined, ExportOutlined } from '@ant-design/icons';
+import { useRef } from 'react';
 import TabulatorTable, { TabulatorData, TabulatorColumn } from '@/components/ui/TabulatorTable';
+import Link from 'next/link';
+import { Select, Button } from 'antd';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import type { Swiper as SwiperType } from 'swiper';
+import 'swiper/css';
 
 // ATM 데이터 타입
 interface ATMData extends TabulatorData {
@@ -24,6 +29,8 @@ interface ATMData extends TabulatorData {
 }
 
 export default function DashboardPage() {
+  const swiperRef = useRef<SwiperType | null>(null);
+
   // ATM 더미 데이터 생성
   const generateATMData = (): ATMData[] => {
     const groups = ['Group A', 'Group B', 'Group C'];
@@ -106,90 +113,223 @@ export default function DashboardPage() {
       title: 'Cassette-A',
       field: 'cassetteA',
       minWidth: 100,
-      hozAlign: 'right',
     },
     {
       title: 'Cassette-B',
       field: 'cassetteB',
       minWidth: 100,
-      hozAlign: 'right',
     },
     {
       title: 'Cassette-C',
       field: 'cassetteC',
       minWidth: 100,
-      hozAlign: 'right',
     },
     {
       title: 'Cassette-D',
       field: 'cassetteD',
       minWidth: 100,
-      hozAlign: 'right',
     },
     {
       title: 'Overflow',
       field: 'overflow',
       minWidth: 100,
-      hozAlign: 'right',
     },
     {
       title: 'Cassette-RJT',
       field: 'cassetteRjt',
       minWidth: 100,
-      hozAlign: 'right',
     },
   ];
 
   return (
     <div className="contents">
-      <div className="contents-header">
-        <h2>ATM Overview</h2>
-        <div className="flex items-center gap-2.5">
-          <label className="text-sm font-semibold">Group</label>
-          <Select
-            placeholder=""
-            className="w-50"
-            defaultValue="All"
-            options={[
-              { label: 'All', value: 'All' },
-              { label: 'select one', value: 'select one' },
-            ]}
-          />
-        </div>
-      </div>
-      <div className="overview-card">
-        <ul className="services">
-          <li>
-            <dl>
+      <div className="dashboard-top">
+        <div className="overview">
+          <div className="contents-header">
+            <h2>ATM Overview</h2>
+          </div>
+          <div className="overview-card">
+            <dl className="total">
               <dt>TOTAL</dt>
               <dd>128</dd>
             </dl>
-          </li>
-          <li>
-            <dl>
-              <dt>IN-SERVICE</dt>
-              <dd>104</dd>
-            </dl>
-          </li>
-          <li>
-            <dl>
-              <dt>OUT OF SERVICE</dt>
-              <dd>16</dd>
-            </dl>
-          </li>
-          <li>
-            <dl>
-              <dt>POWER OFF</dt>
-              <dd>8</dd>
-            </dl>
-          </li>
-        </ul>
-        <dl className="cash">
-          <dt>LOW CASH</dt>
-          <dd>7</dd>
-        </dl>
+            <ul className="services">
+              <li>
+                <dl>
+                  <dt>IN-SERVICE</dt>
+                  <dd>104</dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt>OUT OF SERVICE</dt>
+                  <dd>16</dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt>POWER OFF</dt>
+                  <dd>8</dd>
+                </dl>
+              </li>
+              <li>
+                <dl>
+                  <dt>LOW CASH</dt>
+                  <dd>7</dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="notice-list">
+          <div className="contents-header">
+            <h2>Notice</h2>
+          </div>
+          <ul className="notice-list-item">
+            <li>
+              <Link href="#">
+                Planned Maintenance Notice Planned Maintenance Notice Planned Maintenance Notice
+                Planned Maintenance Notice
+              </Link>
+              <span className="date">08/10/2025</span>
+            </li>
+            <li>
+              <Link href="#">
+                <span className="title">Planned Maintenance Notice</span>
+              </Link>
+              <span className="date">08/10/2025</span>
+            </li>
+            <li>
+              <Link href="#">
+                <span className="title">Planned Maintenance Notice</span>
+              </Link>
+              <span className="date">08/10/2025</span>
+            </li>
+            <li>
+              <Link href="#">
+                <span className="title">Planned Maintenance Notice</span>
+              </Link>
+              <span className="date">08/10/2025</span>
+            </li>
+            <li>
+              <Link href="#">
+                <span className="title">Planned Maintenance Notice</span>
+              </Link>
+              <span className="date">08/10/2025</span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="mt-4 pl-2.5 mb-2">
+      {/* Group Overview 슬라이더 visible / hidden 영역 */}
+      <div className="">
+        <div className="sub-header mt-6 max-md:mt-10">
+          <h3 className="sub-title mt-5 max-md:mt-0">Group Overview</h3>
+          <div className="flex items-center gap-2.5">
+            <Select
+              placeholder=""
+              className="w-50 max-md:!w-[100px]"
+              defaultValue="All"
+              options={[
+                { label: 'All', value: 'All' },
+                { label: 'select one', value: 'select one' },
+              ]}
+            />
+            <div className="slider-btn-group">
+              <Button
+                type="default"
+                className="btn-prev"
+                onClick={() => swiperRef.current?.slidePrev()}
+              >
+                <img src="/icons/ico-page-prev.svg" alt="prev" />
+              </Button>
+              <Button
+                type="default"
+                className="btn-next"
+                onClick={() => swiperRef.current?.slideNext()}
+              >
+                <img src="/icons/ico-page-next.svg" alt="next" />
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className="over-view-slider">
+          <Swiper
+            modules={[Navigation]}
+            loop={true}
+            spaceBetween={15}
+            slidesPerView="auto"
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+          >
+            <SwiperSlide>
+              <div className="slide-header">
+                <h4>Group 1</h4>
+                <p>
+                  TOTAL <b>00</b>
+                </p>
+              </div>
+              <ul className="slide-list">
+                <li>
+                  <span>In-Service</span>
+                  <b>00</b>
+                </li>
+                <li>
+                  <span>Out of Service</span>
+                  <b>00</b>
+                </li>
+                <li>
+                  <span>Power Off</span>
+                  <b>00</b>
+                </li>
+                <li>
+                  <span>Low Cash</span>
+                  <b>00</b>
+                </li>
+              </ul>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="slide-header">
+                <h4>Group 1</h4>
+                <p>
+                  TOTAL <b>00</b>
+                </p>
+              </div>
+              <ul className="slide-list">
+                <li>
+                  <span>In-Service</span>
+                  <b>00</b>
+                </li>
+                <li>
+                  <span>Out of Service</span>
+                  <b>00</b>
+                </li>
+                <li>
+                  <span>Power Off</span>
+                  <b>00</b>
+                </li>
+                <li>
+                  <span>Low Cash</span>
+                  <b>00</b>
+                </li>
+              </ul>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="slide-content">Slide 3 - 슬라이드 컨텐츠 반복</div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="slide-content">Slide 4 - 슬라이드 컨텐츠 반복</div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="slide-content">Slide 5 - 슬라이드 컨텐츠 반복</div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="slide-content">Slide 6 - 슬라이드 컨텐츠 반복</div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </div>
+      <div className="sub-header mt-6 max-md:mt-10">
         <h3 className="sub-title">ATM Error List</h3>
       </div>
       <TabulatorTable
@@ -197,6 +337,7 @@ export default function DashboardPage() {
         columns={columns}
         config={{
           showFooter: true,
+          height: '200px',
         }}
       />
     </div>

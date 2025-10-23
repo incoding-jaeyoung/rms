@@ -41,39 +41,144 @@ export default function InformationPage() {
 
   // ATM 더미 데이터 생성
   const generateATMData = (): ATMData[] => {
-    const checkboxes = [true, false];
-    const groups = ['Group A', 'Group B', 'Group C'];
-    const branches = ['Main Branch', 'Downtown Branch', 'Subway Branch', 'Airport Branch'];
-    const models = ['NCR 5878', 'Diebold 2020ix', 'Hyosung 7600i', 'Nautilus 22'];
-    const modes = [
-      'IN-SERVICE',
-      'OUT OF SERVICE',
-      'POWER-UP',
-      'SUSPEND',
-      'SUPERVISOR',
-      'ENABLE',
-      'DISABLE',
-      'NOT OPEN',
+    return [
+      {
+        checkbox: false,
+        no: 1,
+        group: 'East Region',
+        branch: 'Downtown Branch',
+        model: 'ezATM6000',
+        terminalId: 'ATEC-NY-ATM202',
+        mode: 'IN-SERVICE',
+        status: 'Enable',
+        address: '123 Main St, Dallas, TX',
+        ip: '192.168.1.10',
+        apVer: '01.00.07',
+        bvVer: '01.00.07',
+        fwVer: 'Standard1',
+        serialNumber: 'SN-ATMC-9321',
+        installationDate: '2025-07-29',
+      },
+      {
+        checkbox: false,
+        no: 2,
+        group: 'East Region',
+        branch: 'Downtown Branch',
+        model: 'ezATM6000',
+        terminalId: 'ATEC-NY-ATM202',
+        mode: 'OUT OF SERVICE',
+        status: 'Enable',
+        address: '123 Main St, Dallas, TX',
+        ip: '192.168.1.10',
+        apVer: '01.00.07',
+        bvVer: '01.00.07',
+        fwVer: 'Standard1',
+        serialNumber: 'SN-ATMC-9321',
+        installationDate: '2025-07-29',
+      },
+      {
+        checkbox: false,
+        no: 3,
+        group: 'East Region',
+        branch: 'Downtown Branch',
+        model: 'ezATM6000',
+        terminalId: 'ATEC-NY-ATM202',
+        mode: 'POWER-UP',
+        status: 'Enable',
+        address: '123 Main St, Dallas, TX',
+        ip: '192.168.1.10',
+        apVer: '01.00.07',
+        bvVer: '01.00.07',
+        fwVer: 'Standard1',
+        serialNumber: 'SN-ATMC-9321',
+        installationDate: '2025-07-29',
+      },
+      {
+        checkbox: false,
+        no: 4,
+        group: 'East Region',
+        branch: 'Downtown Branch',
+        model: 'ezATM6000',
+        terminalId: 'ATEC-NY-ATM202',
+        mode: 'SUSPEND',
+        status: 'Enable',
+        address: '123 Main St, Dallas, TX',
+        ip: '192.168.1.10',
+        apVer: '01.00.07',
+        bvVer: '01.00.07',
+        fwVer: 'Standard1',
+        serialNumber: 'SN-ATMC-9321',
+        installationDate: '2025-07-29',
+      },
+      {
+        checkbox: false,
+        no: 5,
+        group: 'East Region',
+        branch: 'Downtown Branch',
+        model: 'ezATM6000',
+        terminalId: 'ATEC-NY-ATM202',
+        mode: 'SUPERVISOR',
+        status: 'Enable',
+        address: '123 Main St, Dallas, TX',
+        ip: '192.168.1.10',
+        apVer: '01.00.07',
+        bvVer: '01.00.07',
+        fwVer: 'Standard1',
+        serialNumber: 'SN-ATMC-9321',
+        installationDate: '2025-07-29',
+      },
+      {
+        checkbox: false,
+        no: 6,
+        group: 'East Region',
+        branch: 'Downtown Branch',
+        model: 'ezATM6000',
+        terminalId: 'ATEC-NY-ATM202',
+        mode: 'ENABLE',
+        status: 'Enable',
+        address: '123 Main St, Dallas, TX',
+        ip: '192.168.1.10',
+        apVer: '01.00.07',
+        bvVer: '01.00.07',
+        fwVer: 'Standard1',
+        serialNumber: 'SN-ATMC-9321',
+        installationDate: '2025-07-29',
+      },
+      {
+        checkbox: false,
+        no: 7,
+        group: 'East Region',
+        branch: 'Downtown Branch',
+        model: 'ezATM6000',
+        terminalId: 'ATEC-NY-ATM202',
+        mode: 'DISABLE',
+        status: 'Enable',
+        address: '123 Main St, Dallas, TX',
+        ip: '192.168.1.10',
+        apVer: '01.00.07',
+        bvVer: '01.00.07',
+        fwVer: 'Standard1',
+        serialNumber: 'SN-ATMC-9321',
+        installationDate: '2025-07-29',
+      },
+      {
+        checkbox: false,
+        no: 8,
+        group: 'East Region',
+        branch: 'Downtown Branch',
+        model: 'ezATM6000',
+        terminalId: 'ATEC-NY-ATM202',
+        mode: 'NOT OPEN',
+        status: 'Enable',
+        address: '123 Main St, Dallas, TX',
+        ip: '192.168.1.10',
+        apVer: '01.00.07',
+        bvVer: '01.00.07',
+        fwVer: 'Standard1',
+        serialNumber: 'SN-ATMC-9321',
+        installationDate: '2025-07-29',
+      },
     ];
-    const statuses = ['Enable'];
-
-    return Array.from({ length: 51 }, (_, index) => ({
-      checkbox: checkboxes[Math.floor(Math.random() * checkboxes.length)],
-      no: index + 1,
-      group: groups[index % groups.length],
-      branch: branches[index % branches.length],
-      model: models[index % models.length],
-      terminalId: `ATM${String(index + 1).padStart(4, '0')}`,
-      mode: modes[Math.floor(Math.random() * modes.length)],
-      status: statuses[Math.floor(Math.random() * statuses.length)],
-      address: `${index + 1}23 Main St, Dallas, TX`,
-      ip: `192.168.${index % 10}.${(index % 200) + 1}`,
-      apVer: `01.00.0${index + 1}`,
-      bvVer: `01.00.0${index + 1}`,
-      fwVer: `01.00.0${index + 1}`,
-      serialNumber: `SN-ATMC-9321`,
-      installationDate: `2025-07-29`,
-    }));
   };
 
   const atmData = generateATMData();
@@ -115,6 +220,37 @@ export default function InformationPage() {
       field: 'mode',
       headerSort: true,
       minWidth: 150,
+      formatter: (cell: { getValue: () => unknown }) => {
+        const value = cell.getValue();
+        const getModeStyle = (mode: string) => {
+          switch (mode) {
+            case 'IN-SERVICE':
+              return { color: '#52c41a', bullet: '#52c41a' };
+            case 'OUT OF SERVICE':
+              return { color: '#ff4d4f', bullet: '#ff4d4f' };
+            case 'POWER-UP':
+              return { color: '#353C40', bullet: '#FACC15' };
+            case 'SUSPEND':
+              return { color: '#353C40', bullet: '#2F84FC' };
+            case 'SUPERVISOR':
+              return { color: '#353C40', bullet: '#7F54FF' };
+            case 'ENABLE':
+              return { color: '#353C40', bullet: '#00BD24' };
+            case 'DISABLE':
+              return { color: '#353C40', bullet: '#666666' };
+            case 'NOT OPEN':
+              return { color: '#bfbfbf', bullet: '#C7CDD1' };
+            default:
+              return { color: '#353C40', bullet: '#C7CDD1' };
+          }
+        };
+
+        const style = getModeStyle(value as string);
+        return `<span style="display: flex; align-items: center; gap: 5px; line-height:100%;">
+            <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background-color: ${style.bullet};"></span>
+            <span style="color: ${style.color};">${value}</span>
+          </span>`;
+      },
     },
     {
       title: 'Status',

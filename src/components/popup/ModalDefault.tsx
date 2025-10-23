@@ -41,11 +41,14 @@ export default function ModalDefault({ open, onClose }: ModalDefaultProps) {
         </Form.Item>
         {/* 셀렉트 박스 */}
         <Form.Item name="role" label="역할">
-          <Select placeholder="역할을 선택하세요">
-            <Select.Option value="admin">관리자</Select.Option>
-            <Select.Option value="user">사용자</Select.Option>
-            <Select.Option value="guest">게스트</Select.Option>
-          </Select>
+          <Select
+            placeholder="역할을 선택하세요"
+            options={[
+              { label: '관리자', value: 'admin' },
+              { label: '사용자', value: 'user' },
+              { label: '게스트', value: 'guest' },
+            ]}
+          />
         </Form.Item>
 
         {/* 날짜 선택 */}

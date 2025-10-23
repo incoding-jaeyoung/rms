@@ -1,11 +1,12 @@
 /* Tabulator 커스텀 스타일 */
 .tabulator-container {
-  @apply rounded-sm overflow-hidden border-0 flex-grow min-h-[400px] bg-transparent;
+  @apply rounded-sm overflow-hidden border-0 flex-grow min-h-[200px] bg-transparent;
   /* height: calc(100vh - 200px); /* 동적 높이 */
 }
 @media screen and (max-width: 768px) {
   .tabulator-container {
     border: 1px solid #b7b7b7;
+    min-height: 300px;
   }
 }
 

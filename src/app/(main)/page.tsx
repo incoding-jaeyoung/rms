@@ -150,7 +150,7 @@ export default function HomePage() {
       {/* 통계 카드 */}
       <div className="mb-6 grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between ">
             <div>
               <p className="text-sm text-gray-600">Total Pages</p>
               <p className="text-2xl font-bold text-gray-900">{PAGES.length}</p>
@@ -191,8 +191,8 @@ export default function HomePage() {
       </div>
 
       {/* 페이지 테이블 */}
-      <div className="flex flex-grow gap-5">
-        <TabulatorTable data={tableData} columns={columns} />
+      <div className="flex flex-grow gap-5 max-md:flex-col max-md:gap-2">
+        <TabulatorTable data={tableData} columns={columns} className="max-md:!h-auto" />
         <div className="flex flex-col gap-5 flex-grow overflow-y-auto">
           <h3 className="text-lg font-bold text-gray-900">업데이트 사항</h3>
           <dl className="text-gray-600 flex flex-col gap-1">
@@ -205,6 +205,14 @@ export default function HomePage() {
               <br /> 테이블 상단의 버튼 메뉴는 모바일 디자인이 아직 없어 히든 처리(추후 추가 예정)
               <br />
               자세한 코드 변경사항은 깃 커밋 히스토리 참고.
+            </dd>
+          </dl>
+          <dl className="text-gray-600 flex flex-col gap-1">
+            <dt className="text-sm font-bold text-gray-900">2025/10/22</dt>
+            <dd className="text-gray-700">
+              Dashboard 수정 디자인 반영 및 모바일 작업 완료 <br /> 오버뷰 슬라이더 영역 hidden 시
+              테이블이 나머지 높이에 맞게 채워짐 <br /> 슬라이더 루프는 슬라이더 아이템 갯수가 6개
+              이상이어야 정상 작동 6개 미만일 경우 루프 옵션 제거
             </dd>
           </dl>
         </div>

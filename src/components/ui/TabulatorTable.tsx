@@ -404,7 +404,7 @@ export default function TabulatorTable({
   const defaultConfig = useMemo(
     (): TabulatorConfig => ({
       showFooter: true,
-      height: '400px',
+      height: '200px',
       layout: 'fitDataFill',
       responsiveLayout: false,
     }),

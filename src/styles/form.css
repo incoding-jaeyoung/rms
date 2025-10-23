@@ -150,6 +150,91 @@
   box-shadow: 0 0 0 2px rgba(23, 26, 28, 0.1);
 }
 
+/* Error 상태 스타일 */
+.ant-form-item-has-error {
+  .ant-input,
+  .ant-input-password,
+  .ant-picker,
+  .ant-select-selector {
+    border-color: #ff4d4f !important;
+    &:hover {
+      border-color: #ff4d4f !important;
+    }
+    &:focus {
+      border-color: #ff4d4f !important;
+      box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1) !important;
+    }
+  }
+
+  /* Input Password 포커스 */
+  .ant-input-password-focused,
+  .ant-input-affix-wrapper-focused,
+  .ant-input-affix-wrapper:focus,
+  .ant-input-affix-wrapper:focus-within {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1) !important;
+  }
+
+  /* DatePicker 포커스 */
+  .ant-picker-focused {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1) !important;
+  }
+
+  /* Select 포커스 */
+  .ant-select-focused .ant-select-selector {
+    border-color: #ff4d4f !important;
+    box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1) !important;
+  }
+
+  /* 에러 메시지 스타일 */
+  .ant-form-item-explain-error {
+    color: #ff4d4f;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+}
+
+/* Warning 상태 스타일 */
+.ant-form-item-has-warning {
+  .ant-input,
+  .ant-input-password,
+  .ant-picker,
+  .ant-select-selector {
+    border-color: #faad14 !important;
+    &:hover {
+      border-color: #faad14 !important;
+    }
+    &:focus {
+      border-color: #faad14 !important;
+      box-shadow: 0 0 0 2px rgba(250, 173, 20, 0.1) !important;
+    }
+  }
+
+  .ant-form-item-explain-warning {
+    color: #faad14;
+    font-size: 13px;
+    margin-top: 4px;
+  }
+}
+
+/* Success 상태 스타일 */
+.ant-form-item-has-success {
+  .ant-input,
+  .ant-input-password,
+  .ant-picker,
+  .ant-select-selector {
+    border-color: #52c41a !important;
+    &:hover {
+      border-color: #52c41a !important;
+    }
+    &:focus {
+      border-color: #52c41a !important;
+      box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.1) !important;
+    }
+  }
+}
+
 /* 모달 내부 라디오/체크박스 */
 .ant-radio-wrapper.ant-radio-wrapper,
 .ant-checkbox-wrapper.ant-checkbox-wrapper {
@@ -305,47 +390,50 @@
   }
   .filter-block {
     @apply flex-col flex rounded-b-none w-full p-0 rounded-t-2xl;
-    .filter-form {
-      padding: 10px 16px 0px 16px;
+  }
+  .filter-form {
+    padding: 10px 16px 0px 16px;
+    min-height: 70dvh;
+    max-height: 70dvh;
+    overflow-y: auto;
+  }
+  .filter-form-items {
+    @apply flex-col flex pb-9 !gap-7;
+    max-height: 70dvh;
+    overflow-y: auto;
+  }
+  .ant-space-item {
+    @apply w-full;
+  }
+  .filter-submit {
+    @apply py-4;
+    .btn-apply {
+      @apply h-11 flex-grow;
     }
-    .filter-form-items {
-      @apply flex-col flex pb-9 !gap-7;
-      max-height: 70dvh;
-      overflow-y: auto;
-    }
-    .ant-space-item {
-      @apply w-full;
-    }
-    .filter-submit {
-      @apply py-4;
-      .btn-apply {
-        @apply h-11 flex-grow;
-      }
-    }
-    input[type='text'],
-    input[type='number'],
-    input[type='date'],
-    input[type='time'],
-    input[type='email'],
-    input[type='password'],
-    input[type='tel'],
-    input[type='url'],
-    input[type='search'] {
-      @apply !py-2.5;
-    }
-    .ant-select-selector {
-      @apply !h-11;
-    }
+  }
+  input[type='text'],
+  input[type='number'],
+  input[type='date'],
+  input[type='time'],
+  input[type='email'],
+  input[type='password'],
+  input[type='tel'],
+  input[type='url'],
+  input[type='search'] {
+    @apply !py-2.5;
+  }
+  .ant-select-selector {
+    @apply !h-11;
+  }
 
-    .ant-select-arrow {
-      transform: translateY(5px) !important;
-    }
-    .ant-form-item-label > label {
-      @apply text-lg pl-1;
-    }
-    .ant-select .ant-form-item-control-input {
-      @apply !h-11;
-    }
+  .ant-select-arrow {
+    transform: translateY(5px) !important;
+  }
+  .ant-form-item-label > label {
+    @apply text-lg pl-1;
+  }
+  .ant-select .ant-form-item-control-input {
+    @apply !h-11;
   }
   .ant-select-dropdown .ant-select-item {
     @apply !h-11;
