@@ -24,7 +24,15 @@ import NewUser from '@/components/popup/NewUser';
 import EditUser from '@/components/popup/EditUser';
 import ResetPassword from '@/components/popup/ResetPassword';
 import DeleteUser from '@/components/popup/DeleteUser';
-
+import NewTerminal from '@/components/popup/NewTerminal';
+import SelectContactPerson from '@/components/popup/SelectPerson';
+import EditTerminal from '@/components/popup/EditTerminal';
+import DeleteTerminal from '@/components/popup/DeleteTerminal';
+import ATMConfiguration from '@/components/popup/ATMConfiguration';
+import DistributeFile from '@/components/popup/DistributeFile';
+import CollectLogFile from '@/components/popup/CollectLogFile';
+import JornalDetails from '@/components/popup/JornalDetails';
+import Configuration from '@/components/popup/Configuration';
 export default function ModalBasicPage() {
   const [sampleModal, setSampleModal] = useState(false);
   const [changePasswordModal, setChangePasswordModal] = useState(false);
@@ -48,6 +56,15 @@ export default function ModalBasicPage() {
   const [editUserModal, setEditUserModal] = useState(false);
   const [resetPasswordModal, setResetPasswordModal] = useState(false);
   const [deleteUserModal, setDeleteUserModal] = useState(false);
+  const [newTerminalModal, setNewTerminalModal] = useState(false);
+  const [selectPersonModal, setSelectPersonModal] = useState(false);
+  const [editTerminalModal, setEditTerminalModal] = useState(false);
+  const [deleteTerminalModal, setDeleteTerminalModal] = useState(false);
+  const [atmConfigurationModal, setATMConfigurationModal] = useState(false);
+  const [distributeFileModal, setDistributeFileModal] = useState(false);
+  const [collectLogFileModal, setCollectLogFileModal] = useState(false);
+  const [jornalDetailsModal, setJornalDetailsModal] = useState(false);
+  const [configurationModal, setConfigurationModal] = useState(false);
   return (
     <div className="p-8 flex flex-col gap-5">
       <h2 className="text-2xl font-bold">Modal Components</h2>
@@ -98,6 +115,78 @@ export default function ModalBasicPage() {
           <h3 className="font-semibold mb-2">Alert Notices</h3>
           <p className="text-sm text-gray-600 mb-4">RMS1340</p>
           <Button type="primary" onClick={() => setAlertNoticesModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+      </div>
+      <h2 className="text-2xl font-bold mt-5">ATM Information</h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">
+            Add New Terminal <br />
+            (Contact Person 이중 모달 예제)
+          </h3>
+          <p className="text-sm text-gray-600 mb-4">RMS2100</p>
+          <Button type="primary" onClick={() => setNewTerminalModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Select Contact Person</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS2111</p>
+          <Button type="primary" onClick={() => setSelectPersonModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Edit Terminal Information</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS2120</p>
+          <Button type="primary" onClick={() => setEditTerminalModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Delete Terminal</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS2130</p>
+          <Button type="primary" onClick={() => setDeleteTerminalModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">ATM Configuration</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS2140</p>
+          <Button type="dashed" onClick={() => setATMConfigurationModal(true)} block>
+            Not Available
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Distribute File</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS2310</p>
+          <Button type="primary" onClick={() => setDistributeFileModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Collect Log File</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS2320</p>
+          <Button type="primary" onClick={() => setCollectLogFileModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Confirm Configuration Changes</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS2141</p>
+          <Button type="primary" onClick={() => setConfigurationModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+      </div>
+      <h2 className="text-2xl font-bold mt-5">Journal</h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Jornal Details</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS4110</p>
+          <Button type="primary" onClick={() => setJornalDetailsModal(true)} block>
             Open Modal
           </Button>
         </div>
@@ -240,6 +329,18 @@ export default function ModalBasicPage() {
       <EditUser open={editUserModal} onClose={() => setEditUserModal(false)} />
       <ResetPassword open={resetPasswordModal} onClose={() => setResetPasswordModal(false)} />
       <DeleteUser open={deleteUserModal} onClose={() => setDeleteUserModal(false)} />
+      <NewTerminal open={newTerminalModal} onClose={() => setNewTerminalModal(false)} />
+      <SelectContactPerson open={selectPersonModal} onClose={() => setSelectPersonModal(false)} />
+      <EditTerminal open={editTerminalModal} onClose={() => setEditTerminalModal(false)} />
+      <DeleteTerminal open={deleteTerminalModal} onClose={() => setDeleteTerminalModal(false)} />
+      <ATMConfiguration
+        open={atmConfigurationModal}
+        onClose={() => setATMConfigurationModal(false)}
+      />
+      <DistributeFile open={distributeFileModal} onClose={() => setDistributeFileModal(false)} />
+      <CollectLogFile open={collectLogFileModal} onClose={() => setCollectLogFileModal(false)} />
+      <JornalDetails open={jornalDetailsModal} onClose={() => setJornalDetailsModal(false)} />
+      <Configuration open={configurationModal} onClose={() => setConfigurationModal(false)} />
     </div>
   );
 }

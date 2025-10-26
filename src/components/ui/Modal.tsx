@@ -87,15 +87,17 @@ export const Modal: React.FC<CustomModalProps> = ({
         <Button onClick={onCancel} className="btn-modal" icon={cancelIcon}>
           {cancelText}
         </Button>
-        <Button
-          type="primary"
-          className="btn-modal"
-          onClick={onConfirm}
-          loading={confirmLoading}
-          icon={confirmIcon}
-        >
-          {confirmText}
-        </Button>
+        {confirmText && onConfirm && (
+          <Button
+            type="primary"
+            className="btn-modal"
+            onClick={onConfirm}
+            loading={confirmLoading}
+            icon={confirmIcon}
+          >
+            {confirmText}
+          </Button>
+        )}
       </div>
     );
   };
@@ -122,7 +124,7 @@ export const Modal: React.FC<CustomModalProps> = ({
       style={getModalStyle()}
       className={`custom-modal ${variant} ${className}`}
       destroyOnHidden={true}
-      maskClosable={true}
+      maskClosable={false}
       keyboard={true}
       centered={variant === 'centered'}
     >

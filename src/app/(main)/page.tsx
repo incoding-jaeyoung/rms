@@ -215,6 +215,10 @@ export default function HomePage() {
               이상이어야 정상 작동 6개 미만일 경우 루프 옵션 제거
             </dd>
           </dl>
+          <dl className="text-gray-600 flex flex-col gap-1">
+            <dt className="text-sm font-bold text-gray-900">2025/10/26</dt>
+            <dd className="text-gray-700">ATM Configuration 팝업 제외 코딩 완료</dd>
+          </dl>
         </div>
       </div>
     </div>

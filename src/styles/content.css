@@ -343,3 +343,51 @@
 .list-pagination {
   @apply flex items-center justify-center py-5;
 }
+
+/* License Page */
+.license-contents {
+  @apply flex flex-col p-10 mt-7.5 gap-10 max-md:p-5;
+  border-radius: 5px;
+  color: #353c40;
+  background: #e3e5e8;
+  h3 {
+    @apply text-xl font-medium max-md:text-sm;
+    color: #353c40;
+  }
+  .license-list {
+    @apply flex flex-col gap-7.5 max-md:gap-5;
+
+    dl {
+      @apply flex flex-col;
+      dt {
+        @apply text-base font-semibold;
+        color: #353c40;
+      }
+      dd {
+        a {
+          @apply text-xl max-md:text-sm;
+          color: #5a6670;
+          &:hover {
+            color: #171a1c;
+          }
+        }
+      }
+    }
+  }
+}
+
+.gray-box {
+  @apply p-4 bg-[#F4F5F6];
+  border-radius: 5px;
+  border: 1px solid #c7cdd1;
+}
+.image-box {
+  @apply flex gap-6 flex-col flex-grow;
+  .image-box-item {
+    @apply w-full p-0 overflow-hidden h-[180px];
+    background: #f4f5f6 url('/icons/ico-image.svg') no-repeat center center;
+    img {
+      @apply w-full h-full object-cover;
+    }
+  }
+}

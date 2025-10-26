@@ -1,6 +1,3 @@
-/* 모달 커스텀 스타일 */
-/* .ant-modal-root를 상위 선택자로 추가하여 구체성 높임 */
-
 /* 모달 래퍼 */
 .ant-modal-root.ant-modal-root {
   font-family: 'Pretendard', 'Inter', sans-serif;
@@ -85,8 +82,7 @@
 
 /* 모달 바디 */
 .ant-modal-root .ant-modal-body.ant-modal-body {
-  padding: 40px;
-  padding-bottom: 0;
+  padding: 20px 40px 0 40px;
   font-size: 14px;
   line-height: 1.6;
   color: #353c40;
@@ -200,9 +196,133 @@
   }
 }
 .confirm-modal-content {
-  padding: 15px;
+  padding: 14px;
   background-color: #f4f5f6;
   text-align: center;
   margin: auto;
   max-width: 280px;
+  font-size: 16px;
+}
+
+/* 커스텀 탭 버튼 스타일 */
+.custom-tab-btn {
+  @apply !text-base !font-semibold;
+  border-radius: 21px !important;
+  height: 42px !important;
+  padding: 8px 16px;
+  transition: all 0.3s;
+}
+
+/* 기본 상태 (type="default") */
+.custom-tab-btn.ant-btn-default {
+  border: 1px solid #d9d9d9;
+  background: #fff;
+  color: #666;
+}
+
+/* 활성 상태 (type="primary") */
+.custom-tab-btn.ant-btn-primary {
+  background: #353c40;
+  border-color: #353c40;
+  color: #fff;
+}
+
+.custom-tab-btn.ant-btn-primary:hover {
+  background: #353c40;
+  border-color: #353c40;
+  color: #fff;
+}
+
+.tab-content-container {
+  height: 500px;
+  overflow-y: auto;
+}
+.tab-content-item {
+  @apply relative;
+  border-radius: 5px;
+  border: 1px solid #c7cdd1;
+  background: #fff;
+  margin-bottom: 10px;
+  .tab-item-btn {
+    @apply flex px-3 h-10 gap-2.5 w-full cursor-pointer font-semibold items-center justify-between;
+    border-radius: 5px;
+    background: #f4f5f6;
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      background: #e8e9ea;
+    }
+  }
+  .tab-item-content {
+    @apply hidden flex-col;
+    padding: 15px 30px;
+    hr {
+      background: #e1e4e7;
+      height: 1px;
+      border: none;
+    }
+    .form-right {
+      @apply flex flex-col items-end justify-end w-[535px] ml-auto;
+    }
+    .tab-form-list {
+      @apply w-full;
+      .ant-form-item:last-child {
+        border-bottom: 0;
+      }
+    }
+    /* 라벨과 폼을 좌우 양끝에 배치 */
+    .ant-form-item {
+      @apply w-full py-1.5;
+      .ant-form-item-label {
+        @apply p-0;
+        label {
+          @apply !text-sm p-0 !font-medium;
+          &::after {
+            display: none !important;
+          }
+        }
+      }
+
+      .ant-form-item-control {
+        flex: 1; /* 나머지 공간을 폼이 차지 */
+      }
+    }
+  }
+  &.active {
+    @apply relative;
+    .tab-item-btn {
+      border-bottom: 1px solid #c7cdd1;
+    }
+    .tab-item-content {
+      @apply flex;
+    }
+  }
+}
+
+.changes-wrap {
+  @apply flex flex-col gap-7.5;
+  .changes-header {
+    @apply flex items-center justify-between h-10 px-2.5 text-base;
+    h3 {
+      @apply font-medium;
+    }
+    p {
+      @apply font-semibold;
+      color: #d60051;
+    }
+  }
+  .changes-table {
+    border: 1px solid #e3e6e9;
+    border-radius: 5px;
+    overflow: hidden;
+    .tabulator-container {
+      min-height: 0px;
+      height: auto !important;
+    }
+    .tabulator-placeholder-contents {
+      color: #969696 !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+    }
+  }
 }

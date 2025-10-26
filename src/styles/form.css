@@ -16,6 +16,35 @@
   }
 }
 
+/* Form Row - 한 줄에 여러 필드 배치 */
+.form-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-row .ant-form-item {
+  margin-bottom: 0;
+}
+/* 빈 라벨 숨기기 */
+.form-row .ant-form-item label:empty {
+  display: none;
+}
+
+/* 또는 라벨 높이 통일 */
+.form-row .ant-form-item .ant-form-item-label {
+  height: 22px;
+  display: flex;
+  align-items: center;
+}
+:where(.css-dev-only-do-not-override-1utvcnp).ant-input-affix-wrapper {
+  padding: 5px 14px;
+  height: 34px;
+}
+:where(.css-dev-only-do-not-override-1utvcnp).ant-input-outlined:hover {
+  border-color: #c7cdd1 !important;
+}
 /* form 스타일 */
 .ant-form-item {
   margin-bottom: 0px;
@@ -103,6 +132,7 @@
   color: #171a1c !important;
   height: auto;
   padding-left: 6px;
+  min-height: 34px;
 }
 
 .ant-input.ant-input,
@@ -219,7 +249,7 @@
 }
 
 /* Success 상태 스타일 */
-.ant-form-item-has-success {
+/* .ant-form-item-has-success {
   .ant-input,
   .ant-input-password,
   .ant-picker,
@@ -233,7 +263,7 @@
       box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.1) !important;
     }
   }
-}
+} */
 
 /* 모달 내부 라디오/체크박스 */
 .ant-radio-wrapper.ant-radio-wrapper,
@@ -393,7 +423,6 @@
   }
   .filter-form {
     padding: 10px 16px 0px 16px;
-    min-height: 70dvh;
     max-height: 70dvh;
     overflow-y: auto;
   }
@@ -408,7 +437,7 @@
   .filter-submit {
     @apply py-4;
     .btn-apply {
-      @apply h-11 flex-grow;
+      @apply !h-11 flex-grow;
     }
   }
   input[type='text'],
@@ -438,6 +467,29 @@
   .ant-select-dropdown .ant-select-item {
     @apply !h-11;
   }
+  .ant-picker-range {
+    @apply !h-11;
+  }
+
+  .ant-picker-panel-container {
+    max-width: 360px !important;
+  }
+
+  /* 모바일에서 두 번째 달의 내용만 숨기기 (헤더는 유지) */
+  .ant-picker-panels {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ant-picker-panel:last-child .ant-picker-body {
+    display: none !important;
+  }
+
+  /* 두 번째 달의 헤더는 유지하되 높이만 줄이기 */
+  .ant-picker-panel:last-child {
+    height: auto !important;
+    min-height: 40px !important;
+  }
 }
 
 /* 데스크톱에서 필터 보기 버튼 숨김 */
@@ -445,4 +497,112 @@
   .m-filter-container {
     display: none;
   }
+}
+
+.ant-picker .ant-picker-suffix {
+  @apply w-4 h-4 -mr-1;
+  background: url('/icons/ico-calendar.svg') no-repeat center !important;
+  span {
+    display: none !important;
+  }
+}
+
+/* 커스텀 Segmented 스타일 */
+.custom-segmented {
+  background: #fff;
+  border-radius: 6px;
+  border: 1px solid #c7cdd1;
+  padding: 2px;
+}
+.custom-segmented .ant-segmented-item {
+  border-radius: 6px;
+  font-weight: 500;
+  color: #919ba3;
+  transition: none !important;
+  width: 97px;
+}
+.custom-segmented .ant-segmented-item-label {
+  line-height: 30px;
+}
+.custom-segmented .ant-segmented-item-selected {
+  background: #353c40;
+  color: #fff;
+}
+.ant-segmented-item.ant-segmented-item-selected:first-child {
+}
+.ant-segmented-item.ant-segmented-item-selected:last-child {
+  color: #00bd24;
+}
+.ant-input-number-input {
+  @apply !text-center;
+}
+
+/* 커스텀 라디오 스타일 */
+.setup-radio {
+  display: flex;
+  gap: 10px;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.setup-radio .ant-radio-wrapper {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.setup-radio .ant-radio {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.setup-radio .ant-radio-inner {
+  width: 14px;
+  height: 14px;
+  border: 1px solid #c7cdd1;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.setup-radio .ant-radio-checked .ant-radio-inner {
+  border-color: #353c40;
+  background: #fff;
+  position: relative;
+}
+
+.setup-radio .ant-radio-checked .ant-radio-inner::after {
+  width: 16px;
+  height: 16px;
+  background: #353c40;
+  border-radius: 50%;
+  transform: scale(0.5);
+}
+
+.setup-radio .ant-radio-wrapper:hover .ant-radio-inner {
+  border-color: #353c40;
+}
+
+.setup-radio .ant-radio + span {
+  display: flex;
+  height: 34px;
+  border: 1px solid #c7cdd1;
+  border-radius: 6px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #919ba3;
+  width: 120px;
+  padding: 0 10px;
+  padding-left: 30px;
+  user-select: none;
+}
+
+/* 체크된 라디오의 라벨 배경 스타일링 */
+.setup-radio .ant-radio-checked + span {
+  background-color: #353c40;
+  color: #fff;
 }

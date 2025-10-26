@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button, Space, Select, Form, InputNumber, Input } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-export default function GroupsPage() {
+export default function NoticePage() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleNotice = (index: number) => {

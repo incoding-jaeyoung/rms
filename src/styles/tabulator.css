@@ -363,3 +363,31 @@
     padding-right: 5px;
   }
 }
+
+.tabulator-select {
+  width: 100%;
+  height: 28px;
+  border: 1px solid #c7cdd1;
+  border-radius: 6px;
+  padding: 4px 14px;
+  font-size: 14px;
+  -webkit-appearance: none !important;
+  background: #fff url('/icons/ico-select-arrow.svg') no-repeat right 10px center !important;
+
+  /* 파란 라인(focus outline) 제거 */
+  outline: none;
+
+  /* 포커스 시 커스텀 스타일 */
+  &:focus {
+    border-color: #171a1c !important;
+    outline: none;
+  }
+}
+
+.tabulator {
+  .ant-btn {
+    height: 28px;
+    padding: 0 8px !important;
+    min-width: 80px !important;
+  }
+}
