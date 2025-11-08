@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { ConfigProvider, antdConfig } from '@/lib/antd';
 import AntdWarningFilter from '@/components/AntdWarningFilter';
+import { LoadingProvider } from '@/contexts/LoadingContext';
 
 export const metadata: Metadata = {
   title: 'ATEC RMS',
@@ -24,7 +25,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <AntdWarningFilter />
-        <ConfigProvider {...antdConfig}>{children}</ConfigProvider>
+        <LoadingProvider>
+          <ConfigProvider {...antdConfig}>{children}</ConfigProvider>
+        </LoadingProvider>
       </body>
     </html>
   );

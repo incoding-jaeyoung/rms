@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
-import { Form, Input, Select, Space, Button, InputNumber, Segmented, Radio } from 'antd';
-import { InfoCircleFilled, DownOutlined } from '@ant-design/icons';
+import { Form, Input, Select, Button, InputNumber, Segmented, Radio } from 'antd';
+import { InfoCircleFilled } from '@ant-design/icons';
 import Image from 'next/image';
 export default function HostSetupTab() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -42,7 +42,7 @@ export default function HostSetupTab() {
           </button>
           {activeIndex === 1 && (
             <div className="tab-item-content">
-              <Form.Item name="" label="Terminal ID" className="">
+              <Form.Item name="form-01" label="Terminal ID" className="">
                 <div className="form-right">
                   <Input placeholder="Enter Terminal ID" className="text-right" />
                   <div className="text-xs text-gray-500 flex gap-5 font-medium mt-1">
@@ -54,9 +54,10 @@ export default function HostSetupTab() {
                 </div>
               </Form.Item>
               <hr />
-              <Form.Item name="statusMonitoring" label="Status Monitoring" initialValue="disable">
+              <Form.Item name="form-02" label="Status Monitoring">
                 <div className="form-right">
                   <Segmented
+                    defaultValue="disable"
                     options={[
                       { label: 'Disable', value: 'disable' },
                       { label: 'Enable', value: 'enable' },
@@ -66,12 +67,12 @@ export default function HostSetupTab() {
                 </div>
               </Form.Item>
               <hr />
-              <Form.Item name="sendInterval" label="send interval(Minute)">
+              <Form.Item name="form-03" label="send interval(Minute)">
                 <div className="form-right">
                   <InputNumber
                     defaultValue={60}
                     placeholder="Enter minutes"
-                    className="!w-50 !text-center"
+                    className="!w-50 !text-center !border-black"
                     min={1}
                     max={999}
                     controls={false}
@@ -79,7 +80,7 @@ export default function HostSetupTab() {
                 </div>
               </Form.Item>
               <hr />
-              <Form.Item name="crcCheck" label="CRC Check" initialValue="unknown">
+              <Form.Item name="form-04" label="CRC Check" initialValue="unknown">
                 <div className="form-right">
                   <Select placeholder="Select" className="!w-50 text-center">
                     <Select.Option value="unknown">Unknown</Select.Option>
@@ -113,7 +114,7 @@ export default function HostSetupTab() {
           </button>
           {activeIndex === 2 && (
             <div className="tab-item-content">
-              <Form.Item name="keyBlockFormat" label="Key Block Format" initialValue="tripleDes">
+              <Form.Item name="form-05" label="Key Block Format" initialValue="tripleDes">
                 <Radio.Group className="setup-radio">
                   <Radio value="tripleDes">Triple DES</Radio>
                   <Radio value="tr31">TR31</Radio>
@@ -137,9 +138,10 @@ export default function HostSetupTab() {
           </button>
           {activeIndex === 3 && (
             <div className="tab-item-content">
-              <Form.Item name="" label="Status Monitoring" initialValue="disable">
+              <Form.Item name="form-06" label="Status Monitoring">
                 <div className="form-right">
                   <Segmented
+                    defaultValue="disable"
                     options={[
                       { label: 'Disable', value: 'disable' },
                       { label: 'Enable', value: 'enable' },
@@ -149,9 +151,10 @@ export default function HostSetupTab() {
                 </div>
               </Form.Item>
               <hr />
-              <Form.Item name="" label="Communication Header" initialValue="disable">
+              <Form.Item name="form-07" label="Communication Header">
                 <div className="form-right">
                   <Segmented
+                    defaultValue="disable"
                     options={[
                       { label: 'Disable', value: 'disable' },
                       { label: 'Enable', value: 'enable' },
@@ -161,7 +164,7 @@ export default function HostSetupTab() {
                 </div>
               </Form.Item>
               <hr />
-              <Form.Item name="" label="Communication ID" className="">
+              <Form.Item name="form-08" label="Communication ID" className="">
                 <div className="form-right">
                   <Input placeholder="" className="text-right" />
                   <div className="text-xs text-gray-500 flex gap-5 font-medium mt-1">
@@ -173,9 +176,10 @@ export default function HostSetupTab() {
                 </div>
               </Form.Item>
               <hr />
-              <Form.Item name="" label="CRC Check" initialValue="disable">
+              <Form.Item name="form-09" label="CRC Check">
                 <div className="form-right">
                   <Segmented
+                    defaultValue="disable"
                     options={[
                       { label: 'Disable', value: 'disable' },
                       { label: 'Enable', value: 'enable' },
@@ -202,7 +206,42 @@ export default function HostSetupTab() {
           </button>
           {activeIndex === 4 && (
             <div className="tab-item-content">
-              <p className="text-sm font-bold">1st</p>
+              <p className="text-sm font-bold ml-2.5">1st</p>
+              <div className="rounded-md bg-gray-100 p-2.5">
+                <Form.Item name="form-10" label="Host Address" className="!p-0">
+                  <div className="form-right">
+                    <Input defaultValue="192.168.0.1" className="text-center" />
+                  </div>
+                </Form.Item>
+                <hr className="my-1.5" />
+                <Form.Item name="form-11" label="Host Port" className="!p-0">
+                  <div className="form-right">
+                    <InputNumber
+                      defaultValue={8080}
+                      className="text-center !w-full"
+                      controls={false}
+                    />
+                  </div>
+                </Form.Item>
+              </div>
+              <p className="text-sm font-bold mt-3 ml-2.5">2st</p>
+              <div className="rounded-md bg-gray-100 p-2.5">
+                <Form.Item name="form-12" label="Host Address" className="!p-0">
+                  <div className="form-right">
+                    <Input defaultValue="192.168.0.1" className="text-center" />
+                  </div>
+                </Form.Item>
+                <hr className="my-1.5" />
+                <Form.Item name="form-13" label="Host Port" className="!p-0">
+                  <div className="form-right">
+                    <InputNumber
+                      defaultValue={5643}
+                      className="text-center !w-full"
+                      controls={false}
+                    />
+                  </div>
+                </Form.Item>
+              </div>
             </div>
           )}
         </div>
@@ -220,21 +259,79 @@ export default function HostSetupTab() {
             />
           </button>
           {activeIndex === 5 && (
-            <div className="tab-item-content">
-              <Space direction="vertical" size={20} className="w-full">
-                <Form.Item name="terminalId3" label="Terminal ID">
-                  <Input placeholder="Enter Terminal ID" />
+            <div className="tab-item-content gap-2.5">
+              <div className="rounded-lg bg-gray-100 p-2.5">
+                <Form.Item name="form-14" label="Enable Persist Connect" className="!p-0">
+                  <div className="form-right">
+                    <Segmented
+                      defaultValue="disable"
+                      options={[
+                        { label: 'Disable', value: 'disable' },
+                        { label: 'Enable', value: 'enable' },
+                      ]}
+                      className="custom-segmented"
+                    />
+                  </div>
                 </Form.Item>
-                <Form.Item name="location3" label="Location">
-                  <Input placeholder="Enter Location" />
+                <hr className="my-1.5" />
+                <Form.Item name="form-15" label="Frame" initialValue="std" className="!p-0">
+                  <Radio.Group className="setup-radio">
+                    <Radio value="std">STD</Radio>
+                    <Radio value="stdWithAck">STD(w/ACK)</Radio>
+                  </Radio.Group>
                 </Form.Item>
-                <Form.Item name="status3" label="Status">
-                  <Select placeholder="Select Status">
-                    <Select.Option value="active">Active</Select.Option>
-                    <Select.Option value="inactive">Inactive</Select.Option>
-                  </Select>
+                <hr className="my-1.5" />
+                <Form.Item name="form-16" label="Timeout(ms)" className="!p-0">
+                  <div className="form-right">
+                    <InputNumber
+                      defaultValue={3000}
+                      placeholder=""
+                      className="!w-50 !text-center !border-black"
+                      min={1}
+                      max={99999}
+                      controls={false}
+                    />
+                  </div>
                 </Form.Item>
-              </Space>
+              </div>
+              <div className="rounded-lg bg-gray-100 p-2.5">
+                <Form.Item name="form-17" label="Enable TSL" className="!p-0">
+                  <div className="form-right">
+                    <Segmented
+                      defaultValue="disable"
+                      options={[
+                        { label: 'Disable', value: 'disable' },
+                        { label: 'Enable', value: 'enable' },
+                      ]}
+                      className="custom-segmented"
+                    />
+                  </div>
+                </Form.Item>
+                <hr className="my-1.5" />
+                <Form.Item name="form-18" label="Cert. Verification" className="!p-0">
+                  <div className="form-right">
+                    <Segmented
+                      defaultValue="disable"
+                      options={[
+                        { label: 'Disable', value: 'disable' },
+                        { label: 'Enable', value: 'enable' },
+                      ]}
+                      className="custom-segmented"
+                    />
+                  </div>
+                </Form.Item>
+              </div>
+              <div className="tslStatus">
+                <h3>TLS Status</h3>
+                <dl>
+                  <dt>TLS Version</dt>
+                  <dd>TLS 1.2</dd>
+                </dl>
+                <dl>
+                  <dt>Verified Certificates</dt>
+                  <dd>Unknown</dd>
+                </dl>
+              </div>
             </div>
           )}
         </div>

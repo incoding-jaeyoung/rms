@@ -391,3 +391,48 @@
     }
   }
 }
+
+.tslStatus {
+  @apply flex flex-col p-2.5 gap-2.5 bg-gray-100;
+  h3 {
+    @apply text-sm font-bold text-center;
+    color: #171a1c;
+  }
+  dl {
+    @apply flex items-center justify-center font-medium text-sm gap-10;
+    dt {
+      color: #919ba3;
+      width: 160px;
+      text-align: left;
+    }
+    dd {
+      color: #171a1c;
+      width: 100px;
+    }
+  }
+}
+
+.tab-content-item {
+  .tabulator-container {
+    /* height: auto !important;
+    min-height: 0 !important; */
+  }
+}
+.modal-message {
+  @apply text-center;
+  color: #171a1c;
+  dt {
+    @apply text-base font-bold flex items-center justify-center;
+    height: 44px;
+  }
+  dd {
+    @apply text-sm flex items-center justify-center;
+    height: 30px;
+  }
+}
+
+.lable-center {
+  .ant-form-item-label {
+    @apply flex items-center justify-center;
+  }
+}

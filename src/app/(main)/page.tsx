@@ -219,6 +219,13 @@ export default function HomePage() {
             <dt className="text-sm font-bold text-gray-900">2025/10/26</dt>
             <dd className="text-gray-700">ATM Configuration 팝업 제외 코딩 완료</dd>
           </dl>
+          <dl className="text-gray-600 flex flex-col gap-1">
+            <dt className="text-sm font-bold text-gray-900">2025/11/09</dt>
+            <dd className="text-gray-700">
+              - 로딩 모달 컴포넌트 추가 <br /> - Setup 추가 / 삭제 모달 추가 <br /> - ATM
+              Configuration 모달 완료
+            </dd>
+          </dl>
         </div>
       </div>
     </div>

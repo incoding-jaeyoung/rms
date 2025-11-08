@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Button } from 'antd';
+import { useLoading } from '@/contexts/LoadingContext';
 import ModalDefault from '@/components/popup/ModalDefault';
 import ChangePassword from '@/components/popup/ChangePassword';
 import NewNotices from '@/components/popup/NewNotices';
@@ -33,7 +34,10 @@ import DistributeFile from '@/components/popup/DistributeFile';
 import CollectLogFile from '@/components/popup/CollectLogFile';
 import JornalDetails from '@/components/popup/JornalDetails';
 import Configuration from '@/components/popup/Configuration';
+import NewModel from '@/components/popup/NewModel';
+import DeleteModel from '@/components/popup/DeleteModel';
 export default function ModalBasicPage() {
+  const { showLoading, hideLoading } = useLoading();
   const [sampleModal, setSampleModal] = useState(false);
   const [changePasswordModal, setChangePasswordModal] = useState(false);
   const [newNoticesModal, setNewNoticesModal] = useState(false);
@@ -65,10 +69,50 @@ export default function ModalBasicPage() {
   const [collectLogFileModal, setCollectLogFileModal] = useState(false);
   const [jornalDetailsModal, setJornalDetailsModal] = useState(false);
   const [configurationModal, setConfigurationModal] = useState(false);
+  const [newModelModal, setNewModelModal] = useState(false);
+  const [deleteModelModal, setDeleteModelModal] = useState(false);
   return (
     <div className="p-8 flex flex-col gap-5">
       <h2 className="text-2xl font-bold">Modal Components</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Loading Modal</h3>
+          <p className="text-sm text-gray-600 mb-4">
+            로딩 모달 (3초 후 자동 닫힘)
+            <br />
+            <br />
+            <strong>전역 사용방법:</strong>
+            <br />
+            <code className="text-xs bg-gray-100 px-1 py-0.5 rounded block mt-1">
+              import &#123; useLoading &#125; from &apos;@/contexts/LoadingContext&apos;;
+            </code>
+            <br />
+            <code className="text-xs bg-gray-100 px-1 py-0.5 rounded block">
+              const &#123; showLoading, hideLoading &#125; = useLoading();
+            </code>
+            <br />
+            <code className="text-xs bg-gray-100 px-1 py-0.5 rounded block">
+              showLoading(); // 로딩 표시
+            </code>
+            <code className="text-xs bg-gray-100 px-1 py-0.5 rounded block">
+              hideLoading(); // 로딩 숨김
+            </code>
+            <br />
+            <span className="text-xs text-blue-600">※ 모든 페이지/컴포넌트에서 사용 가능</span>
+          </p>
+          <Button
+            type="primary"
+            onClick={() => {
+              showLoading();
+              setTimeout(() => {
+                hideLoading();
+              }, 3000);
+            }}
+            block
+          >
+            Show Loading
+          </Button>
+        </div>
         <div className="p-6 bg-white border rounded-lg shadow-sm">
           <h3 className="font-semibold mb-2">Modal Template</h3>
           <p className="text-sm text-gray-600 mb-4">모달 템플릿</p>
@@ -155,7 +199,7 @@ export default function ModalBasicPage() {
         <div className="p-6 bg-white border rounded-lg shadow-sm">
           <h3 className="font-semibold mb-2">ATM Configuration</h3>
           <p className="text-sm text-gray-600 mb-4">RMS2140</p>
-          <Button type="dashed" onClick={() => setATMConfigurationModal(true)} block>
+          <Button type="primary" onClick={() => setATMConfigurationModal(true)} block>
             Not Available
           </Button>
         </div>
@@ -305,6 +349,20 @@ export default function ModalBasicPage() {
             Open Modal
           </Button>
         </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Add New Model</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS5710</p>
+          <Button type="primary" onClick={() => setNewModelModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
+        <div className="p-6 bg-white border rounded-lg shadow-sm">
+          <h3 className="font-semibold mb-2">Delete Model</h3>
+          <p className="text-sm text-gray-600 mb-4">RMS5720</p>
+          <Button type="primary" onClick={() => setDeleteModelModal(true)} block>
+            Open Modal
+          </Button>
+        </div>
       </div>
       {/* 모달 컴포넌트들 */}
       <ModalDefault open={sampleModal} onClose={() => setSampleModal(false)} />
@@ -341,6 +399,8 @@ export default function ModalBasicPage() {
       <CollectLogFile open={collectLogFileModal} onClose={() => setCollectLogFileModal(false)} />
       <JornalDetails open={jornalDetailsModal} onClose={() => setJornalDetailsModal(false)} />
       <Configuration open={configurationModal} onClose={() => setConfigurationModal(false)} />
+      <NewModel open={newModelModal} onClose={() => setNewModelModal(false)} />
+      <DeleteModel open={deleteModelModal} onClose={() => setDeleteModelModal(false)} />
     </div>
   );
 }

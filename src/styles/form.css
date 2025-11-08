@@ -501,10 +501,13 @@
 
 .ant-picker .ant-picker-suffix {
   @apply w-4 h-4 -mr-1;
-  background: url('/icons/ico-calendar.svg') no-repeat center !important;
+  /* background: url('/icons/ico-calendar.svg') no-repeat center !important; */
   span {
-    display: none !important;
+    color: #000;
   }
+}
+.ant-picker .ant-picker-clear {
+  right: -2px !important;
 }
 
 /* 커스텀 Segmented 스타일 */
@@ -599,10 +602,52 @@
   padding: 0 10px;
   padding-left: 30px;
   user-select: none;
+  background-color: #fff;
 }
 
 /* 체크된 라디오의 라벨 배경 스타일링 */
 .setup-radio .ant-radio-checked + span {
   background-color: #353c40;
   color: #fff;
+}
+
+/* 커스텀 스위치 */
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 22px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  padding: 0;
+}
+
+.custom-switch:hover {
+  background-color: rgba(0, 0, 0, 0.35);
+}
+
+.custom-switch.checked {
+  background-color: #00bd24;
+}
+
+.custom-switch.checked:hover {
+  background-color: #00bd24;
+}
+
+.custom-switch .switch-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.custom-switch.checked .switch-slider {
+  transform: translateX(22px);
 }

@@ -244,7 +244,7 @@
   background: #fff;
   margin-bottom: 10px;
   .tab-item-btn {
-    @apply flex px-3 h-10 gap-2.5 w-full cursor-pointer font-semibold items-center justify-between;
+    @apply flex px-3 h-[38px] gap-2.5 w-full cursor-pointer font-semibold items-center justify-between;
     border-radius: 5px;
     background: #f4f5f6;
     border-bottom: 1px solid transparent;
@@ -255,7 +255,7 @@
   }
   .tab-item-content {
     @apply hidden flex-col;
-    padding: 15px 30px;
+    padding: 15px 20px;
     hr {
       background: #e1e4e7;
       height: 1px;
@@ -263,6 +263,23 @@
     }
     .form-right {
       @apply flex flex-col items-end justify-end w-[535px] ml-auto;
+    }
+    .form-right-auto {
+      @apply flex flex-col items-end justify-end ml-auto;
+    }
+    .adjust-volume {
+      @apply flex items-center justify-end ml-auto gap-1.5;
+      button {
+        @apply w-7.5 h-7.5 flex items-center justify-center rounded-full cursor-pointer;
+        background-color: #5a6670;
+        color: #fff;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+      }
+      input {
+        background: #fff url('/icons/ico-volume.svg') no-repeat 7.5px center;
+        text-align: right !important;
+        font-weight: 500;
+      }
     }
     .tab-form-list {
       @apply w-full;
@@ -292,6 +309,7 @@
     @apply relative;
     .tab-item-btn {
       border-bottom: 1px solid #c7cdd1;
+      background-color: #e1e4e7;
     }
     .tab-item-content {
       @apply flex;

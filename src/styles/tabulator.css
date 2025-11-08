@@ -42,6 +42,9 @@
   color: #5a6670;
   text-align: center;
   vertical-align: middle;
+  :hover {
+    background: #e1e4e7;
+  }
 }
 
 .tabulator .tabulator-header .tabulator-col .tabulator-col-content {
@@ -389,5 +392,11 @@
     height: 28px;
     padding: 0 8px !important;
     min-width: 80px !important;
+  }
+}
+.table-modal {
+  .tabulator-row {
+    background-color: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #ddd;
   }
 }
