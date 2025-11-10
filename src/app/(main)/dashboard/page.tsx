@@ -337,8 +337,8 @@ export default function DashboardPage() {
         columns={columns}
         config={{
           showFooter: true,
-          height: '200px',
         }}
+        className="tabulator-dashboard"
       />
     </div>
   );

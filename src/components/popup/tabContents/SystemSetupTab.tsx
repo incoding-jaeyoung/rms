@@ -395,7 +395,7 @@ export default function SystemSetupTab() {
                 <Form.Item name="" label="Receipt Print" className="lable-center">
                   <div className="adjust-volume ">
                     <button className="minus">
-                      <Image src="/icons/ico-minus.svg" alt="minus" width={20} height={20} />
+                      <Image src="/icons/ico-minus.svg" alt="minus" width={12} height={2} />
                     </button>
                     {/* <Input placeholder="" className="!w-25 !text-right !border-black" /> */}
                     <InputNumber

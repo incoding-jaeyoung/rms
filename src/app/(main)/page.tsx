@@ -226,6 +226,10 @@ export default function HomePage() {
               Configuration 모달 완료
             </dd>
           </dl>
+          <dl className="text-gray-600 flex flex-col gap-1">
+            <dt className="text-sm font-bold text-gray-900">2025/11/10</dt>
+            <dd className="text-gray-700">- css 업데이트</dd>
+          </dl>
         </div>
       </div>
     </div>
