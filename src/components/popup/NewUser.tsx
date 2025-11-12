@@ -78,6 +78,10 @@ export default function NewUser({ open, onClose }: NewUserProps) {
               </Select>
             </Form.Item>
           </div>
+          <dl className="intial-password">
+            <dt>Initial Password:</dt>
+            <dd>[Username]1234!</dd>
+          </dl>
         </Space>
       </Form>
     </Modal>

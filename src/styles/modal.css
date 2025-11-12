@@ -202,8 +202,27 @@
   margin: auto;
   max-width: 280px;
   font-size: 16px;
+  border-radius: 5px;
 }
-
+.intial-password {
+  height: 54px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f5f6;
+  text-align: center;
+  margin: auto;
+  font-size: 16px;
+  border-radius: 5px;
+  color: #353c40;
+  dt {
+    font-weight: 500;
+  }
+  dd {
+    font-weight: 700;
+  }
+}
 /* 커스텀 탭 버튼 스타일 */
 .custom-tab-btn {
   @apply !text-base !font-semibold;
