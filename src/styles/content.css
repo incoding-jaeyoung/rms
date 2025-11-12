@@ -391,6 +391,14 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .image-box {
+    .image-box-item {
+      @apply w-full h-auto;
+      aspect-ratio: 4/2.5 !important;
+    }
+  }
+}
 
 .tslStatus {
   @apply flex flex-col p-2.5 gap-2.5 bg-gray-100;

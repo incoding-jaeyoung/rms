@@ -1,7 +1,7 @@
 'use client';
 
 import { Modal } from '@/components/ui';
-import { Form, Input, Space, Radio, Select } from 'antd';
+import { Form, Input, Space, Radio, Select, Button } from 'antd';
 import { CheckCircleFilled } from '@ant-design/icons';
 
 interface NewUserProps {
@@ -43,7 +43,10 @@ export default function NewUser({ open, onClose }: NewUserProps) {
             </Form.Item>
           </div>
           <Form.Item name="userName" label="User Name">
-            <Input placeholder="" />
+            <div className="flex gap-2">
+              <Input placeholder="" className="flex-1" />
+              <Button type="default">Check Availability</Button>
+            </div>
           </Form.Item>
           <Form.Item name="userStatus" label="User Status">
             <Radio.Group>

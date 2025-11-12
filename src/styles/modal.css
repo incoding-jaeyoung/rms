@@ -344,3 +344,7 @@
     }
   }
 }
+
+.ant-modal-content .ant-btn {
+  height: 34px;
+}

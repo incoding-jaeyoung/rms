@@ -194,7 +194,11 @@ export default function HomePage() {
       <div className="flex flex-grow gap-5 max-md:flex-col max-md:gap-2">
         <TabulatorTable data={tableData} columns={columns} className="max-md:!h-auto" />
         <div className="flex flex-col gap-5 flex-grow overflow-y-auto">
-          <h3 className="text-lg font-bold text-gray-900">업데이트 사항</h3>
+          <h3 className="text-lg font-bold text-gray-900 flex flex-col">
+            업데이트 사항{' '}
+            <span className="text-sm text-red-400">css 는 항상 최신 버전을 유지해주세요.</span>
+          </h3>
+
           <dl className="text-gray-600 flex flex-col gap-1">
             <dt className="text-sm font-bold text-gray-900">2025/10/19</dt>
             <dd className="text-gray-700">
@@ -229,6 +233,11 @@ export default function HomePage() {
           <dl className="text-gray-600 flex flex-col gap-1">
             <dt className="text-sm font-bold text-gray-900">2025/11/10</dt>
             <dd className="text-gray-700">- css 업데이트</dd>
+          </dl>
+          <dl className="text-gray-600 flex flex-col gap-1">
+            <dt className="text-sm font-bold text-gray-900">2025/11/12</dt>
+            <dd className="text-gray-700">- Add New User 모달 중복버튼 추가</dd>
+            <dd className="text-gray-700">- Jornal Details 모달 모바일 반응형 추가</dd>
           </dl>
         </div>
       </div>

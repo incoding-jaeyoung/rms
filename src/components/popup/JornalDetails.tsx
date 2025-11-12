@@ -12,7 +12,7 @@ interface NewNoticesProps {
 export default function NewNotices({ open, onClose }: NewNoticesProps) {
   return (
     <Modal open={open} onCancel={onClose} title="Jornal Details" size="default" cancelText="Close">
-      <div className="flex gap-10">
+      <div className="flex gap-10 max-md:flex-col max-md:gap-4">
         <div className="flex-1 flex flex-col">
           <p className="flex items-center justify-between text-sm font-semibold text-[#171A1C]">
             Transaction Statement
@@ -30,11 +30,11 @@ export default function NewNotices({ open, onClose }: NewNoticesProps) {
           <p className="flex items-center justify-between text-sm font-semibold text-[#171A1C]">
             Transaction Images
           </p>
-          <p className="flex items-center gap-1.5 font-medium text-sm">
+          <p className="flex items-center gap-1.5 font-medium text-sm max-md:text-xs max-md:mt-1.5">
             <InfoCircleFilled />
             Transaction images are stored for 6 months.
           </p>
-          <div className="image-box mt-7.5">
+          <div className="image-box mt-7.5 max-md:mt-4">
             <div className="image-box-item gray-box">
               <img src="/images/img-thumb-1.jpg" alt="image" />
             </div>

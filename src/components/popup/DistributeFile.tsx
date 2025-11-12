@@ -2,7 +2,6 @@
 
 import { Modal } from '@/components/ui';
 import { Form, Input, Space, Radio, Upload, Button } from 'antd';
-import { CheckCircleFilled } from '@ant-design/icons';
 import { useState } from 'react';
 const { TextArea } = Input;
 interface DistributeFileProps {
@@ -59,7 +58,7 @@ export default function DistributeFile({ open, onClose }: DistributeFileProps) {
             <div className="flex gap-2">
               <Input value={fileName} placeholder="No file chosen" readOnly className="flex-1" />
               <Upload beforeUpload={() => false} showUploadList={false} onChange={handleFileChange}>
-                <Button type="primary" size="middle" className="!bg-[#5A6670]">
+                <Button type="primary" className="!bg-[#5A6670]">
                   Choose File
                 </Button>
               </Upload>
