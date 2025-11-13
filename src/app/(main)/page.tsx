@@ -236,7 +236,7 @@ export default function HomePage() {
           </dl>
           <dl className="text-gray-600 flex flex-col gap-1">
             <dt className="text-sm font-bold text-gray-900">2025/11/12</dt>
-            <dd className="text-gray-700">- Add New User 모달 중복버튼 추가</dd>
+            <dd className="text-gray-700">- Add New User 모달 페이지 수정</dd>
             <dd className="text-gray-700">- Jornal Details 모달 모바일 반응형 추가</dd>
           </dl>
         </div>
