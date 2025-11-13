@@ -65,10 +65,18 @@ export default function ATMConfiguration({ open, onClose }: ATMConfigurationProp
         </div>
 
         <div className="tab-content">
-          {activeTab === 'general' && <HostSetupTab />}
-          {activeTab === 'network' && <CustomerSetupTab />}
-          {activeTab === 'security' && <TransactionSetupTab />}
-          {activeTab === 'system' && <SystemSetupTab />}
+          <div style={{ display: activeTab === 'general' ? 'block' : 'none' }}>
+            <HostSetupTab />
+          </div>
+          <div style={{ display: activeTab === 'network' ? 'block' : 'none' }}>
+            <CustomerSetupTab />
+          </div>
+          <div style={{ display: activeTab === 'security' ? 'block' : 'none' }}>
+            <TransactionSetupTab />
+          </div>
+          <div style={{ display: activeTab === 'system' ? 'block' : 'none' }}>
+            <SystemSetupTab />
+          </div>
         </div>
       </div>
     </Modal>
