@@ -239,6 +239,13 @@ export default function HomePage() {
             <dd className="text-gray-700">- Add New User 모달 페이지 수정</dd>
             <dd className="text-gray-700">- Jornal Details 모달 모바일 반응형 추가</dd>
           </dl>
+          <dl className="text-gray-600 flex flex-col gap-1">
+            <dt className="text-sm font-bold text-gray-900">2025/11/14</dt>
+            <dd className="text-gray-700">- 타블레이터 모바일 반응형 추가</dd>
+            <dd className="text-gray-700">
+              - alert-notices 모달 폼 컴포넌트를 일반 div 컨텐츠로 변경
+            </dd>
+          </dl>
         </div>
       </div>
     </div>

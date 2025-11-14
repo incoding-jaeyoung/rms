@@ -84,9 +84,11 @@ export const Modal: React.FC<CustomModalProps> = ({
 
     return (
       <div className="modal-btn-line">
-        <Button onClick={onCancel} className="btn-modal" icon={cancelIcon}>
-          {cancelText}
-        </Button>
+        {cancelText && onCancel && (
+          <Button onClick={onCancel} className="btn-modal" icon={cancelIcon}>
+            {cancelText}
+          </Button>
+        )}
         {confirmText && onConfirm && (
           <Button
             type="primary"

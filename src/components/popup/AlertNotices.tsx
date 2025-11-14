@@ -1,9 +1,7 @@
 'use client';
 
 import { Modal } from '@/components/ui';
-import { Form, Input, Space } from 'antd';
-import { CloseCircleFilled, CheckCircleFilled, NotificationFilled } from '@ant-design/icons';
-const { TextArea } = Input;
+import { CheckCircleFilled, NotificationFilled } from '@ant-design/icons';
 
 interface AlertNoticesProps {
   open: boolean;
@@ -11,35 +9,34 @@ interface AlertNoticesProps {
 }
 
 export default function AlertNotices({ open, onClose }: AlertNoticesProps) {
-  const [form] = Form.useForm();
-
-  const handleSubmit = (values: unknown) => {
-    console.log('Form values:', values);
-    onClose();
-  };
-
   return (
     <Modal
       open={open}
       onCancel={onClose}
-      onConfirm={() => form.submit()}
+      onConfirm={onClose}
       title="New Notice"
       size="default"
+      cancelText=""
       confirmText="OK"
-      cancelText="Cancel"
       confirmIcon={<CheckCircleFilled />}
       titleIcon={<NotificationFilled className="!w-5 !h-5" />}
     >
-      <Form form={form} layout="vertical" onFinish={handleSubmit}>
-        <Space direction="vertical" size={20} className="w-full">
-          <Form.Item name="name" label="Title">
-            <Input placeholder="" />
-          </Form.Item>
-          <Form.Item name="notes" label="content">
-            <TextArea rows={15} placeholder="new contets" />
-          </Form.Item>
-        </Space>
-      </Form>
+      <div className="alert-notices">
+        <div className="title-line">
+          <p>New Notice</p>
+          <div className="title">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
+          </div>
+        </div>
+        <div className="content-line">
+          <p>Content</p>
+          <div className="alert-content">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, soluta architecto
+            itaque minus magni laborum exercitationem unde autem error quasi voluptatem vel aperiam
+            repudiandae. Nesciunt iste molestias ullam quae perspiciatis!
+          </div>
+        </div>
+      </div>
     </Modal>
   );
 }

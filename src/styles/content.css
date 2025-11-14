@@ -444,3 +444,25 @@
     @apply flex items-center justify-center;
   }
 }
+
+.alert-notices {
+  @apply flex flex-col gap-5;
+  p {
+    @apply font-semibold flex items-center px-1.5;
+    height: 24px;
+  }
+  .title {
+    border-radius: 5px;
+    border: 1px solid #c7cdd1;
+    background: #fff;
+    padding: 12px 10px;
+    line-height: 100%;
+  }
+  .alert-content {
+    border-radius: 5px;
+    border: 1px solid #c7cdd1;
+    background: #fff;
+    padding: 14px;
+    min-height: 400px;
+  }
+}

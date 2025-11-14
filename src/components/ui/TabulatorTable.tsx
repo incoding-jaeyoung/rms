@@ -255,9 +255,10 @@ const addCustomPaginationFooter = (table: TabulatorInstance | null, showFooter: 
       return;
     }
 
-    // 이미 커스텀 페이징이 있는지 확인
-    if (tableContainer?.querySelector('.custom-pagination')) {
-      return;
+    // 기존 커스텀 페이징이 있으면 제거
+    const existingCustomPagination = tableContainer?.querySelector('.custom-pagination');
+    if (existingCustomPagination) {
+      existingCustomPagination.remove();
     }
 
     // 커스텀 페이징 컨테이너 생성
@@ -414,16 +415,28 @@ export default function TabulatorTable({
   // 화면 크기 감지
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      const newIsMobile = window.innerWidth < 768;
+      if (newIsMobile !== isMobile) {
+        setIsMobile(newIsMobile);
+      }
     };
 
     // 초기 체크
     checkMobile();
 
-    // 리사이즈 이벤트 리스너
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+    // 리사이즈 이벤트 리스너 (디바운스 적용)
+    let timeoutId: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(checkMobile, 300);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(timeoutId);
+    };
+  }, [isMobile]);
 
   useEffect(() => {
     // 설정 병합 (useEffect 내부에서 수행)

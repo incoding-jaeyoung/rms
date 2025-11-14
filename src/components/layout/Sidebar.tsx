@@ -81,6 +81,11 @@ const Sidebar: React.FC<SidebarProps> = ({ mobileMenuOpen = false, setMobileMenu
         path: pageInfo.path,
         closable: true,
       });
+
+      // 모바일에서 메뉴 클릭 시 사이드바 닫기
+      if (isMobile && setMobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
     }
   };
 
